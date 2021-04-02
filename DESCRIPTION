@@ -1,0 +1,21 @@
+Package: bugsigdbr
+Version: 0.99.0
+Title: R-side access to published microbial signatures from BugSigDB 
+Author: Ludwig Geistlinger, Levi Waldron
+Maintainer: Ludwig Geistlinger <ludwig_geistlinger@hms.harvard.edu>
+Description:
+    R-side access to published microbial signatures from BugSigDB.
+Depends: R (>= 4.0.0)
+Imports:
+    readr,
+    plyr
+Suggests:
+    BiocStyle, 
+    ggpubr,
+    knitr,
+    rmarkdown
+License: GPL-3.0
+VignetteBuilder: knitr
+biocViews: GeneSetEnrichment, Metagenomics, Microbiome
+Encoding: UTF-8
+RoxygenNote: 7.1.1
