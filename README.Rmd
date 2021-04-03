@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# bugsigdbr
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check-bioc](https://github.com/waldronlab/bugsigdbr/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/waldronlab/bugsigdbr/actions)
+[![Codecov test coverage](https://codecov.io/gh/waldronlab/bugsigdbr/branch/main/graph/badge.svg)](https://codecov.io/gh/waldronlab/bugsigdbr?branch=main)
+<!-- badges: end -->
+
+Utilities for accessing data from BugSigDB.org and creating plain text
+signatures.
+
+## Installation instructions
+
+Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `bugsigdbr` using from [Bioconductor](http://bioconductor.org/) the following code:
+
+```{r 'install', eval = FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+BiocManager::install("bugsigdbr")
+```
+
+And the development version from [GitHub](https://github.com/waldronlab/bugsigdbr) with:
+
+```{r 'install_dev', eval = FALSE}
+BiocManager::install("waldronlab/bugsigdbr")
+```
+## Example
+
+```{r example, eval = requireNamespace('bugsigdbr')}
+library("bugsigdbr")
+
+bsdb <- bugsigdbr::importBugSigDB()
+```
+
+## Citation
+
+Below is the citation output from using `citation('bugsigdbr')` in R. Please
+run this yourself to check for any updates on how to cite __bugsigdbr__.
+
+```{r 'citation', eval = requireNamespace('bugsigdbr')}
+print(citation('bugsigdbr'), bibtex = TRUE)
+```
+
+Please note that the `bugsigdbr` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
+
+## Code of Conduct
+
+Please note that the `bugsigdbr` project is released with a [Contributor Code of Conduct](http://bioconductor.org/about/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
+
+This package was developed using `r BiocStyle::Biocpkg('biocthis')`.
+
