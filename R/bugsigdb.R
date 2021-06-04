@@ -5,7 +5,7 @@
 #' @references BugSigDB: \url{https://bugsigdb.org}
 #' @examples
 #'
-#'      res <- importBugSigDB()
+#'  df <- importBugSigDB()
 #'
 #' @export
 importBugSigDB <- function(cache = TRUE)

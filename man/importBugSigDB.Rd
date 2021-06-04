@@ -18,7 +18,7 @@ Obtain published microbial signatures from bugsigdb.org
 }
 \examples{
 
-     res <- importBugSigDB()
+ df <- importBugSigDB()
 
 }
 \references{

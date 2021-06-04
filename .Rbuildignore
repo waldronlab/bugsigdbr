@@ -4,6 +4,15 @@
 ^\.git$
 ^\.github$
 ^\.gitignore$
+^\.gitattributes$
+
+#----------------------------
+# Continuous Integration
+#----------------------------
+^\.travis\.yml$
+^appveyor\.yml$
+^wercker\.yml$
+^\.wercker$
 
 #----------------------------
 # RStudio and R
@@ -15,9 +24,13 @@
 #----------------------------
 # Data and files
 #----------------------------
+^.*\.rda$
 ^.*\.tar\.gz$
 ^\.lintr$
-^docs$
 ^README\.md$
-^codecov\.yml$
-^LICENSE\.md$
+^docs$
+
+#----------------------------
+# Docs
+#----------------------------
+^_pkgdown\.yml$

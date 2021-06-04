@@ -41,8 +41,6 @@ library("bugsigdbr")
 bsdb <- bugsigdbr::importBugSigDB()
 ```
 
-    ## Using cached version from 2021-04-03 01:58:42
-
 ## Citation
 
 Below is the citation output from using `citation('bugsigdbr')` in R.
@@ -52,13 +50,6 @@ Please run this yourself to check for any updates on how to cite
 ``` r
 print(citation('bugsigdbr'), bibtex = TRUE)
 ```
-
-    ## Warning in citation("bugsigdbr"): no date field in DESCRIPTION file of package
-    ## 'bugsigdbr'
-
-    ## Warning in citation("bugsigdbr"): could not determine year for 'bugsigdbr' from
-    ## package DESCRIPTION file
-
     ## 
     ## To cite package 'bugsigdbr' in publications use:
     ## 

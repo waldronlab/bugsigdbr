@@ -37,6 +37,8 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+inst/doc
 
-# Misc
-*.swp
+# pkdown
+docs
+.DS_Store
