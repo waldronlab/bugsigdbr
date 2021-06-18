@@ -8,6 +8,24 @@
 # 
 ############################################################
 
+#' @name browseSignature
+#' 
+#' @title Displaying BugSigDB signatures pages in a web browser
+#' 
+#' @description Functionality for programmatically displaying microbe 
+#' signatures on BugSigDB signature pages.
+#' 
+#' @param sname character. Signature name. Expected to start with a prefix
+#' of the form \code{"bsdb:<X>/<Y>/<Z>_"} encoding the corresponding
+#' BugSigDB signature ID.
+#' @return The URL of the selected BugSigDB signature page. If interactive,
+#' opens the URL in the default web browser.
+#' @references BugSigDB: \url{https://bugsigdb.org}
+#' @examples
+#' 
+#'   sname <- "bsdb:215/1/1_eczema:infant-with-eczema_vs_healthy-control_UP"
+#'   browseSignature(sname)
+#'   
 #' @importFrom utils browseURL
 #' @export
 browseSignature <- function(sname)
@@ -27,9 +45,26 @@ browseSignature <- function(sname)
                      paste0("Signature_", id[3]))
     
     if(interactive()) browseURL(url)
-    else return(url)
+    return(url)
 }
 
+#' @name browseTaxon
+#' 
+#' @title Displaying BugSigDB taxon pages in a web browser
+#' 
+#' @description Functionality for programmatically displaying 
+#' BugSigDB taxon pages.
+#' 
+#' @param tax.id character. NCBI taxonomy ID.
+#' @return The URL of the selected BugSigDB taxon page. If interactive,
+#' opens the URL in the default web browser.
+#' @references BugSigDB: \url{https://bugsigdb.org}
+#' @examples
+#'   
+#'   # BugSigDB taxon page for Escherichia coli
+#'   browseTaxon("562")
+#'   
+#' @importFrom utils browseURL
 #' @export
 browseTaxon <- function(tax.id)
 {
@@ -41,5 +76,5 @@ browseTaxon <- function(tax.id)
     ext <- "&_run=1"
     url <- paste0(url, tax.id, ext)
     if(interactive()) browseURL(url)
-    else return(url)
+    return(url)
 }

@@ -1,6 +1,6 @@
 ---
-title: "R-side access to published microbial signatures from BugSigDB "
-author: "Ludwig Geistlinger and Levi Waldron"
+title: "R-side access to published microbial signatures from BugSigDB"
+author: "Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron"
 output:
   BiocStyle::html_document:
     self_contained: yes
@@ -11,7 +11,7 @@ output:
 date: "`r doc_date()`"
 package: "`r pkg_ver('bugsigdbr')`"
 vignette: >
-  %\VignetteIndexEntry{Introduction to bugsigdbr}
+  %\VignetteIndexEntry{R-side access to BugSigDB}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}  
 ---
@@ -24,158 +24,74 @@ knitr::opts_chunk$set(
 )
 ```
 
+# BugSigDB: a comprehensive database of published microbial signatures 
 
-```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
-## Track time spent on making the vignette
-startTime <- Sys.time()
+[BugSigDB](https://bugsigdb.org) is a manually curated database of microbial 
+signatures from the published literature of differential abundance studies of 
+human and other host microbiomes.
 
-## Bib setup
-library("RefManageR")
+BugSigDB provides:
 
-## Write bibliography information
-bib <- c(
-    R = citation(),
-    BiocStyle = citation("BiocStyle")[1],
-    knitr = citation("knitr")[1],
-    RefManageR = citation("RefManageR")[1],
-    rmarkdown = citation("rmarkdown")[1],
-    sessioninfo = citation("sessioninfo")[1],
-    testthat = citation("testthat")[1],
-    bugsigdbr = citation("bugsigdbr")[1]
-)
-```
+* standardized data on geography, health outcomes, host body sites, and 
+  experimental, epidemiological, and statistical methods using controlled vocabulary,
+* results on microbial diversity,
+* microbial signatures standardized to the NCBI taxonomy, and
+* identification of published signatures where a microbe has been reported.
 
-# Basics
+The [bugsigdbr](https://github.com/waldronlab/bugsigdbr) package implements 
+convenient access to BugSigDB from within R/Bioconductor. 
+The goal of the package is to facilitate import of BugSigDB data into R/Bioconductor,
+provide utilities for extracting microbe signatures, and enable export of the 
+extracted signatures to plain text files in standard file formats such as 
+[GMT](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29).
 
-## Install `bugsigdbr`
-
-`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg("bugsigdbr")` is a `R` package available via the [Bioconductor](http://bioconductor.org) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg("bugsigdbr")` by using the following commands in your `R` session:
-
-```{r "install", eval = FALSE}
-if (!requireNamespace("BiocManager", quietly = TRUE)) {
-      install.packages("BiocManager")
-  }
-
-BiocManager::install("bugsigdbr")
-
-## Check that you have a valid Bioconductor installation
-BiocManager::valid()
-```
-
-## Required knowledge
-
-`r Biocpkg("bugsigdbr")` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data (EDIT!). That is, packages like `r Biocpkg("SummarizedExperiment")` (EDIT!).
-
-If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startbioc/#.VkOKbq6rRuU).
-
-## Asking for help
-
-As package developers, we try to explain clearly how to use our packages and in which order to use the functions. But `R` and `Bioconductor` have a steep learning curve so it is critical to learn where to ask for help. The blog post quoted above mentions some but we would like to highlight the [Bioconductor support site](https://support.bioconductor.org/) as the main resource for getting help: remember to use the `bugsigdbr` tag and check [the older posts](https://support.bioconductor.org/t/bugsigdbr/). Other alternatives are available such as creating GitHub issues and tweeting. However, please note that if you want to receive help you should adhere to the [posting guidelines](http://www.bioconductor.org/help/support/posting-guide/). It is particularly critical that you provide a small reproducible example and your session information so package developers can track down the source of the error.
-
-## Citing `bugsigdbr`
-
-We hope that `r Biocpkg("bugsigdbr")` will be useful for your research. Please use the following information to cite the package and the overall approach. Thank you!
-
-```{r "citation"}
-## Citation info
-citation("bugsigdbr")
-```
-
-# Quick start to using to `bugsigdbr`
+The [bugsigdbr](https://github.com/waldronlab/bugsigdbr) package is primarily a
+data package. For descriptive statistics and comprehensive analysis of BugSigDB
+contents, please see the 
+[BugSigDBStats package](https://github.com/waldronlab/BugSigDBStats)
+and 
+[analysis vignette](http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html).
+ 
+We start by loading the package
 
 ```{r "start", message=FALSE}
-library("bugsigdbr")
+library(bugsigdbr)
 ```
+
+## Obtaining published microbial signatures from BugSigDB
 
 ```{r getBugSigDB}
 bsdb <- importBugSigDB()
 colnames(bsdb)
 ```
 
-```{r}
+## Extracting microbe signatures
+
+```{r getSignatures}
 sigs <- getSignatures(bsdb)
 length(sigs)
 sigs[1:3]
 ```
 
-```{r, eval = FALSE}
+## Writing microbe signatures to file in GMT format
+
+```{r writeGMT}
 writeGMT(sigs, gmt.file = "bugsigdb_signatures.gmt")
 ```
 
-```{r, eval = FALSE}
-browseSignatures(names(sigs)[1])
+```{r, echo = FALSE}
+file.remove("bugsigdb_signatures.gmt")
+```
+
+## Displaying BugSigDB signature and taxon pages
+
+```{r browse}
+browseSignature(names(sigs)[1])
 browseTaxon(sigs[[1]][1])
 ```
 
-Edit this as you see fit =)
+# Session info
 
-Here is an example of you can cite your package inside the vignette:
-
-* `r Biocpkg("bugsigdbr")` `r Citep(bib[["bugsigdbr"]])`
-
-
-
-# Reproducibility
-
-The `r Biocpkg("bugsigdbr")` package `r Citep(bib[["bugsigdbr"]])` was made possible thanks to:
-
-* R `r Citep(bib[["R"]])`
-* `r Biocpkg("BiocStyle")` `r Citep(bib[["BiocStyle"]])`
-* `r CRANpkg("knitr")` `r Citep(bib[["knitr"]])`
-* `r CRANpkg("RefManageR")` `r Citep(bib[["RefManageR"]])`
-* `r CRANpkg("rmarkdown")` `r Citep(bib[["rmarkdown"]])`
-* `r CRANpkg("sessioninfo")` `r Citep(bib[["sessioninfo"]])`
-* `r CRANpkg("testthat")` `r Citep(bib[["testthat"]])`
-
-This package was developed using `r BiocStyle::Biocpkg("biocthis")`.
-
-
-Code for creating the vignette
-
-```{r createVignette, eval=FALSE}
-## Create the vignette
-library("rmarkdown")
-system.time(render("bugsigdbr.Rmd", "BiocStyle::html_document"))
-
-## Extract the R code
-library("knitr")
-knit("bugsigdbr.Rmd", tangle = TRUE)
-```
-
-Date the vignette was generated.
-
-```{r reproduce1, echo=FALSE}
-## Date the vignette was generated
-Sys.time()
-```
-
-Wallclock time spent generating the vignette.
-
-```{r reproduce2, echo=FALSE}
-## Processing time in seconds
-totalTime <- diff(c(startTime, Sys.time()))
-round(totalTime, digits = 3)
-```
-
-`R` session information.
-
-```{r reproduce3, echo=FALSE}
-## Session info
-library("sessioninfo")
-options(width = 120)
-session_info()
-```
-
-
-
-# Bibliography
-
-This vignette was generated using `r Biocpkg("BiocStyle")` `r Citep(bib[["BiocStyle"]])`
-with `r CRANpkg("knitr")` `r Citep(bib[["knitr"]])` and `r CRANpkg("rmarkdown")` `r Citep(bib[["rmarkdown"]])` running behind the scenes.
-
-Citations made with `r CRANpkg("RefManageR")` `r Citep(bib[["RefManageR"]])`.
-
-```{r vignetteBiblio, results = "asis", echo = FALSE, warning = FALSE, message = FALSE}
-## Print bibliography
-PrintBibliography(bib, .opts = list(hyperlink = "to.doc", style = "html"))
+```{r sessionInfo}
+sessionInfo()
 ```
