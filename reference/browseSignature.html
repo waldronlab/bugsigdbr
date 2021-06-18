@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • bugsigdbr</title>
+<title>Displaying BugSigDB signatures pages in a web browser — browseSignature • bugsigdbr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Displaying BugSigDB signatures pages in a web browser — browseSignature" />
+<meta property="og:description" content="Functionality for programmatically displaying microbe 
+signatures on BugSigDB signature pages." />
 
 
 
@@ -66,7 +68,7 @@
   <body data-spy="scroll" data-target="#toc">
     
 
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,66 +115,47 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Displaying BugSigDB signatures pages in a web browser</h1>
+    <small class="dont-index">Source: <a href='https://github.com/waldronlab/bugsigdbr/blob/master/R/html.R'><code>R/html.R</code></a></small>
+    <div class="hidden name"><code>browseSignature.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Functionality for programmatically displaying microbe 
+signatures on BugSigDB signature pages.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>browseSignature</span><span class='op'>(</span><span class='va'>sname</span><span class='op'>)</span></code></pre></div>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="browseSignature.html">browseSignature()</a></code> </p>
-        </td>
-        <td><p>Displaying BugSigDB signatures pages in a web browser</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="browseTaxon.html">browseTaxon()</a></code> </p>
-        </td>
-        <td><p>Displaying BugSigDB taxon pages in a web browser</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getSignatures.html">getSignatures()</a></code> </p>
-        </td>
-        <td><p>Obtain microbe signatures from BugSigDB</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="importBugSigDB.html">importBugSigDB()</a></code> </p>
-        </td>
-        <td><p>Obtain published microbial signatures from bugsigdb.org</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="writeGMT.html">writeGMT()</a></code> </p>
-        </td>
-        <td><p>Write microbe signatures to file in GMT format</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sname</th>
+      <td><p>character. Signature name. Expected to start with a prefix
+of the form <code>"bsdb:&lt;X&gt;/&lt;Y&gt;/&lt;Z&gt;_"</code> encoding the corresponding
+BugSigDB signature ID.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The URL of the selected BugSigDB signature page. If interactive,
+opens the URL in the default web browser.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>BugSigDB: <a href='https://bugsigdb.org'>https://bugsigdb.org</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'>  <span class='va'>sname</span> <span class='op'>&lt;-</span> <span class='st'>"bsdb:215/1/1_eczema:infant-with-eczema_vs_healthy-control_UP"</span></span>
+<span class='r-in'>  <span class='fu'>browseSignature</span><span class='op'>(</span><span class='va'>sname</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "https://bugsigdb.org/Study_215/Experiment_1/Signature_1"</span>
+<span class='r-in'>  </span>
+</code></pre></div>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
