@@ -90,6 +90,21 @@ browseSignature(names(sigs)[1])
 browseTaxon(sigs[[1]][1])
 ```
 
+## Distances between signatures
+
+The `calcPairwiseOverlaps` function works quickly on all of bugsigdb currently, but `makeDist` is slow and surely could be improved for efficiency. For now, use only nasal samples:
+```{r}
+bsdb_subset <- bsdb[bsdb$`Body site` %in% "nasal cavity", ]
+sigs_subset <- getSignatures(bsdb_subset)
+paircomp <- calcPairwiseOverlaps(sigs_subset)
+jdist <- makeDist(paircomp, "jaccard")
+```
+
+Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures). 
+```{r, fig.height=15, fig.width=8}
+plot(hclust(jdist))
+```
+
 # Session info
 
 ```{r sessionInfo}
