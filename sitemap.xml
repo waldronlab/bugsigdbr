@@ -37,9 +37,6 @@
     <loc>/reference/browseTaxon.html</loc>
   </url>
   <url>
-    <loc>/reference/calcPairwiseOverlaps.html</loc>
-  </url>
-  <url>
     <loc>/reference/getSignatures.html</loc>
   </url>
   <url>
@@ -47,9 +44,6 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/makeDist.html</loc>
   </url>
   <url>
     <loc>/reference/writeGMT.html</loc>
