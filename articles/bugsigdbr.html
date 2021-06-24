@@ -72,7 +72,7 @@
       <h1 data-toc-skip>R-side access to published microbial signatures from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">18 June 2021</h4>
+            <h4 data-toc-skip class="date">24 June 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/master/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -102,7 +102,7 @@
 <a href="#obtaining-published-microbial-signatures-from-bugsigdb" class="anchor" aria-hidden="true"></a>Obtaining published microbial signatures from BugSigDB</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2021-06-18 01:49:58</span>
+<span class="co">#&gt; Using cached version from 2021-06-24 19:47:24</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "Study"                      "Study design"              </span>
 <span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span>
@@ -134,7 +134,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1774</span>
+<span class="co">#&gt; [1] 1802</span>
 <span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
 <span class="co">#&gt;  [1] "91061"  "1236"   "1654"   "1716"   "1301"   "162289" "189330" "33024" </span>
@@ -198,9 +198,9 @@
 <span class="co">#&gt; [13] jsonlite_1.7.2      evaluate_0.14       memoise_2.0.0      </span>
 <span class="co">#&gt; [16] BiocFileCache_2.1.0 RSQLite_2.2.7       pkgconfig_2.0.3    </span>
 <span class="co">#&gt; [19] rlang_0.4.11        DBI_1.1.1           filelock_1.0.2     </span>
-<span class="co">#&gt; [22] curl_4.3.1          yaml_2.2.1          pkgdown_1.6.1.9001 </span>
+<span class="co">#&gt; [22] curl_4.3.2          yaml_2.2.1          pkgdown_1.6.1.9001 </span>
 <span class="co">#&gt; [25] xfun_0.24           fastmap_1.1.0       withr_2.4.2        </span>
-<span class="co">#&gt; [28] httr_1.4.2          stringr_1.4.0       dplyr_1.0.6        </span>
+<span class="co">#&gt; [28] httr_1.4.2          stringr_1.4.0       dplyr_1.0.7        </span>
 <span class="co">#&gt; [31] knitr_1.33          rappdirs_0.3.3      desc_1.3.0         </span>
 <span class="co">#&gt; [34] generics_0.1.0      fs_1.5.0            sass_0.4.0         </span>
 <span class="co">#&gt; [37] vctrs_0.3.8         systemfonts_1.0.2   tidyselect_1.1.1   </span>
