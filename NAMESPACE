@@ -2,8 +2,11 @@
 
 export(browseSignature)
 export(browseTaxon)
+export(calcPairwiseOverlaps)
 export(getSignatures)
 export(importBugSigDB)
+export(makeDist)
 export(writeGMT)
+importFrom(stats,as.dist)
 importFrom(utils,browseURL)
 importFrom(utils,relist)
