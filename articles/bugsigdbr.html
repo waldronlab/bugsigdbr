@@ -72,7 +72,7 @@
       <h1 data-toc-skip>R-side access to published microbial signatures from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">24 June 2021</h4>
+            <h4 data-toc-skip class="date">1 July 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/master/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -94,15 +94,18 @@
 </ul>
 <p>The <a href="https://github.com/waldronlab/bugsigdbr" class="external-link">bugsigdbr</a> package implements convenient access to BugSigDB from within R/Bioconductor. The goal of the package is to facilitate import of BugSigDB data into R/Bioconductor, provide utilities for extracting microbe signatures, and enable export of the extracted signatures to plain text files in standard file formats such as <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29" class="external-link">GMT</a>.</p>
 <p>The <a href="https://github.com/waldronlab/bugsigdbr" class="external-link">bugsigdbr</a> package is primarily a data package. For descriptive statistics and comprehensive analysis of BugSigDB contents, please see the <a href="https://github.com/waldronlab/BugSigDBStats" class="external-link">BugSigDBStats package</a> and <a href="http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html" class="external-link">analysis vignette</a>.</p>
-<p>We start by loading the package</p>
+<p>We start by loading the package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugsigdbr" class="external-link">bugsigdbr</a></span><span class="op">)</span></code></pre></div>
 <div id="obtaining-published-microbial-signatures-from-bugsigdb" class="section level2">
 <h2 class="hasAnchor">
 <a href="#obtaining-published-microbial-signatures-from-bugsigdb" class="anchor" aria-hidden="true"></a>Obtaining published microbial signatures from BugSigDB</h2>
+<p>The function <code>importBugSigDB</code> can be used to import the complete collection of curated signatures from BugSigDB. The dataset is downloaded once and subsequently cached. Use <code>cache = FALSE</code> to force a fresh download of BugSigDB and overwrite the local copy in your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2021-06-24 20:07:55</span>
+<span class="co">#&gt; Using cached version from 2021-07-01 21:26:40</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1847   45</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "Study"                      "Study design"              </span>
 <span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span>
@@ -127,14 +130,24 @@
 <span class="co">#&gt; [41] "Revision editor"            "Description"               </span>
 <span class="co">#&gt; [43] "Abundance in Group 1"       "MetaPhlAn taxon names"     </span>
 <span class="co">#&gt; [45] "NCBI Taxonomy IDs"</span></code></pre></div>
+<p>Each row of the resulting <code>data.frame</code> corresponds to a microbe signature from differential abundance analysis, i.e. a set of microbes that has been found with increased or decreased abundance in one sample group when compared to another sample group (eg. in a case-vs.-control setup). The curated signatures are richly annotated with additional metadata columns providing information on study design, antibiotics exclusion criteria, sample size, and experimental and statistical procedures, among others.</p>
+<p>Subsetting the full dataset to certain conditions, body sites, or other metadata colums of interest can be done along the usual lines for subsetting <code>data.frame</code>s.</p>
+<p>For example, the following <code>subset</code> command restricts the dataset to signatures obtained from microbiome studies on obesity, based on fecal samples from participants in the US.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">us.obesity.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bsdb</span>, 
+                           <span class="va">`Location of subjects`</span> <span class="op">==</span> <span class="st">"United States of America"</span> <span class="op">&amp;</span> 
+                           <span class="va">Condition</span> <span class="op">==</span> <span class="st">"obesity"</span> <span class="op">&amp;</span>
+                           <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="extracting-microbe-signatures" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extracting-microbe-signatures" class="anchor" aria-hidden="true"></a>Extracting microbe signatures</h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>Given the full BugSigDB collection (or a subset of interest), the function <code>getSignatures</code> can be used to obtain the microbes annotated to each signature.</p>
+<p>Microbes annotated to a signature are returned following the <a href="https://www.ncbi.nlm.nih.gov/taxonomy" class="external-link">NCBI Taxonomy</a> nomenclature per default.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1802</span>
+<span class="co">#&gt; [1] 1842</span>
 <span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
 <span class="co">#&gt;  [1] "91061"  "1236"   "1654"   "1716"   "1301"   "162289" "189330" "33024" </span>
@@ -146,28 +159,136 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "207244" "57037"</span></code></pre></div>
+<p>It is also possible obtain signatures based on the full taxonomic classification in <a href="https://github.com/biobakery/MetaPhlAn" class="external-link">MetaPhlAn</a> format …</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mp.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"metaphlan"</span><span class="op">)</span>
+<span class="va">mp.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
+<span class="co">#&gt;  [1] "k__Bacteria|p__Firmicutes|c__Bacilli"                                                                                        </span>
+<span class="co">#&gt;  [2] "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria"                                                                        </span>
+<span class="co">#&gt;  [3] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces"                        </span>
+<span class="co">#&gt;  [4] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium"                </span>
+<span class="co">#&gt;  [5] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus"                                </span>
+<span class="co">#&gt;  [6] "k__Bacteria|p__Firmicutes|c__Tissierellia|o__Tissierellales|f__Peptoniphilaceae|g__Peptoniphilus"                            </span>
+<span class="co">#&gt;  [7] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Dorea"                                        </span>
+<span class="co">#&gt;  [8] "k__Bacteria|p__Firmicutes|c__Negativicutes|o__Acidaminococcales|f__Acidaminococcaceae|g__Phascolarctobacterium"              </span>
+<span class="co">#&gt;  [9] "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella"                      </span>
+<span class="co">#&gt; [10] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales"                                                           </span>
+<span class="co">#&gt; [11] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales|f__Actinomycetaceae"                                       </span>
+<span class="co">#&gt; [12] "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Alcaligenaceae"                                    </span>
+<span class="co">#&gt; [13] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"                                                                     </span>
+<span class="co">#&gt; [14] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae"                                                 </span>
+<span class="co">#&gt; [15] "k__Bacteria|p__Firmicutes|c__Negativicutes|o__Veillonellales|f__Veillonellaceae"                                             </span>
+<span class="co">#&gt; [16] "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales"                                                    </span>
+<span class="co">#&gt; [17] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Corynebacteriales|f__Corynebacteriaceae"                                   </span>
+<span class="co">#&gt; [18] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span>
+<span class="co">#&gt; [19] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillaceae|g__Bacillus"                                               </span>
+<span class="co">#&gt; [20] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillaceae"                                                           </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
+<span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Coprobacillaceae|g__Coprobacillus"</span>
+<span class="co">#&gt; [2] "k__Bacteria|p__Cyanobacteria"                                                                            </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Anaerostipes"                                 </span>
+<span class="co">#&gt; [2] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span></code></pre></div>
+<p>… or using the taxonomic name only:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span><span class="op">)</span>
+<span class="va">tn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
+<span class="co">#&gt;  [1] "Bacilli"                 "Gammaproteobacteria"    </span>
+<span class="co">#&gt;  [3] "Actinomyces"             "Corynebacterium"        </span>
+<span class="co">#&gt;  [5] "Streptococcus"           "Peptoniphilus"          </span>
+<span class="co">#&gt;  [7] "Dorea"                   "Phascolarctobacterium"  </span>
+<span class="co">#&gt;  [9] "Sutterella"              "Actinomycetales"        </span>
+<span class="co">#&gt; [11] "Actinomycetaceae"        "Alcaligenaceae"         </span>
+<span class="co">#&gt; [13] "Lactobacillales"         "Streptococcaceae"       </span>
+<span class="co">#&gt; [15] "Veillonellaceae"         "Enterobacterales"       </span>
+<span class="co">#&gt; [17] "Corynebacteriaceae"      "Lacticaseibacillus zeae"</span>
+<span class="co">#&gt; [19] "Bacillus"                "Bacillaceae"            </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
+<span class="co">#&gt; [1] "Coprobacillus" "Cyanobacteria"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Anaerostipes"            "Lacticaseibacillus zeae"</span></code></pre></div>
+<p>As metagenomic profiling with 16S RNA sequencing or whole-metagenome shotgun sequencing is typically conducted on a certain taxonomic level, it is also possible to obtain signatures restricted to eg. the genus level …</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, 
+                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
+                         tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span>
+<span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Actinomyces"           "Corynebacterium"       "Streptococcus"        </span>
+<span class="co">#&gt; [4] "Peptoniphilus"         "Dorea"                 "Phascolarctobacterium"</span>
+<span class="co">#&gt; [7] "Sutterella"            "Bacillus"             </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
+<span class="co">#&gt; [1] "Coprobacillus"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Anaerostipes"</span></code></pre></div>
+<p>… or the species level:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, 
+                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
+                         tax.level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span>
+<span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
+<span class="co">#&gt; character(0)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span></code></pre></div>
+<p>Note that restricting signatures to microbes given at the genus level, will per default exclude microbes given at a more specific taxonomic rank such as species or strain.</p>
+<p>For certain applications, it might be desirable to not exclude microbes given at a more specific taxonomic rank, but rather extract the more general <code>tax.level</code> for microbes given at a more specific taxonomic level.</p>
+<p>This can be achieved by setting the argument <code>exact.tax.level</code> to <code>FALSE</code>, which will here extract genus level taxon names, for taxa given at the species or strain level.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, 
+                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
+                         tax.level <span class="op">=</span> <span class="st">"genus"</span>,
+                         exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Actinomyces"           "Corynebacterium"       "Streptococcus"        </span>
+<span class="co">#&gt; [4] "Peptoniphilus"         "Dorea"                 "Phascolarctobacterium"</span>
+<span class="co">#&gt; [7] "Sutterella"            "Lacticaseibacillus"    "Bacillus"             </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
+<span class="co">#&gt; [1] "Coprobacillus"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; [1] "Anaerostipes"       "Lacticaseibacillus"</span></code></pre></div>
 </div>
 <div id="writing-microbe-signatures-to-file-in-gmt-format" class="section level2">
 <h2 class="hasAnchor">
 <a href="#writing-microbe-signatures-to-file-in-gmt-format" class="anchor" aria-hidden="true"></a>Writing microbe signatures to file in GMT format</h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>Once signatures have been extracted using a taxonomic identifier type of choice, the function <code>writeGMT</code> allows to write the signatures to plain text files in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29" class="external-link">GMT format</a>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/writeGMT.html">writeGMT</a></span><span class="op">(</span><span class="va">sigs</span>, gmt.file <span class="op">=</span> <span class="st">"bugsigdb_signatures.gmt"</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; [1] TRUE</code></pre>
+<p>This is the standard file format for gene sets used by <a href="https://www.gsea-msigdb.org/gsea/msigdb/" class="external-link">MSigDB</a> and <a href="https://pubmed.ncbi.nlm.nih.gov/22110038" class="external-link">GeneSigDB</a> and is compatible with most enrichment analysis software.</p>
 </div>
 <div id="displaying-bugsigdb-signature-and-taxon-pages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#displaying-bugsigdb-signature-and-taxon-pages" class="anchor" aria-hidden="true"></a>Displaying BugSigDB signature and taxon pages</h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>Leveraging BugSigDB’s semantic MediaWiki web interface, we can also programmatically access annotations for individual microbes and microbe signatures.</p>
+<p>The <code>browseSignature</code> function can be used to display BugSigDB signature pages in an interactive session. For programmatic access in a non-interactive setting, the URL of the signature page is returned.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/browseSignature.html">browseSignature</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://bugsigdb.org/Study_1/Experiment_1/Signature_1"</span>
-<span class="fu"><a href="../reference/browseTaxon.html">browseTaxon</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
+<span class="co">#&gt; [1] "https://bugsigdb.org/Study_1/Experiment_1/Signature_1"</span></code></pre></div>
+<p>Analogously, the <code>browseTaxon</code> function displays BugSigDB taxon pages in an interactive session, or the URL of the corresponding taxon page otherwise.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/browseTaxon.html">browseTaxon</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; [1] "https://bugsigdb.org/Special:RunQuery/Taxon?Taxon%5BNCBI%5D=91061&amp;_run=1"</span></code></pre></div>
 </div>
 </div>
 <div id="session-info" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-info" class="anchor" aria-hidden="true"></a>Session info</h1>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; R version 4.1.0 (2021-05-18)</span>
 <span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
