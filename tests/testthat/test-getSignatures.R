@@ -3,7 +3,6 @@ bsdb <- importBugSigDB()
 checkSigs <- function(sigs, tax.id.type)
 {
     expect_true(is.list(sigs))
-    expect_true(length(sigs) > 1500)
     expect_true(is.character(sigs[[1]]))
     expect_true(grepl("^bsdb", names(sigs)[1]))
     

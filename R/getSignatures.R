@@ -46,7 +46,9 @@ getSignatures <- function(df,
     snames <- .makeSigNames(df) 
     sigs <- .extractSigs(df, tax.id.type, tax.level, exact.tax.level)
     names(sigs) <- paste(snames$id, snames$titles, sep = "_")
-    sigs
+    sigs <- sigs[lengths(sigs) > 0]
+    sigs <- lapply(sigs, unique)
+    return(sigs)
 }
 
 #' @name writeGMT
@@ -119,7 +121,7 @@ writeGMT <- function(sigs, gmt.file)
         if(id.type == "taxname")
             sigs <- lapply(sigs, function(s) sub(MPA.REGEXP, "", s))
     }
-    sigs
+    return(sigs)
 }
 
 .extractTaxLevelSig <- function(sig, tax.level)
