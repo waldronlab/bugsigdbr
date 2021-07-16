@@ -72,7 +72,7 @@
       <h1 data-toc-skip>R-side access to published microbial signatures from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">2 July 2021</h4>
+            <h4 data-toc-skip class="date">16 July 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/master/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -103,9 +103,9 @@
 <p>The function <code>importBugSigDB</code> can be used to import the complete collection of curated signatures from BugSigDB. The dataset is downloaded once and subsequently cached. Use <code>cache = FALSE</code> to force a fresh download of BugSigDB and overwrite the local copy in your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2021-07-02 15:43:54</span>
+<span class="co">#&gt; Using cached version from 2021-07-16 16:19:14</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1860   45</span>
+<span class="co">#&gt; [1] 1958   45</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "Study"                      "Study design"              </span>
 <span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span>
@@ -147,7 +147,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1855</span>
+<span class="co">#&gt; [1] 1951</span>
 <span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
 <span class="co">#&gt;  [1] "91061"  "1236"   "1654"   "1716"   "1301"   "162289" "189330" "33024" </span>
@@ -312,12 +312,12 @@
 <span class="co">#&gt; [1] bugsigdbr_0.99.0 BiocStyle_2.21.3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] Rcpp_1.0.6          pillar_1.6.1        bslib_0.2.5.1      </span>
+<span class="co">#&gt;  [1] Rcpp_1.0.7          pillar_1.6.1        bslib_0.2.5.1      </span>
 <span class="co">#&gt;  [4] compiler_4.1.0      BiocManager_1.30.16 jquerylib_0.1.4    </span>
 <span class="co">#&gt;  [7] dbplyr_2.1.1        tools_4.1.0         digest_0.6.27      </span>
 <span class="co">#&gt; [10] bit_4.0.4           tibble_3.1.2        lifecycle_1.0.0    </span>
 <span class="co">#&gt; [13] jsonlite_1.7.2      evaluate_0.14       memoise_2.0.0      </span>
-<span class="co">#&gt; [16] BiocFileCache_2.1.0 RSQLite_2.2.7       pkgconfig_2.0.3    </span>
+<span class="co">#&gt; [16] BiocFileCache_2.1.1 RSQLite_2.2.7       pkgconfig_2.0.3    </span>
 <span class="co">#&gt; [19] rlang_0.4.11        DBI_1.1.1           filelock_1.0.2     </span>
 <span class="co">#&gt; [22] curl_4.3.2          yaml_2.2.1          pkgdown_1.6.1.9001 </span>
 <span class="co">#&gt; [25] xfun_0.24           fastmap_1.1.0       withr_2.4.2        </span>
@@ -330,7 +330,7 @@
 <span class="co">#&gt; [46] rmarkdown_2.9       bookdown_0.22       purrr_0.3.4        </span>
 <span class="co">#&gt; [49] blob_1.2.1          magrittr_2.0.1      ellipsis_0.3.2     </span>
 <span class="co">#&gt; [52] htmltools_0.5.1.1   assertthat_0.2.1    ragg_1.1.3         </span>
-<span class="co">#&gt; [55] utf8_1.2.1          stringi_1.6.2       cachem_1.0.5       </span>
+<span class="co">#&gt; [55] utf8_1.2.1          stringi_1.7.2       cachem_1.0.5       </span>
 <span class="co">#&gt; [58] crayon_1.4.1</span></code></pre></div>
 </div>
   </div>
