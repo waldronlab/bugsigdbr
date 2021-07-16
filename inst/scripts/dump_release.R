@@ -59,7 +59,7 @@ for(tl in tax.levels)
     {
         for(etl in exact.tax.levels)
         {
-            if(tl == "mixed") next
+            if(tl == "mixed" && etl) next
             sigs <- bugsigdbr::getSignatures(bsdb, 
                                              tax.id.type = it,
                                              tax.level = tl,
