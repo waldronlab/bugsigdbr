@@ -13,7 +13,7 @@ Authors@R: c(
     person(given = "Jennifer",
            family = "Wokaty",
            role = "aut",
-           email = "jennifer.wokaty@gmail.com")
+           email = "jennifer.wokaty@sph.cuny.edu")
     )
 Description: Utilities for accessing microbiome signature data from bugsigdb.org
     and creating plain text signatures.
