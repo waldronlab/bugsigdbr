@@ -81,7 +81,7 @@ providing information on study design, antibiotics exclusion criteria,
 sample size, and experimental and statistical procedures, among others.
 
 Subsetting the full dataset to certain conditions, body sites, or other metadata 
-colums of interest can be done along the usual lines for subsetting `data.frame`s.
+columns of interest can be done along the usual lines for subsetting `data.frame`s.
 
 For example, the following `subset` command restricts the dataset to signatures
 obtained from microbiome studies on obesity, based on fecal samples from participants in the US.
