@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.1</span>
       </span>
     </div>
 
@@ -72,7 +72,7 @@
       <h1 data-toc-skip>R-side access to published microbial signatures from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">20 July 2021</h4>
+            <h4 data-toc-skip class="date">21 July 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/master/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -103,9 +103,9 @@
 <p>The function <code>importBugSigDB</code> can be used to import the complete collection of curated signatures from BugSigDB. The dataset is downloaded once and subsequently cached. Use <code>cache = FALSE</code> to force a fresh download of BugSigDB and overwrite the local copy in your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2021-07-20 03:05:01</span>
+<span class="co">#&gt; Using cached version from 2021-07-21 14:36:06</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1984   45</span>
+<span class="co">#&gt; [1] 1988   45</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "Study"                      "Study design"              </span>
 <span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span>
@@ -147,7 +147,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1976</span>
+<span class="co">#&gt; [1] 1981</span>
 <span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
 <span class="co">#&gt;  [1] "91061"  "1236"   "1654"   "1716"   "1301"   "162289" "189330" "33024" </span>
@@ -309,7 +309,7 @@
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] bugsigdbr_0.99.0 BiocStyle_2.21.3</span>
+<span class="co">#&gt; [1] bugsigdbr_0.99.1 BiocStyle_2.21.3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
 <span class="co">#&gt;  [1] Rcpp_1.0.7          pillar_1.6.1        bslib_0.2.5.1      </span>
