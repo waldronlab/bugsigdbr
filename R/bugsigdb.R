@@ -32,6 +32,9 @@ importBugSigDB <- function(cache = TRUE)
     sig.exp <- plyr::join(exps, sigs, by = c("Study", "Experiment"))
     bugsigdb <- plyr::join(studs, sig.exp, by = "Study")
 
+    sig.cols <- c("MetaPhlAn taxon names", "NCBI Taxonomy IDs")
+    for(col in sig.cols) bugsigdb[[col]] <- strsplit(bugsigdb[[col]], ",")
+
     .cacheResource(bugsigdb, rname)
     return(bugsigdb)
 }

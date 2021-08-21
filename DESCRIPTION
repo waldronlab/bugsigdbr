@@ -1,20 +1,19 @@
 Package: bugsigdbr
-Version: 0.99.2
+Version: 0.99.3
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
     person(given = "Ludwig",
            family = "Geistlinger",
            role = c("aut", "cre"),
            email = "ludwig_geistlinger@hms.harvard.edu"),
-    person(given = "Levi",
-           family = "Waldron",
-           role = "aut",
-           email = "lwaldron.research@gmail.com"),
     person(given = "Jennifer",
            family = "Wokaty",
            role = "aut",
-           email = "jennifer.wokaty@sph.cuny.edu")
-    )
+           email = "jennifer.wokaty@sph.cuny.edu"),
+    person(given = "Levi",
+           family = "Waldron",
+           role = "aut",
+           email = "lwaldron.research@gmail.com"))
 Description:
     The bugsigdbr package implements convenient access to bugsigdb.org 
     from within R/Bioconductor. The goal of the package is to facilitate import of 
@@ -23,7 +22,7 @@ Description:
     in standard file formats such as GMT. 
 URL: https://github.com/waldronlab/bugsigdbr
 BugReports: https://github.com/waldronlab/bugsigdbr/issues
-Depends: R (>= 4.0.0)
+Depends: R (>= 4.1.0)
 Imports:
     BiocFileCache,
     readr,

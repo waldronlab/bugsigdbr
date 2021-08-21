@@ -15,6 +15,8 @@
 #' specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
 #' If \code{FALSE}, a more general \code{tax.level} is extracted for 
 #' microbes given at a more specific taxonomic level.
+#' @param min.size integer. Minimum signature size. Defaults to 1, which will
+#' filter out empty signature. Use \code{min.size = 0} to keep empty signatures.
 #' @return a \code{list} of microbe signatures. Each signature is a character 
 #' vector of taxonomic IDs depending on the chosen \code{tax.id.type}. 
 #' @references BugSigDB: \url{https://bugsigdb.org}
@@ -27,7 +29,8 @@
 getSignatures <- function(df,
                            tax.id.type = c("ncbi", "metaphlan", "taxname"),
                            tax.level = "mixed", 
-                           exact.tax.level = TRUE)
+                           exact.tax.level = TRUE,
+                           min.size = 1)
 {
     stopifnot(is.data.frame(df))
     tax.id.type <- match.arg(tax.id.type)
@@ -46,9 +49,136 @@ getSignatures <- function(df,
     snames <- .makeSigNames(df) 
     sigs <- .extractSigs(df, tax.id.type, tax.level, exact.tax.level)
     names(sigs) <- paste(snames$id, snames$titles, sep = "_")
-    sigs <- sigs[lengths(sigs) > 0]
+    if(min.size) sigs <- sigs[lengths(sigs) >= min.size]
     sigs <- lapply(sigs, unique)
     return(sigs)
+}
+
+#' @name restrictTaxLevel
+#'
+#' @title Restrict microbe signatures to specific taxonomic levels
+#' 
+#' @description Functionality for restricting microbe signatures to specific
+#' taxonomic levels such as genus and species.
+#'
+#' @param df \code{data.frame} storing BugSigDB data. Typically obtained via
+#' \code{\link{importBugSigDB}}.
+#' @param tax.level character. Either \code{"mixed"} or any subset of 
+#' \code{c("kingdom", "phylum", "class", "order", "family", "genus", "species",
+#' "strain")}. This full vector is equivalent to \code{"mixed"}.
+#' @param exact.tax.level logical. Should only the exact taxonomic level
+#' specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
+#' If \code{FALSE}, a more general \code{tax.level} is extracted for 
+#' microbes given at a more specific taxonomic level.
+#' @param min.size integer. Minimum signature size. Defaults to 1, which will
+#' filter out empty signatures. Use \code{min.size = 0} to keep empty signatures.
+#' @return a \code{data.frame} with microbe signature columns restricted to chosen
+#' taxonomic level(s). 
+#' @references BugSigDB: \url{https://bugsigdb.org}
+#' @seealso importBugSigDB
+#' @examples
+#'  df <- importBugSigDB()
+#'  df <- restrictTaxLevel(df, tax.level = "genus")
+#' @export
+restrictTaxLevel <- function(df,
+                             tax.level = "mixed", 
+                             exact.tax.level = TRUE,
+                             min.size = 1)
+{
+    stopifnot(is.data.frame(df))
+    stopifnot(is.character(tax.level))
+    if("mixed" %in% tax.level) tax.level <- "mixed" 
+    else if(!all(tax.level %in% TAX.LEVELS))
+            stop("tax.level must be a subset of { ",
+                 paste(TAX.LEVELS, collapse = ", "), " }")
+
+    # extract signatures
+    is.study <- grepl("^Study [0-9]+$", df[["Study"]])
+    is.exp <- grepl("^Experiment [0-9]+$", df[["Experiment"]])
+    df <- df[is.study & is.exp,]
+
+    df[["NCBI Taxonomy IDs"]] <- .extractSigs(df,
+                                              tax.id.type = "ncbi",
+                                              tax.level,
+                                              exact.tax.level)
+    df[["MetaPhlAn taxon names"]] <- .extractSigs(df,
+                                                  tax.id.type = "metaphlan",
+                                                  tax.level,
+                                                  exact.tax.level)
+    df[["NCBI Taxonomy IDs"]] <- lapply(df[["NCBI Taxonomy IDs"]], unique)
+    df[["MetaPhlAn taxon names"]] <- lapply(df[["MetaPhlAn taxon names"]], unique)
+    if(min.size)
+    {
+        ind <- lengths(df[["MetaPhlAn taxon names"]]) > min.size - 1
+        df <- df[ind,] 
+    }
+    return(df)
+}
+
+#' @name extractTaxLevel
+#'
+#' @title Extract specific taxonomic levels from a microbe signature
+#' 
+#' @description Functionality for extracting specific taxonomic levels
+#' (such as genus and species) from a microbe signature containing taxonomic
+#' clades in MetaPhlAn format.
+#'
+#' @param sig character. Microbe signature containing taxonomic 
+#' clades in MetaPhlAn format.
+#' @param tax.id.type Character. Taxonomic ID type of the returned microbe sets.
+#' Either \code{"metaphlan"} (default) or \code{"taxname"}.
+#' @param tax.level character. Either \code{"mixed"} or any subset of 
+#' \code{c("kingdom", "phylum", "class", "order", "family", "genus", "species",
+#' "strain")}. This full vector is equivalent to \code{"mixed"}.
+#' @param exact.tax.level logical. Should only the exact taxonomic level
+#' specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
+#' If \code{FALSE}, a more general \code{tax.level} is extracted for 
+#' microbes given at a more specific taxonomic level.
+#' @return a character vector storing taxonomic clades restricted to
+#' chosen taxonomic level(s). 
+#' @references BugSigDB: \url{https://bugsigdb.org}
+#' @examples
+#' 
+#'  ord <- "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales" 
+#'  sig <- c("f__Lactobacillaceae|g__Lactobacillus",
+#'           "f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia defectiva",
+#'           "f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae") 
+#'  sig <- paste(ord, sig, sep = "|")
+#'  sig <- extractTaxLevel(sig, tax.level = "genus")
+#'  sig <- extractTaxLevel(sig, tax.level = "genus", exact.tax.level = FALSE)
+#'  sig <- extractTaxLevel(sig, 
+#'                         tax.id.type = "taxname",
+#'                         tax.level = "genus",
+#'                         exact.tax.level = FALSE)
+#' 
+#' @export
+extractTaxLevel <- function(sig, 
+                            tax.id.type = c("metaphlan", "taxname"),
+                            tax.level = "mixed", 
+                            exact.tax.level = TRUE)
+{
+    stopifnot(is.character(sig))
+    stopifnot(is.character(tax.level))
+    tax.id.type <- match.arg(tax.id.type)
+    if("mixed" %in% tax.level) tax.level <- "mixed" 
+    else if(!all(tax.level %in% TAX.LEVELS))
+            stop("tax.level must be a subset of { ",
+                 paste(TAX.LEVELS, collapse = ", "), " }")
+
+    if(tax.level[1] != "mixed")
+    {
+        if(!exact.tax.level)
+            sig <- .extractTaxLevelSig(sig, tax.level = tax.level)
+        istl <- vapply(sig, .isTaxLevel, logical(1), tax.level = tax.level)
+        sig <- sig[istl]
+    }
+
+    if(tax.id.type != "metaphlan")
+    {
+        sig <- .getTip(sig)
+        sig <- sub(MPA.REGEXP, "", sig)
+    }
+    return(sig)
 }
 
 #' @name writeGMT
@@ -85,21 +215,17 @@ writeGMT <- function(sigs, gmt.file)
   cat(all.str, file = gmt.file, sep = "")
 }
 
-.extractSigs <- function(sigdf, id.type, tax.level, exact.tax.level)
+.extractSigs <- function(sigdf, tax.id.type, tax.level, exact.tax.level)
 {
-    id.col <- ifelse(id.type == "ncbi",
+    id.col <- ifelse(tax.id.type == "ncbi",
                      "NCBI Taxonomy IDs",
                      "MetaPhlAn taxon names")
     sigs <- sigdf[[id.col]]
-    sigs <- strsplit(sigs, ",")
     
     if(tax.level[1] != "mixed")
     {
-        if(id.type == "ncbi")
-        {
+        if(tax.id.type == "ncbi")
             msigs <- sigdf[["MetaPhlAn taxon names"]]
-            msigs <- strsplit(msigs, ",")
-        }
         else
         {
           if(!exact.tax.level)
@@ -115,10 +241,10 @@ writeGMT <- function(sigs, gmt.file)
         sigs <- mapply(`[`, sigs, subind)
     }
 
-    if(id.type != "metaphlan")
+    if(tax.id.type != "metaphlan")
     {
         sigs <- lapply(sigs, .getTip)
-        if(id.type == "taxname")
+        if(tax.id.type == "taxname")
             sigs <- lapply(sigs, function(s) sub(MPA.REGEXP, "", s))
     }
     return(sigs)
@@ -197,7 +323,7 @@ writeGMT <- function(sigs, gmt.file)
 # variations ('gene'), host-intrinsic ('host_int'), host-extrinsic ('host_ext'),
 # environmental ('env'), and microbiome-intrinsic ('mic_int') factors.
 # TODO: ID mapping
-.getMAnalyst <- function(id.type,
+.getMAnalyst <- function(tax.id.type,
                          tax.level,
                          cache, 
                          lib = c("host_int", "host_ext", "env", "mic_int", "gene"))
@@ -205,7 +331,7 @@ writeGMT <- function(sigs, gmt.file)
     lib <- match.arg(lib)    
 
     # cache ?
-    msc.name <- paste("mana", lib, id.type, sep = ".")
+    msc.name <- paste("mana", lib, tax.id.type, sep = ".")
  
     # should a cached version be used?
     if(cache)

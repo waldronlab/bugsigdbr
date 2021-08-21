@@ -2,8 +2,10 @@
 
 export(browseSignature)
 export(browseTaxon)
+export(extractTaxLevel)
 export(getSignatures)
 export(importBugSigDB)
+export(restrictTaxLevel)
 export(writeGMT)
 importFrom(utils,browseURL)
 importFrom(utils,relist)

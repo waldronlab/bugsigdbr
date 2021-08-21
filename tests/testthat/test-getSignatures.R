@@ -44,3 +44,18 @@ test_that("exact.tax.level", {
                         tax.level = "order", exact.tax.level = FALSE)
   checkSigs(sigs, tax.id.type = "metaphlan")
 })  
+
+test_that("min.size", {
+    sigs <- getSignatures(bsdb, tax.level = "species")
+    expect_true(all(lengths(sigs) > 0))
+    
+    sigs <- getSignatures(bsdb, tax.level = "species", min.size = 0)
+    expect_false(all(lengths(sigs) > 0))
+    expect_true(all(lengths(sigs) >= 0))
+
+    sigs <- getSignatures(bsdb, tax.level = "genus", min.size = 3)
+    expect_true(all(lengths(sigs) > 2))
+    expect_false(all(lengths(sigs) > 3))
+})    
+
+
