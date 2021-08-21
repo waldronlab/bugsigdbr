@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Obtain published microbial signatures from bugsigdb.org — importBugSigDB • bugsigdbr</title>
+<title>Extract specific taxonomic levels from a microbe signature — extractTaxLevel • bugsigdbr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Obtain published microbial signatures from bugsigdb.org — importBugSigDB" />
-<meta property="og:description" content="Obtain published microbial signatures from bugsigdb.org" />
+<meta property="og:title" content="Extract specific taxonomic levels from a microbe signature — extractTaxLevel" />
+<meta property="og:description" content="Functionality for extracting specific taxonomic levels
+(such as genus and species) from a microbe signature containing taxonomic
+clades in MetaPhlAn format." />
 
 
 
@@ -116,38 +118,73 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Obtain published microbial signatures from bugsigdb.org</h1>
-    <small class="dont-index">Source: <a href='https://github.com/waldronlab/bugsigdbr/blob/master/R/bugsigdb.R'><code>R/bugsigdb.R</code></a></small>
-    <div class="hidden name"><code>importBugSigDB.Rd</code></div>
+    <h1>Extract specific taxonomic levels from a microbe signature</h1>
+    <small class="dont-index">Source: <a href='https://github.com/waldronlab/bugsigdbr/blob/master/R/getSignatures.R'><code>R/getSignatures.R</code></a></small>
+    <div class="hidden name"><code>extractTaxLevel.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Obtain published microbial signatures from bugsigdb.org</p>
+    <p>Functionality for extracting specific taxonomic levels
+(such as genus and species) from a microbe signature containing taxonomic
+clades in MetaPhlAn format.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>importBugSigDB</span><span class='op'>(</span>cache <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>extractTaxLevel</span><span class='op'>(</span>
+  <span class='va'>sig</span>,
+  tax.id.type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"metaphlan"</span>, <span class='st'>"taxname"</span><span class='op'>)</span>,
+  tax.level <span class='op'>=</span> <span class='st'>"mixed"</span>,
+  exact.tax.level <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>cache</th>
-      <td><p>logical. Should a locally cached version used if available?
-Defaults to <code>TRUE</code>.</p></td>
+      <th>sig</th>
+      <td><p>character. Microbe signature containing taxonomic 
+clades in MetaPhlAn format.</p></td>
+    </tr>
+    <tr>
+      <th>tax.id.type</th>
+      <td><p>Character. Taxonomic ID type of the returned microbe sets.
+Either <code>"metaphlan"</code> (default) or <code>"taxname"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>tax.level</th>
+      <td><p>character. Either <code>"mixed"</code> or any subset of 
+<code>c("kingdom", "phylum", "class", "order", "family", "genus", "species",
+"strain")</code>. This full vector is equivalent to <code>"mixed"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>exact.tax.level</th>
+      <td><p>logical. Should only the exact taxonomic level
+specified by <code>tax.level</code> be returned? Defaults to <code>TRUE</code>.
+If <code>FALSE</code>, a more general <code>tax.level</code> is extracted for 
+microbes given at a more specific taxonomic level.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code>.</p>
+    <p>a character vector storing taxonomic clades restricted to
+chosen taxonomic level(s).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>BugSigDB: <a href='https://bugsigdb.org'>https://bugsigdb.org</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
-<span class='r-in'> <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>importBugSigDB</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using cached version from 2021-08-21 19:01:55</span>
+<span class='r-in'> <span class='va'>ord</span> <span class='op'>&lt;-</span> <span class='st'>"k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"</span> </span>
+<span class='r-in'> <span class='va'>sig</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"f__Lactobacillaceae|g__Lactobacillus"</span>,</span>
+<span class='r-in'>          <span class='st'>"f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia defectiva"</span>,</span>
+<span class='r-in'>          <span class='st'>"f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae"</span><span class='op'>)</span> </span>
+<span class='r-in'> <span class='va'>sig</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>ord</span>, <span class='va'>sig</span>, sep <span class='op'>=</span> <span class='st'>"|"</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>sig</span> <span class='op'>&lt;-</span> <span class='fu'>extractTaxLevel</span><span class='op'>(</span><span class='va'>sig</span>, tax.level <span class='op'>=</span> <span class='st'>"genus"</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>sig</span> <span class='op'>&lt;-</span> <span class='fu'>extractTaxLevel</span><span class='op'>(</span><span class='va'>sig</span>, tax.level <span class='op'>=</span> <span class='st'>"genus"</span>, exact.tax.level <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>sig</span> <span class='op'>&lt;-</span> <span class='fu'>extractTaxLevel</span><span class='op'>(</span><span class='va'>sig</span>, </span>
+<span class='r-in'>                        tax.id.type <span class='op'>=</span> <span class='st'>"taxname"</span>,</span>
+<span class='r-in'>                        tax.level <span class='op'>=</span> <span class='st'>"genus"</span>,</span>
+<span class='r-in'>                        exact.tax.level <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
 <span class='r-in'></span>
 </code></pre></div>
   </div>

@@ -37,6 +37,9 @@
     <loc>/reference/browseTaxon.html</loc>
   </url>
   <url>
+    <loc>/reference/extractTaxLevel.html</loc>
+  </url>
+  <url>
     <loc>/reference/getSignatures.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/restrictTaxLevel.html</loc>
   </url>
   <url>
     <loc>/reference/writeGMT.html</loc>
