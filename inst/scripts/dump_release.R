@@ -11,7 +11,42 @@
 ############################################################
 
 library(bugsigdbr)
+library(plyr)
 library(readr)
+library(rvest)
+
+## FUNCTIONS
+
+scrapeLinks <- function(url = "https://bugsigdb.org/Help:Export")
+{
+    dat <- rvest::read_html(url)
+    elems <- rvest::html_elements(dat, ".smw-csv-furtherresults")
+    elems <- rvest::html_elements(elems, "a")
+    attr <- rvest::html_attr(elems, "href")
+    names(attr) <- c("stud", "exp", "sig")
+    prefix <- dirname(url)
+    ind <- grepl(prefix, attr)
+    attr[!ind] <- paste0(prefix, attr[!ind]) 
+    return(attr)
+}
+
+readFiles <- function(links)
+{ 
+    sigs <- readr::read_csv(unname(links["sig"]))
+    exps <- readr::read_csv(unname(links["exp"]))
+    studs <- readr::read_csv(unname(links["stud"]))
+    ind <- setdiff(colnames(studs), c("Reviewer", "State"))
+    studs <- studs[,ind]
+    ind <- colnames(exps) == "Experiment page name"
+    colnames(exps)[ind] <- "Experiment"
+    ind <- colnames(studs) == "Study page name"
+    colnames(studs)[ind] <- "Study"
+    sig.exp <- plyr::join(exps, sigs, by = c("Study", "Experiment"))
+    bugsigdb <- plyr::join(studs, sig.exp, by = "Study")
+    return(bugsigdb)
+}
+
+## MAIN
 
 # command line arguments
 cmd.args <- commandArgs(trailingOnly = TRUE)
@@ -27,7 +62,8 @@ header <- paste0("# BugSigDB ", version,
                  ", URL: https://bugsigdb.org\n")
 
 # import 
-bsdb <- bugsigdbr::importBugSigDB()
+links <- scrapeLinks()
+bsdb <- readFiles(links)
 abstr.col <- "Abstract"
 bsdb <- bsdb[,colnames(bsdb) != abstr.col]
 
