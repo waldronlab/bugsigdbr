@@ -20,8 +20,10 @@ Functionality for writing microbe signatures to file in GMT
 format.
 }
 \examples{
+bsdb <- importBugSigDB()
 sigs <- getSignatures(bsdb)
-writeGMT(sigs, gmt.file = "bugsigdb_signatures.gmt")
+writeGMT(sigs, gmt.file = "signatures.gmt")
+file.remove("signatures.gmt") 
 }
 \references{
 GMT file format:

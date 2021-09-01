@@ -200,8 +200,10 @@ extractTaxLevel <- function(sig,
 #' GMT file format:
 #' \url{http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats}
 #' @examples
+#' bsdb <- importBugSigDB()
 #' sigs <- getSignatures(bsdb)
-#' writeGMT(sigs, gmt.file = "bugsigdb_signatures.gmt")
+#' writeGMT(sigs, gmt.file = "signatures.gmt")
+#' file.remove("signatures.gmt") 
 #' @export
 writeGMT <- function(sigs, gmt.file) {
     # collapse set members to one tab separated string
