@@ -8,17 +8,16 @@
 #'  df <- importBugSigDB()
 #'
 #' @export
-importBugSigDB <- function(cache = TRUE)
-{
+importBugSigDB <- function(cache = TRUE) {
     rname <- "bugsigdb"
 
-    # should a cache version be used?        
-    if(cache)
-    {
+    # should a cache version be used?
+    if (cache) {
         bugsigdb <- .getResourceFromCache(rname)
-        if(!is.null(bugsigdb)) return(bugsigdb) 
+        if (!is.null(bugsigdb))
+            return(bugsigdb)
     }
-     
+
     # pull the data
     sigs <- readr::read_csv("https://tinyurl.com/yakgsowm")
     exps <- readr::read_csv("https://tinyurl.com/yb2fmpa3")
@@ -33,7 +32,8 @@ importBugSigDB <- function(cache = TRUE)
     bugsigdb <- plyr::join(studs, sig.exp, by = "Study")
 
     sig.cols <- c("MetaPhlAn taxon names", "NCBI Taxonomy IDs")
-    for(col in sig.cols) bugsigdb[[col]] <- strsplit(bugsigdb[[col]], ",")
+    for (col in sig.cols)
+        bugsigdb[[col]] <- strsplit(bugsigdb[[col]], ",")
 
     .cacheResource(bugsigdb, rname)
     return(bugsigdb)

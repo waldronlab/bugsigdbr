@@ -17,40 +17,45 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
+## Related to https://stat.ethz.ch/pipermail/bioc-devel/2020-April/016656.html
 knitr::opts_chunk$set(
     collapse = TRUE,
     comment = "#>",
-    crop = NULL ## Related to https://stat.ethz.ch/pipermail/bioc-devel/2020-April/016656.html
+    crop = NULL
 )
 ```
 
-# BugSigDB: a comprehensive database of published microbial signatures 
+# BugSigDB: a comprehensive database of published microbial signatures
 
-[BugSigDB](https://bugsigdb.org) is a manually curated database of microbial 
-signatures from the published literature of differential abundance studies of 
+[BugSigDB](https://bugsigdb.org) is a manually curated database of microbial
+signatures from the published literature of differential abundance studies of
 human and other host microbiomes.
 
 BugSigDB provides:
 
-* standardized data on geography, health outcomes, host body sites, and 
-  experimental, epidemiological, and statistical methods using controlled vocabulary,
+* standardized data on geography, health outcomes, host body sites, and
+  experimental, epidemiological, and statistical methods using controlled
+  vocabulary,
 * results on microbial diversity,
 * microbial signatures standardized to the NCBI taxonomy, and
 * identification of published signatures where a microbe has been reported.
 
-The [bugsigdbr](https://github.com/waldronlab/bugsigdbr) package implements 
+The [bugsigdbr](https://github.com/waldronlab/bugsigdbr) package implements
 convenient access to BugSigDB from within R/Bioconductor. 
-The goal of the package is to facilitate import of BugSigDB data into R/Bioconductor,
-provide utilities for extracting microbe signatures, and enable export of the 
-extracted signatures to plain text files in standard file formats such as 
-[GMT](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29).
+The goal of the package is to facilitate import of BugSigDB data into
+R/Bioconductor, provide utilities for extracting microbe signatures, and enable
+export of the extracted signatures to plain text files in standard file formats
+such as [GMT][1].
+
+[1]: https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29
 
 The [bugsigdbr](https://github.com/waldronlab/bugsigdbr) package is primarily a
 data package. For descriptive statistics and comprehensive analysis of BugSigDB
 contents, please see the 
 [BugSigDBStats package](https://github.com/waldronlab/BugSigDBStats)
-and 
-[analysis vignette](http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html).
+and [analysis vignette][2].
+
+[2]: http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html
  
 We start by loading the package.
 
@@ -61,10 +66,9 @@ library(bugsigdbr)
 ## Obtaining published microbial signatures from BugSigDB
 
 The function `importBugSigDB` can be used to import the complete collection of
-curated signatures from BugSigDB.
-The dataset is downloaded once and subsequently cached. 
-Use `cache = FALSE` to force a fresh download of BugSigDB and overwrite
-the local copy in your cache.  
+curated signatures from BugSigDB. The dataset is downloaded once and
+subsequently cached. Use `cache = FALSE` to force a fresh download of BugSigDB
+and overwrite the local copy in your cache.  
 
 ```{r getBugSigDB}
 bsdb <- importBugSigDB()
@@ -72,34 +76,37 @@ dim(bsdb)
 colnames(bsdb)
 ```
 
-Each row of the resulting `data.frame` corresponds to a microbe signature from 
-differential abundance analysis, i.e. a set of microbes that has been found with 
-increased or decreased abundance in one sample group when compared to another
-sample group (eg. in a case-vs.-control setup).
+Each row of the resulting `data.frame` corresponds to a microbe signature from
+differential abundance analysis, i.e. a set of microbes that has been found
+with increased or decreased abundance in one sample group when compared to
+another sample group (eg. in a case-vs.-control setup).
 The curated signatures are richly annotated with additional metadata columns
 providing information on study design, antibiotics exclusion criteria,
 sample size, and experimental and statistical procedures, among others.
 
-Subsetting the full dataset to certain conditions, body sites, or other metadata 
-columns of interest can be done along the usual lines for subsetting `data.frame`s.
+Subsetting the full dataset to certain conditions, body sites, or other
+metadata columns of interest can be done along the usual lines for
+subsetting `data.frame`s.
 
 For example, the following `subset` command restricts the dataset to signatures
-obtained from microbiome studies on obesity, based on fecal samples from participants in the US.
+obtained from microbiome studies on obesity, based on fecal samples from
+participants in the US.
 
 ```{r}
-us.obesity.feces <- subset(bsdb, 
-                           `Location of subjects` == "United States of America" & 
+us.obesity.feces <- subset(bsdb,
+                           `Location of subjects` == "United States of America" &
                            Condition == "obesity" &
                            `Body site` == "feces")
 ```
 
 ## Extracting microbe signatures
 
-Given the full BugSigDB collection (or a subset of interest), the function 
+Given the full BugSigDB collection (or a subset of interest), the function
 `getSignatures` can be used to obtain the microbes annotated to each signature.
 
-Microbes annotated to a signature are returned following the [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy)
-nomenclature per default. 
+Microbes annotated to a signature are returned following the
+[NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) nomenclature per
+default.
 
 ```{r getSignatures}
 sigs <- getSignatures(bsdb)
@@ -107,8 +114,9 @@ length(sigs)
 sigs[1:3]
 ```
 
-It is also possible obtain signatures based on the full taxonomic classification 
-in [MetaPhlAn](https://github.com/biobakery/MetaPhlAn) format ...
+It is also possible obtain signatures based on the full taxonomic
+classification in [MetaPhlAn](https://github.com/biobakery/MetaPhlAn)
+format ...
 
 ```{r getSignaturesMP}
 mp.sigs <- getSignatures(bsdb, tax.id.type = "metaphlan")
@@ -123,8 +131,8 @@ tn.sigs[1:3]
 ```
 
 As metagenomic profiling with 16S RNA sequencing or whole-metagenome shotgun
-sequencing is typically conducted on a certain taxonomic level, it is also 
-possible to obtain signatures restricted to eg. the genus level ...  
+sequencing is typically conducted on a certain taxonomic level, it is also
+possible to obtain signatures restricted to eg. the genus level ...
 
 ```{r getSignaturesGN}
 gn.sigs <- getSignatures(bsdb, 
@@ -143,15 +151,16 @@ gn.sigs[1:3]
 ```
 
 Note that restricting signatures to microbes given at the genus level, will per
-default exclude microbes given at a more specific taxonomic rank such as species or strain.
+default exclude microbes given at a more specific taxonomic rank such as
+species or strain.
 
-For certain applications, it might be desirable to not exclude microbes given at a 
-more specific taxonomic rank, but rather extract the more general `tax.level` 
-for microbes given at a more specific taxonomic level.
+For certain applications, it might be desirable to not exclude microbes given
+at a more specific taxonomic rank, but rather extract the more general
+`tax.level` for microbes given at a more specific taxonomic level.
 
-This can be achieved by setting the argument `exact.tax.level` to `FALSE`, which
-will here extract genus level taxon names, for taxa given at the species or strain
-level.
+This can be achieved by setting the argument `exact.tax.level` to `FALSE`,
+which will here extract genus level taxon names, for taxa given at the species
+or strain level.
 
 ```{r getSignaturesExact}
 gn.sigs <- getSignatures(bsdb, 
@@ -163,18 +172,20 @@ gn.sigs[1:3]
 
 ## Writing microbe signatures to file in GMT format
 
-Once signatures have been extracted using a taxonomic identifier type of choice,
-the function `writeGMT` allows to write the signatures to plain text files in
-[GMT format](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29).
+Once signatures have been extracted using a taxonomic identifier type of
+choice, the function `writeGMT` allows to write the signatures to plain text
+files in [GMT format][3].
+
+[3]: https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29
 
 
 ```{r writeGMT}
 writeGMT(sigs, gmt.file = "bugsigdb_signatures.gmt")
 ```
 
-This is the standard file format for gene sets used by 
-[MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/) and 
-[GeneSigDB](https://pubmed.ncbi.nlm.nih.gov/22110038) 
+This is the standard file format for gene sets used by
+[MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/) and
+[GeneSigDB](https://pubmed.ncbi.nlm.nih.gov/22110038)
 and is compatible with most enrichment analysis software.
 
 ```{r, echo = FALSE, results = "hide"}
@@ -183,19 +194,20 @@ file.remove("bugsigdb_signatures.gmt")
 
 ## Displaying BugSigDB signature and taxon pages
 
-Leveraging BugSigDB's semantic MediaWiki web interface, we can also programmatically 
-access annotations for individual microbes and microbe signatures. 
+Leveraging BugSigDB's semantic MediaWiki web interface, we can also
+programmatically access annotations for individual microbes and microbe
+signatures.
 
-The `browseSignature` function can be used to display BugSigDB signature pages in 
-an interactive session. For programmatic access in a non-interactive setting, 
-the URL of the signature page is returned. 
+The `browseSignature` function can be used to display BugSigDB signature pages
+in an interactive session. For programmatic access in a non-interactive
+setting, the URL of the signature page is returned.
 
 ```{r browseSig}
 browseSignature(names(sigs)[1])
 ```
 
-Analogously, the `browseTaxon` function displays BugSigDB taxon pages in an interactive
-session, or the URL of the corresponding taxon page otherwise. 
+Analogously, the `browseTaxon` function displays BugSigDB taxon pages in an
+interactive session, or the URL of the corresponding taxon page otherwise.
 
 ```{r browseTaxon}
 browseTaxon(sigs[[1]][1])

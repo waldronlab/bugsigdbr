@@ -1,5 +1,5 @@
 Package: bugsigdbr
-Version: 0.99.4
+Version: 0.99.5
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
     person(given = "Ludwig",
@@ -22,7 +22,7 @@ Description:
     in standard file formats such as GMT. 
 URL: https://github.com/waldronlab/bugsigdbr
 BugReports: https://github.com/waldronlab/bugsigdbr/issues
-Depends: R (>= 4.1.0)
+Depends: R (>= 4.1)
 Imports:
     BiocFileCache,
     readr,
@@ -33,9 +33,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
-License: GPL (>= 3)
+License: GPL-3
 VignetteBuilder: knitr
-LazyData: true
-biocViews: GeneSetEnrichment, Metagenomics, Microbiome
+biocViews: DataImport, GeneSetEnrichment, Metagenomics, Microbiome
 Encoding: UTF-8
 RoxygenNote: 7.1.1
