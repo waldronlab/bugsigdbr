@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Write microbe signatures to file in GMT format — writeGMT" />
-<meta property="og:description" content="Functionality for writing microbe signatures to file in GMT format." />
+<meta property="og:description" content="Functionality for writing microbe signatures to file in GMT
+format." />
 
 
 
@@ -80,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.5</span>
       </span>
     </div>
 
@@ -122,7 +123,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Functionality for writing microbe signatures to file in GMT format.</p>
+    <p>Functionality for writing microbe signatures to file in GMT
+format.</p>
     </div>
 
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>writeGMT</span><span class='op'>(</span><span class='va'>sigs</span>, <span class='va'>gmt.file</span><span class='op'>)</span></code></pre></div>
@@ -132,7 +134,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sigs</th>
-      <td><p>A list of microbe signatures (character vectors of taxonomic IDs).</p></td>
+      <td><p>A list of microbe signatures (character vectors of taxonomic
+IDs).</p></td>
     </tr>
     <tr>
       <th>gmt.file</th>
@@ -148,6 +151,14 @@
     <p>GMT file format:
 <a href='http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats'>http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>bsdb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='importBugSigDB.html'>importBugSigDB</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using cached version from 2021-09-01 12:47:31</span>
+<span class='r-in'><span class='va'>sigs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='getSignatures.html'>getSignatures</a></span><span class='op'>(</span><span class='va'>bsdb</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>writeGMT</span><span class='op'>(</span><span class='va'>sigs</span>, gmt.file <span class='op'>=</span> <span class='st'>"signatures.gmt"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.remove</a></span><span class='op'>(</span><span class='st'>"signatures.gmt"</span><span class='op'>)</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

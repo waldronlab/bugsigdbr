@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.5</span>
       </span>
     </div>
 
@@ -72,7 +72,7 @@
       <h1 data-toc-skip>R-side access to published microbial signatures from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">30 August 2021</h4>
+            <h4 data-toc-skip class="date">1 September 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/master/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -103,7 +103,7 @@
 <p>The function <code>importBugSigDB</code> can be used to import the complete collection of curated signatures from BugSigDB. The dataset is downloaded once and subsequently cached. Use <code>cache = FALSE</code> to force a fresh download of BugSigDB and overwrite the local copy in your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2021-08-30 17:01:35</span>
+<span class="co">#&gt; Using cached version from 2021-09-01 12:47:31</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="co">#&gt; [1] 2073   45</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
@@ -134,8 +134,8 @@
 <p>Subsetting the full dataset to certain conditions, body sites, or other metadata columns of interest can be done along the usual lines for subsetting <code>data.frame</code>s.</p>
 <p>For example, the following <code>subset</code> command restricts the dataset to signatures obtained from microbiome studies on obesity, based on fecal samples from participants in the US.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">us.obesity.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bsdb</span>, 
-                           <span class="va">`Location of subjects`</span> <span class="op">==</span> <span class="st">"United States of America"</span> <span class="op">&amp;</span> 
+<code class="sourceCode R"><span class="va">us.obesity.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bsdb</span>,
+                           <span class="va">`Location of subjects`</span> <span class="op">==</span> <span class="st">"United States of America"</span> <span class="op">&amp;</span>
                            <span class="va">Condition</span> <span class="op">==</span> <span class="st">"obesity"</span> <span class="op">&amp;</span>
                            <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -157,7 +157,7 @@
 <span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
 <span class="co">#&gt; [1] "100883" "1117"  </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_NA:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "207244" "57037"</span></code></pre></div>
 <p>It is also possible obtain signatures based on the full taxonomic classification in <a href="https://github.com/biobakery/MetaPhlAn" class="external-link">MetaPhlAn</a> format …</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -189,7 +189,7 @@
 <span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Coprobacillaceae|g__Coprobacillus"</span>
 <span class="co">#&gt; [2] "k__Bacteria|p__Cyanobacteria"                                                                            </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_NA:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Anaerostipes"                                 </span>
 <span class="co">#&gt; [2] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span></code></pre></div>
 <p>… or using the taxonomic name only:</p>
@@ -211,7 +211,7 @@
 <span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
 <span class="co">#&gt; [1] "Coprobacillus" "Cyanobacteria"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_NA:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "Anaerostipes"            "Lacticaseibacillus zeae"</span></code></pre></div>
 <p>As metagenomic profiling with 16S RNA sequencing or whole-metagenome shotgun sequencing is typically conducted on a certain taxonomic level, it is also possible to obtain signatures restricted to eg. the genus level …</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -227,7 +227,7 @@
 <span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
 <span class="co">#&gt; [1] "Coprobacillus"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_NA:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "Anaerostipes"</span></code></pre></div>
 <p>… or the species level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -238,7 +238,7 @@
 <span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_NA:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`bsdb:1/6/1_adenoma:Non-advanced-conventional-adenoma-cases_vs_controls_UP`</span>
@@ -260,7 +260,7 @@
 <span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
 <span class="co">#&gt; [1] "Coprobacillus"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_NA:hyperplastic-polyp-cases_vs_controls_UP`</span>
+<span class="co">#&gt; $`bsdb:1/2/1_hyperplastic-polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
 <span class="co">#&gt; [1] "Anaerostipes"       "Lacticaseibacillus"</span></code></pre></div>
 </div>
 <div id="writing-microbe-signatures-to-file-in-gmt-format" class="section level2">
@@ -309,7 +309,7 @@
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] bugsigdbr_0.99.4 BiocStyle_2.21.3</span>
+<span class="co">#&gt; [1] bugsigdbr_0.99.5 BiocStyle_2.21.3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
 <span class="co">#&gt;  [1] Rcpp_1.0.7          pillar_1.6.2        bslib_0.2.5.1      </span>
