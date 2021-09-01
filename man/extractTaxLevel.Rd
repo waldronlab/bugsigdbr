@@ -12,19 +12,20 @@ extractTaxLevel(
 )
 }
 \arguments{
-\item{sig}{character. Microbe signature containing taxonomic 
+\item{sig}{character. Microbe signature containing taxonomic
 clades in MetaPhlAn format.}
 
-\item{tax.id.type}{Character. Taxonomic ID type of the returned microbe sets.
+\item{tax.id.type}{Character. Taxonomic ID type of the returned microbe
+sets.
 Either \code{"metaphlan"} (default) or \code{"taxname"}.}
 
-\item{tax.level}{character. Either \code{"mixed"} or any subset of 
+\item{tax.level}{character. Either \code{"mixed"} or any subset of
 \code{c("kingdom", "phylum", "class", "order", "family", "genus", "species",
 "strain")}. This full vector is equivalent to \code{"mixed"}.}
 
 \item{exact.tax.level}{logical. Should only the exact taxonomic level
 specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
-If \code{FALSE}, a more general \code{tax.level} is extracted for 
+If \code{FALSE}, a more general \code{tax.level} is extracted for
 microbes given at a more specific taxonomic level.}
 }
 \value{
@@ -38,14 +39,14 @@ clades in MetaPhlAn format.
 }
 \examples{
 
- ord <- "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales" 
+ ord <- "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"
  sig <- c("f__Lactobacillaceae|g__Lactobacillus",
           "f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia defectiva",
-          "f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae") 
+          "f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae")
  sig <- paste(ord, sig, sep = "|")
  sig <- extractTaxLevel(sig, tax.level = "genus")
  sig <- extractTaxLevel(sig, tax.level = "genus", exact.tax.level = FALSE)
- sig <- extractTaxLevel(sig, 
+ sig <- extractTaxLevel(sig,
                         tax.id.type = "taxname",
                         tax.level = "genus",
                         exact.tax.level = FALSE)

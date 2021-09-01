@@ -7,7 +7,8 @@
 writeGMT(sigs, gmt.file)
 }
 \arguments{
-\item{sigs}{A list of microbe signatures (character vectors of taxonomic IDs).}
+\item{sigs}{A list of microbe signatures (character vectors of taxonomic
+IDs).}
 
 \item{gmt.file}{character. Path to output file in GMT format.}
 }
@@ -15,7 +16,12 @@ writeGMT(sigs, gmt.file)
 none, writes to file.
 }
 \description{
-Functionality for writing microbe signatures to file in GMT format.
+Functionality for writing microbe signatures to file in GMT
+format.
+}
+\examples{
+sigs <- getSignatures(bsdb)
+writeGMT(sigs, gmt.file = "bugsigdb_signatures.gmt")
 }
 \references{
 GMT file format:

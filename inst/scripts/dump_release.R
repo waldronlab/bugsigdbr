@@ -101,7 +101,9 @@ for(tl in tax.levels)
                                              tax.level = tl,
                                              exact.tax.level = etl)
             gmt.file <- paste("bugsigdb", "signatures", tl, it, sep = "_")
-            if(etl) gmt.file <- paste(gmt.file, "exact", sep = "_") 
+            if(etl) {
+                gmt.file <- paste(gmt.file, "exact", sep = "_") 
+            }
             gmt.file <- paste(gmt.file, "gmt", sep = ".")
             gmt.file <- file.path(out.dir, gmt.file)
             bugsigdbr::writeGMT(sigs, gmt.file = gmt.file) 
