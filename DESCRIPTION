@@ -25,7 +25,7 @@ BugReports: https://github.com/waldronlab/bugsigdbr/issues
 Depends: R (>= 4.1.0)
 Imports:
     BiocFileCache,
-    readr,
+    vroom,
     plyr,
     utils
 Suggests:

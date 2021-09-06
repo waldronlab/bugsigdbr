@@ -11,30 +11,27 @@
 importBugSigDB <- function(cache = TRUE)
 {
     rname <- "bugsigdb"
+    url <- file.path("https://raw.githubusercontent.com/waldronlab",
+                     "BugSigDBExports/main/full_dump.tab")
 
     # should a cache version be used?        
-    if(cache)
+    if(cache) bsdb.file <- .getResourceFromCache(rname, FUN = .getdf)
+    if(!cache || is.null(bsdb.file))
     {
-        bugsigdb <- .getResourceFromCache(rname)
-        if(!is.null(bugsigdb)) return(bugsigdb) 
+        bsdb.file <- .cacheResource(rname, url, download = FALSE, ext = ".rds")
+        bsdb.file <- suppressMessages(.getResourceFromCache(rname, FUN = .getdf))
     }
-     
-    # pull the data
-    sigs <- readr::read_csv("https://tinyurl.com/yakgsowm")
-    exps <- readr::read_csv("https://tinyurl.com/yb2fmpa3")
-    studs <- readr::read_csv("https://tinyurl.com/ycg8fs9x")
+    bsdb <- readRDS(bsdb.file)     
+    return(bsdb)
+}
 
-    # merge the data
-    ind <- colnames(exps) == "Experiment page name"
-    colnames(exps)[ind] <- "Experiment"
-    ind <- colnames(studs) == "Study page name"
-    colnames(studs)[ind] <- "Study"
-    sig.exp <- plyr::join(exps, sigs, by = c("Study", "Experiment"))
-    bugsigdb <- plyr::join(studs, sig.exp, by = "Study")
-
+.getdf <- function(from, to)
+{
+    dat <- suppressWarnings(vroom::vroom(from, skip = 1L,
+                                         progress = FALSE, show_col_types = FALSE))
+    dat <- as.data.frame(dat)
     sig.cols <- c("MetaPhlAn taxon names", "NCBI Taxonomy IDs")
-    for(col in sig.cols) bugsigdb[[col]] <- strsplit(bugsigdb[[col]], ",")
-
-    .cacheResource(bugsigdb, rname)
-    return(bugsigdb)
+    for(col in sig.cols) if(!all(is.na(dat[[col]]))) dat[[col]] <- strsplit(dat[[col]], ",")
+    saveRDS(dat, file = to)
+    return(TRUE)
 }
