@@ -10,20 +10,22 @@ restrictTaxLevel(df, tax.level = "mixed", exact.tax.level = TRUE, min.size = 1)
 \item{df}{\code{data.frame} storing BugSigDB data. Typically obtained via
 \code{\link{importBugSigDB}}.}
 
-\item{tax.level}{character. Either \code{"mixed"} or any subset of 
+\item{tax.level}{character. Either \code{"mixed"} or any subset of
 \code{c("kingdom", "phylum", "class", "order", "family", "genus", "species",
 "strain")}. This full vector is equivalent to \code{"mixed"}.}
 
 \item{exact.tax.level}{logical. Should only the exact taxonomic level
 specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
-If \code{FALSE}, a more general \code{tax.level} is extracted for 
+If \code{FALSE}, a more general \code{tax.level} is extracted for
 microbes given at a more specific taxonomic level.}
 
 \item{min.size}{integer. Minimum signature size. Defaults to 1, which will
-filter out empty signatures. Use \code{min.size = 0} to keep empty signatures.}
+filter out empty signatures. Use \code{min.size = 0} to keep empty
+signatures.}
 }
 \value{
-a \code{data.frame} with microbe signature columns restricted to chosen
+a \code{data.frame} with microbe signature columns restricted to
+chosen
 taxonomic level(s).
 }
 \description{

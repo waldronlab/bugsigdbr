@@ -8,8 +8,7 @@
 #'  df <- importBugSigDB()
 #'
 #' @export
-importBugSigDB <- function(cache = TRUE)
-{
+importBugSigDB <- function(cache = TRUE) {
     rname <- "bugsigdb"
     url <- file.path("https://raw.githubusercontent.com/waldronlab",
                      "BugSigDBExports/main/full_dump.tab")
@@ -30,8 +29,8 @@ importBugSigDB <- function(cache = TRUE)
     dat <- suppressWarnings(vroom::vroom(from, skip = 1L,
                                          progress = FALSE, show_col_types = FALSE))
     dat <- as.data.frame(dat)
-    sig.cols <- c("MetaPhlAn taxon names", "NCBI Taxonomy IDs")
-    for(col in sig.cols) if(!all(is.na(dat[[col]]))) dat[[col]] <- strsplit(dat[[col]], ",")
+    dat[["MetaPhlAn taxon names"]] <- strsplit(dat[["MetaPhlAn taxon names"]], ",")
+    dat[["NCBI Taxonomy IDs"]] <- strsplit(dat[["NCBI Taxonomy IDs"]], ";")
     saveRDS(dat, file = to)
     return(TRUE)
 }

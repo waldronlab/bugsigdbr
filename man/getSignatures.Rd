@@ -19,20 +19,20 @@ getSignatures(
 \item{tax.id.type}{Character. Taxonomic ID type of the returned microbe sets.
 Either \code{"ncbi"} (default), \code{"metaphlan"}, or \code{"taxname"}.}
 
-\item{tax.level}{character. Either \code{"mixed"} or any subset of 
+\item{tax.level}{character. Either \code{"mixed"} or any subset of
 \code{c("kingdom", "phylum", "class", "order", "family", "genus", "species",
 "strain")}. This full vector is equivalent to \code{"mixed"}.}
 
 \item{exact.tax.level}{logical. Should only the exact taxonomic level
 specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
-If \code{FALSE}, a more general \code{tax.level} is extracted for 
+If \code{FALSE}, a more general \code{tax.level} is extracted for
 microbes given at a more specific taxonomic level.}
 
 \item{min.size}{integer. Minimum signature size. Defaults to 1, which will
 filter out empty signature. Use \code{min.size = 0} to keep empty signatures.}
 }
 \value{
-a \code{list} of microbe signatures. Each signature is a character 
+a \code{list} of microbe signatures. Each signature is a character
 vector of taxonomic IDs depending on the chosen \code{tax.id.type}.
 }
 \description{

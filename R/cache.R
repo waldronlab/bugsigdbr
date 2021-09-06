@@ -34,15 +34,18 @@
     if(BiocFileCache::bfccount(qgsc))
     {
         rid <- qgsc$rid
-        
-        # is the cached version outdated?
-        # FIXME: somehow github data files come with an expire tag
-        # although web_etag and file_etag agree 
-        BiocFileCache:::.sql_set_expires(bfc, rid, NA)
-        nu <- BiocFileCache::bfcneedsupdate(bfc, rid)
-        if(!isFALSE(nu)) BiocFileCache::bfcdownload(bfc, rid, ask = FALSE, ...)
-        message("Using cached version from ", qgsc$create_time)
-        res <- BiocFileCache::bfcrpath(bfc, rname)
+        if(qgsc$rtype != "web") BiocFileCache::bfcremove(bfc, rid)
+        else
+        {    
+            # is the cached version outdated?
+            # FIXME: somehow github data files come with an expire tag
+            # although web_etag and file_etag agree 
+            BiocFileCache:::.sql_set_expires(bfc, rid, NA)
+            nu <- BiocFileCache::bfcneedsupdate(bfc, rid)
+            if(!isFALSE(nu)) BiocFileCache::bfcdownload(bfc, rid, ask = FALSE, ...)
+            message("Using cached version from ", qgsc$create_time)
+            res <- BiocFileCache::bfcrpath(bfc, rname)
+        }
     }
     return(res)   
 }
