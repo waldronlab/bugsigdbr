@@ -10,9 +10,9 @@
 #' @export
 importBugSigDB <- function(cache = TRUE) {
     rname <- "bugsigdb"
-    url <- file.path("https://raw.githubusercontent.com/waldronlab",
-                     "BugSigDBExports/main/full_dump.tab")
-
+    # https://raw.githubusercontent.com/waldronlab/BugSigDBExports/main/full_dump.tab
+    url <- "https://tinyurl.com/2v5k8hxy"
+    
     # should a cache version be used?        
     if(cache) bsdb.file <- .getResourceFromCache(rname, FUN = .getdf)
     if(!cache || is.null(bsdb.file))
