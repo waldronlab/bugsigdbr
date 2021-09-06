@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.8</span>
       </span>
     </div>
 
@@ -72,7 +72,7 @@
       <h1 data-toc-skip>R-side access to published microbial signatures from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">3 September 2021</h4>
+            <h4 data-toc-skip class="date">6 September 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/master/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -103,33 +103,34 @@
 <p>The function <code>importBugSigDB</code> can be used to import the complete collection of curated signatures from BugSigDB. The dataset is downloaded once and subsequently cached. Use <code>cache = FALSE</code> to force a fresh download of BugSigDB and overwrite the local copy in your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2021-09-03 15:33:44</span>
+<span class="co">#&gt; Using cached version from 2021-09-06 16:28:30</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2073   45</span>
+<span class="co">#&gt; [1] 2123   48</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "Study"                      "Study design"              </span>
 <span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span>
 <span class="co">#&gt;  [5] "URL"                        "Authors"                   </span>
 <span class="co">#&gt;  [7] "Title"                      "Journal"                   </span>
-<span class="co">#&gt;  [9] "Year"                       "Abstract"                  </span>
-<span class="co">#&gt; [11] "Experiment"                 "Location of subjects"      </span>
-<span class="co">#&gt; [13] "Host species"               "Body site"                 </span>
-<span class="co">#&gt; [15] "Condition"                  "Group 0 name"              </span>
-<span class="co">#&gt; [17] "Group 1 name"               "Group 1 definition"        </span>
-<span class="co">#&gt; [19] "Group 0 sample size"        "Group 1 sample size"       </span>
-<span class="co">#&gt; [21] "Antibiotics exclusion"      "Sequencing type"           </span>
-<span class="co">#&gt; [23] "16s variable region"        "Sequencing platform"       </span>
-<span class="co">#&gt; [25] "Statistical test"           "Significance threshold"    </span>
-<span class="co">#&gt; [27] "MHT correction"             "LDA Score above"           </span>
-<span class="co">#&gt; [29] "Matched on"                 "Confounders controlled for"</span>
-<span class="co">#&gt; [31] "Pielou"                     "Shannon"                   </span>
-<span class="co">#&gt; [33] "Chao1"                      "Simpson"                   </span>
-<span class="co">#&gt; [35] "Inverse Simpson"            "Richness"                  </span>
-<span class="co">#&gt; [37] "Signature page name"        "Source"                    </span>
-<span class="co">#&gt; [39] "Curated date"               "Curator"                   </span>
-<span class="co">#&gt; [41] "Revision editor"            "Description"               </span>
-<span class="co">#&gt; [43] "Abundance in Group 1"       "MetaPhlAn taxon names"     </span>
-<span class="co">#&gt; [45] "NCBI Taxonomy IDs"</span></code></pre></div>
+<span class="co">#&gt;  [9] "Year"                       "Experiment"                </span>
+<span class="co">#&gt; [11] "Location of subjects"       "Host species"              </span>
+<span class="co">#&gt; [13] "Body site"                  "UBERON ID"                 </span>
+<span class="co">#&gt; [15] "Condition"                  "EFO ID"                    </span>
+<span class="co">#&gt; [17] "Group 0 name"               "Group 1 name"              </span>
+<span class="co">#&gt; [19] "Group 1 definition"         "Group 0 sample size"       </span>
+<span class="co">#&gt; [21] "Group 1 sample size"        "Antibiotics exclusion"     </span>
+<span class="co">#&gt; [23] "Sequencing type"            "16S variable region"       </span>
+<span class="co">#&gt; [25] "Sequencing platform"        "Statistical test"          </span>
+<span class="co">#&gt; [27] "Significance threshold"     "MHT correction"            </span>
+<span class="co">#&gt; [29] "LDA Score above"            "Matched on"                </span>
+<span class="co">#&gt; [31] "Confounders controlled for" "Pielou"                    </span>
+<span class="co">#&gt; [33] "Shannon"                    "Chao1"                     </span>
+<span class="co">#&gt; [35] "Simpson"                    "Inverse Simpson"           </span>
+<span class="co">#&gt; [37] "Richness"                   "State"                     </span>
+<span class="co">#&gt; [39] "Reviewer"                   "Signature page name"       </span>
+<span class="co">#&gt; [41] "Source"                     "Curated date"              </span>
+<span class="co">#&gt; [43] "Curator"                    "Revision editor"           </span>
+<span class="co">#&gt; [45] "Description"                "Abundance in Group 1"      </span>
+<span class="co">#&gt; [47] "MetaPhlAn taxon names"      "NCBI Taxonomy IDs"</span></code></pre></div>
 <p>Each row of the resulting <code>data.frame</code> corresponds to a microbe signature from differential abundance analysis, i.e. a set of microbes that has been found with increased or decreased abundance in one sample group when compared to another sample group (eg. in a case-vs.-control setup). The curated signatures are richly annotated with additional metadata columns providing information on study design, antibiotics exclusion criteria, sample size, and experimental and statistical procedures, among others.</p>
 <p>Subsetting the full dataset to certain conditions, body sites, or other metadata columns of interest can be done along the usual lines for subsetting <code>data.frame</code>s.</p>
 <p>For example, the following <code>subset</code> command restricts the dataset to signatures obtained from microbiome studies on obesity, based on fecal samples from participants in the US.</p>
@@ -309,7 +310,7 @@
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] bugsigdbr_0.99.6 BiocStyle_2.21.3</span>
+<span class="co">#&gt; [1] bugsigdbr_0.99.8 BiocStyle_2.21.3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
 <span class="co">#&gt;  [1] Rcpp_1.0.7          pillar_1.6.2        bslib_0.2.5.1      </span>
