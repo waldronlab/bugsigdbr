@@ -70,7 +70,7 @@ curated signatures from BugSigDB. The dataset is downloaded once and
 subsequently cached. Use `cache = FALSE` to force a fresh download of BugSigDB
 and overwrite the local copy in your cache.  
 
-```{r getBugSigDB}
+```{r getBugSigDB, message = FALSE}
 bsdb <- importBugSigDB()
 dim(bsdb)
 colnames(bsdb)

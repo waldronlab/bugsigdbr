@@ -10,8 +10,8 @@
 #' @export
 importBugSigDB <- function(cache = TRUE) {
     rname <- "bugsigdb"
-    # https://raw.githubusercontent.com/waldronlab/BugSigDBExports/main/full_dump.tab
-    url <- "https://tinyurl.com/2v5k8hxy"
+    # https://raw.githubusercontent.com/waldronlab/BugSigDBExports/main/full_dump.csv
+    url <- "https://tinyurl.com/3nvzm3fx"
     
     # should a cache version be used?        
     if(cache) bsdb.file <- .getResourceFromCache(rname, FUN = .getdf)
@@ -26,8 +26,7 @@ importBugSigDB <- function(cache = TRUE) {
 
 .getdf <- function(from, to)
 {
-    dat <- suppressWarnings(vroom::vroom(from, skip = 1L,
-                                         progress = FALSE, show_col_types = FALSE))
+    dat <- suppressWarnings(vroom::vroom(from, skip = 1L, progress = FALSE, show_col_types = FALSE))
     dat <- as.data.frame(dat)
     dat[["MetaPhlAn taxon names"]] <- strsplit(dat[["MetaPhlAn taxon names"]], ",")
     dat[["NCBI Taxonomy IDs"]] <- strsplit(dat[["NCBI Taxonomy IDs"]], ";")
