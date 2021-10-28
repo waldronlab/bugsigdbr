@@ -1,7 +1,7 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1.9001
-pkgdown_sha: 705ff7c650bb1c7d46d35e72f27ad093689e2f29
+pandoc: 2.14.0.3
+pkgdown: 1.9000.9000.9000
+pkgdown_sha: 9d071f5e71370873ce1568610d6e362340bf9c22
 articles:
   bugsigdbr: bugsigdbr.html
-last_built: 2021-09-12T21:31Z
+last_built: 2021-10-28T19:51Z
 
