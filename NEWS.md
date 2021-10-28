@@ -1,9 +1,17 @@
-# bugsigdbr 0.99.0
+# bugsigdbr 
 
-NEW FEATURES
+## Version 1.0.0 released in Bioconductor 3.14!
 
-* Added a `NEWS.md` file to track changes to the package.
+### New features
 
-SIGNIFICANT USER-VISIBLE CHANGES
+* `importBugSigDB`: Obtain published microbial signatures from bugsigdb.org
+* `getSignatures`: Obtain microbe signatures from BugSigDB
+* `restrictTaxLevel`: Restrict microbe signatures to specific taxonomic levels
+* `extractTaxLevel`: Extract specific taxonomic levels from a microbe signature
+* `writeGMT`: Write microbe signatures to file in GMT format
+* `browseSignature`:  Displaying BugSigDB signatures pages in a web browser
+* `browseTaxon`: Displaying BugSigDB taxon pages in a web browser
 
-* Created package.
+### Bug fixes and minor improvements
+
+No news yet here.
