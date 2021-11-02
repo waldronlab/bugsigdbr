@@ -11,7 +11,3 @@
 * `writeGMT`: Write microbe signatures to file in GMT format
 * `browseSignature`:  Displaying BugSigDB signatures pages in a web browser
 * `browseTaxon`: Displaying BugSigDB taxon pages in a web browser
-
-### Bug fixes and minor improvements
-
-No news yet here.
