@@ -3,6 +3,7 @@
 export(browseSignature)
 export(browseTaxon)
 export(extractTaxLevel)
+export(getOntology)
 export(getSignatures)
 export(importBugSigDB)
 export(restrictTaxLevel)
