@@ -1,5 +1,10 @@
 # bugsigdbr 
 
+## Changes in version 1.2.0
+
+* Ontology-based queries for experimental factors and body sites
+  (new functions `getOntology` and `subsetByOntologies`)
+
 ## Version 1.0.0 released in Bioconductor 3.14!
 
 ### New features

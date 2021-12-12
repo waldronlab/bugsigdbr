@@ -213,6 +213,64 @@ interactive session, or the URL of the corresponding taxon page otherwise.
 browseTaxon(sigs[[1]][1])
 ```
 
+# Ontology-based queries for experimental factors and body sites
+
+The Semantic MediaWiki curation interface at [bugsigdb.org](https://bugsigdb.org)
+enforces metadata annotation of signatures to follow established ontologies such
+as the [Experimental Factor Ontology (EFO)](https://www.ebi.ac.uk/efo/) for condition,
+and the [Uber-Anatomy Ontology (UBERON)](https://www.ebi.ac.uk/ols/ontologies/uberon)
+for body site.
+
+The `getOntology` function can be used to import both ontologies into R.
+The result is an object of class `ontology_index` from the
+[ontologyIndex](https://cran.r-project.org/web/packages/ontologyIndex/index.html)
+package. 
+
+```{r getEfo}
+efo <- getOntology("efo")
+efo
+```
+
+```{r getUberon}
+uberon <- getOntology("uberon")
+uberon
+```
+
+As demonstrated above, subsets of BugSigDB signatures can be obtained for signatures
+associated with certain experimental factors or specific body sites of interest.
+Higher-level queries can be performed with the `subsetByOntology` function, which
+implements subsetting by more general ontology terms. This facilitates grouping
+of signatures that semantically belong together.
+
+More specifically, subsetting BugSigDB signatures by an EFO term then involves
+subsetting the `Condition` column to all descendants of that term in the EFO
+ontology and that are present in the `Condition` column. Here, we demonstrate
+the usage by subsetting to signatures associated with cancer. 
+
+```{r subsetByEfo}
+sdf <- subsetByOntology(bsdb,
+                        column = "Condition",
+                        term = "cancer",
+                        ontology = efo)
+dim(sdf)
+table(sdf[,"Condition"])
+```
+
+And analogously, subsetting by an UBERON term will involves subsetting the
+`Body site` column to all  descendants of that term in the UBERON ontology and
+that are present in the `Body site` column. For example, we can use `subsetByOntology`
+to subset to signatures for which microbiome samples have been obtained from
+parts of the digestive system.
+
+```{r subsetByUberon}
+sdf <- subsetByOntology(bsdb,
+                        column = "Body site",
+                        term = "digestive system",
+                        ontology = uberon)
+dim(sdf)
+table(sdf[,"Body site"])
+```
+
 # Session info
 
 ```{r sessionInfo}

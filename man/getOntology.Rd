@@ -7,7 +7,7 @@
 getOntology(onto = c("efo", "uberon"), cache = TRUE)
 }
 \arguments{
-\item{onto}{character. Ontology to obtain. Should be either \code{"efo"}
+\item{onto}{character. Ontology to obtain. Should be either \code{"efo"} (default)
 to obtain the Experimental Factor Ontology (EFO) or \code{"uberon"} to obtain
 the Uber-anatomy ontology (UBERON).}
 
