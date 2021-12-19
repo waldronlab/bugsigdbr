@@ -1,4 +1,13 @@
 library(ontologyIndex)
+
+##### TEMP START
+cache.dir <- tools::R_user_dir("bugsigdbr", which = "cache")
+bfc <- BiocFileCache::BiocFileCache(cache.dir)
+info <- BiocFileCache::bfcinfo(bfc)
+rid <- info$rid[info$rname == "uberon"]
+BiocFileCache::bfcremove(bfc, rid)
+##### TEMP END
+
 bsdb <- importBugSigDB()
 efo <- getOntology("efo")
 uberon <- getOntology("uberon")
