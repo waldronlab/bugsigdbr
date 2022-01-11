@@ -25,6 +25,7 @@ BugReports: https://github.com/waldronlab/bugsigdbr/issues
 Depends: R (>= 4.1)
 Imports:
     BiocFileCache,
+    httr,
     methods,
     vroom,
     utils
