@@ -5,6 +5,10 @@
 * Ontology-based queries for experimental factors and body sites
   (new functions `getOntology` and `subsetByOntologies`)
 
+## Changes in version 1.1.6
+
+* `importBugSigDB` accepts Zenodo DOIs, Github hashes, or `devel` as version.
+
 ## Version 1.0.0 released in Bioconductor 3.14!
 
 ### New features
