@@ -5,7 +5,7 @@
 * Ontology-based queries for experimental factors and body sites
   (new functions `getOntology` and `subsetByOntologies`)
 
-## Changes in version 1.1.6
+## Changes in version 1.1.7
 
 * `importBugSigDB` accepts Zenodo DOIs, Github hashes, or `devel` as version.
 
