@@ -29,7 +29,7 @@ test_that("importBugSigDB devel comes from the edge", {
     expect_true(identical(bsdb, dat))
 })
 
-test_that("importBugSigDB devel comes from github", {
+test_that("importBugSigDB hash comes from github", {
     bsdb <- bugsigdbr::importBugSigDB(cache = FALSE, version = "30383a9")
     url <- paste0("https://raw.githubusercontent.com/waldronlab/BugSigDBExports/",
                   "30383a9/full_dump.csv")
