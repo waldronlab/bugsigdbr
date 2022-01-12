@@ -15,26 +15,24 @@ importBugSigDB <- function(cache = TRUE, version = "10.5281/zenodo.5819260") {
 
     version <- tolower(version)
 
-    if (grepl("10.5281/zenodo", version)) {
-        version <- stringr::str_remove(version, "10.5281/zenodo.")
+    if (grepl("^10.5281/zenodo\\.", version)) {
+        version <- sub("^10.5281/zenodo\\.", "", version)
         url <- paste0("https://zenodo.org/record/", version,
                       "/files/full_dump.csv")
         rname <- paste("bugsigdb-zenodo", version, sep = "-")
     } else if (version == "devel") {
         url <- "https://tinyurl.com/3nvzm3fx"
         rname <- paste("bugsigdb", version, sep = "-")
-    } else {
+    } else if (grepl("^[0-9a-z]{7}$", version)) {
         url <- paste0("https://raw.githubusercontent.com/waldronlab/BugSigDBExports/",
                       version, "/full_dump.csv")
         rname <- paste("bugsigdb-github", version, sep = "-")
+    } else {
+        stop(paste("Version", version, "does not exist. The version must be a",
+                   "DOI, such as '10.5281/zenodo.5819260', a Github hash,",
+                   "such as '30383a9', or 'devel'.", sep = " "))
     }
 
-    if (httr::http_error(url)) {
-      stop(paste("Version", version, "does not exist. The version must be a",
-                 "DOI, such as '10.5281/zenodo.5819260', a Github hash,",
-                 "such as '30383a9', or 'devel'.", sep = " "))
-    }
-    
     # should a cache version be used?
     if(cache) bsdb.file <- .getResourceFromCache(rname, FUN = .getdf)
     if(!cache || is.null(bsdb.file))
