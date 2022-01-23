@@ -4,9 +4,13 @@
 \alias{importBugSigDB}
 \title{Obtain published microbial signatures from bugsigdb.org}
 \usage{
-importBugSigDB(cache = TRUE)
+importBugSigDB(version = "10.5281/zenodo.5819260", cache = TRUE)
 }
 \arguments{
+\item{version}{character. A Zenodo DOI, git commit hash, or "devel".
+Defaults to the most recent stable release on Zenodo, which includes
+complete and reviewed content from BugSigDB.}
+
 \item{cache}{logical. Should a locally cached version used if available?
 Defaults to \code{TRUE}.}
 }
@@ -23,4 +27,9 @@ Obtain published microbial signatures from bugsigdb.org
 }
 \references{
 BugSigDB: \url{https://bugsigdb.org}
+
+Stable release: \url{https://doi.org/10.5281/zenodo.5606165}
+
+Latest version (incl. not reviewed content): 
+     \url{https://github.com/waldronlab/BugSigDBExports}
 }

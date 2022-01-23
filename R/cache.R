@@ -14,11 +14,11 @@
     
     # check if fpath is being tracked 
     qgsc <-  BiocFileCache::bfcquery(bfc, fpath)
-    if(BiocFileCache::bfccount(qgsc) == 0) 
+    if(BiocFileCache::bfccount(qgsc) > 0) 
     {
-        rpath <- BiocFileCache::bfcadd(bfc, rname, fpath, ...) 
+        BiocFileCache::bfcremove(bfc, qgsc$rid)
     }
-    else rpath <- qgsc$rpath
+    rpath <- BiocFileCache::bfcadd(bfc, rname, fpath, ...) 
     return(rpath)
 }
 

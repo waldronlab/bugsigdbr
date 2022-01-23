@@ -46,9 +46,9 @@ test_that("subsetByOntology", {
 
     cterms <- c("cancer", "nervous system disease", "metabolic disease")
     cpos <- list( c("gastric cancer", "cervical cancer", "colorectal cancer"), 
-                  c("schizophrenia", "unipolar depression", "multiple sclerosis"),
-                  c("obesity", "type II diabetes mellitus", "type I diabetes mellitus"))
-    cneg <- list( c("obesity", "type II diabetes mellitus", "type I diabetes mellitus"),
+                  c("autism", "unipolar depression", "bipolar disorder"),
+                  c("obesity", "anorexia nervosa", "gestational diabetes"))
+    cneg <- list( c("obesity", "anorexia nervosa", "gestational diabetes"),
                   c("gastric cancer", "cervical cancer", "colorectal cancer"), 
                   c("gastric cancer", "cervical cancer", "colorectal cancer"))
     names(cpos) <- names(cneg) <- cterms
