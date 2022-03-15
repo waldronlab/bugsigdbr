@@ -55,6 +55,96 @@ getSignatures <- function(df,
     return(sigs)
 }
 
+#' @name getMetaSignatures
+#'
+#' @title Obtain meta-signatures for a column of interest
+#'
+#' @description Functionality for obtaining meta-signatures for a column of 
+#' interest
+#'
+#' @param df \code{data.frame} storing BugSigDB data. Typically obtained via
+#' \code{\link{importBugSigDB}}.
+#' @param column character. Column of interest. Need to be a valid column name
+#' of \code{df}.
+#' @param direction character. Indicates direction of abundance change for signatures
+#' to be included in the computation of meta-signatures. Use \code{"UP"} to restrict
+#' computation to signatures with increased abundance in the exposed group. Use 
+#' \code{"DOWN"} to restrict to signatures with decreased abundance in the exposed
+#' group. Defaults to \code{"UP"}.
+#' @param min.studies integer. Minimum number of studies for a category in \code{column}
+#' to be included. Defaults to 2, which will then only compute meta-signatures for
+#' categories investigated by at least two studies. 
+#' @param min.taxa integer. Minimum size for meta-signatures. Defaults to 5, which
+#' will then only include meta-signatures containing at least 5 taxa.
+#' @param comb.fun function. Function for combining sample size of the exposed group
+#' and sample size of the unexposed group into an overall study sample size. Defaults
+#' to \code{sum} which will simply add sample sizes of exposed and unexposed group.
+#' @param ... additionals argument passed on to \code{\link{getSignatures}}.
+#' @return A \code{list} of meta-signatures, each meta-signature being a named
+#' numeric vector. Names are the taxa of the meta-signature, numeric values 
+#' correspond to sample size weights associated with each taxon.
+#' @seealso getSignatures
+#' @examples
+#'  df <- importBugSigDB()
+#'  bs.meta.sigs <- getMetaSignatures(df, column = "Body site")
+#' @export
+getMetaSignatures <- function(df, 
+                              column,
+                              direction = c("UP", "DOWN"),   
+                              min.studies = 2,
+                              min.taxa = 5,
+                              comb.fun = sum,  
+                              ...)
+{
+    # check and restrict by column of choice
+    if(!(column %in% colnames(df))) 
+        stop("<column> must be a valid colname of <df>")
+    ind <- !is.na(df[[column]]) & !grepl(",", df[[column]])
+    df <- df[ind,]
+
+    # restrict by direction of abundance change
+    direction <- match.arg(direction)
+    direction <- ifelse(direction == "UP", "increased", "decreased")
+    df <- subset(df, `Abundance in Group 1` == direction)
+
+    # include only categories with defined min number of studies
+    spl <- split(df$PMID, df[[column]])
+    spl <- lapply(spl, unique)
+    lens <- lengths(spl)
+    names(lens) <- names(spl)
+    lens <- sort(lens, decreasing = TRUE)
+    incl <- names(lens)[lens >= min.studies]
+    ind <- df[[column]] %in% incl
+    df <- df[ind,]
+
+    # obtain and group signatures and sample size by 
+    sigs <- getSignatures(df, min.size = 0, ...)            
+    ss.cols <- paste("Group", c(0,1), "sample size")
+    ss <- apply(df[,ss.cols], 1, comb.fun)
+    nna <- !is.na(ss)
+    ss <- ss[nna]
+    sigs <- sigs[nna]
+    df <- df[nna,]
+    spl <- split(sigs, df[[column]])
+    spl.ss <- split(ss, df[[column]])    
+
+    # compute weights based on sample size
+    ## here we use a simple voting approach, we sum sample sizes for one 
+    ## taxon at a time, and then divide by the total sample size to obtain weights 
+    spl.ssr <- lapply(names(spl.ss), function(s) rep(unname(spl.ss[[s]]), 
+                                                     lengths(spl[[s]])))
+    names(spl.ssr) <- names(spl.ss) 
+    for(i in seq_along(spl.ssr)) names(spl.ssr[[i]]) <- unlist(spl[[i]])
+    .tsum <- function(x) tapply(x, names(x), sum) 
+    spl.ssr <- lapply(spl.ssr, .tsum)
+    spl.ssr <- spl.ssr[lengths(spl.ssr) >= min.taxa]
+    sums <- vapply(spl.ssr, sum, numeric(1))
+    for(i in seq_along(spl.ssr)) spl.ssr[[i]] <- spl.ssr[[i]] / sums[i]
+    spl.ssr <- lapply(spl.ssr, sort, decreasing = TRUE) 
+    return(spl.ssr) 
+}
+
+
 #' @name restrictTaxLevel
 #'
 #' @title Restrict microbe signatures to specific taxonomic levels

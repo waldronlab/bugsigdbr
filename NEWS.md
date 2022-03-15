@@ -2,12 +2,14 @@
 
 ## Changes in version 1.2.0
 
+* `importBugSigDB` accepts Zenodo DOIs and Github hashes to obtain
+  defined data releases or `devel` to obtain the latest version
+  (new argument `version`).
 * Ontology-based queries for experimental factors and body sites
   (new functions `getOntology` and `subsetByOntologies`)
-
-## Changes in version 1.1.7
-
-* `importBugSigDB` accepts Zenodo DOIs, Github hashes, or `devel` as version.
+* Compilation of meta-signatures from individual signatures for one
+  body site and one condition at a time, weighted by sample size  
+  (new function `getMetaSignatures`)
 
 ## Version 1.0.0 released in Bioconductor 3.14!
 
