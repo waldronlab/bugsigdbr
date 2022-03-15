@@ -7,7 +7,7 @@
 getMetaSignatures(
   df,
   column,
-  direction = c("UP", "DOWN"),
+  direction = c("BOTH", "UP", "DOWN"),
   min.studies = 2,
   min.taxa = 5,
   comb.fun = sum,
@@ -25,7 +25,8 @@ of \code{df}.}
 to be included in the computation of meta-signatures. Use \code{"UP"} to restrict
 computation to signatures with increased abundance in the exposed group. Use 
 \code{"DOWN"} to restrict to signatures with decreased abundance in the exposed
-group. Defaults to \code{"UP"}.}
+group. Defaults to \code{"BOTH"} which will not filter signatures by direction
+of abundance change.}
 
 \item{min.studies}{integer. Minimum number of studies for a category in \code{column}
 to be included. Defaults to 2, which will then only compute meta-signatures for
