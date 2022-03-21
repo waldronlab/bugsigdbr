@@ -40,6 +40,12 @@
     <loc>/reference/extractTaxLevel.html</loc>
   </url>
   <url>
+    <loc>/reference/getMetaSignatures.html</loc>
+  </url>
+  <url>
+    <loc>/reference/getOntology.html</loc>
+  </url>
+  <url>
     <loc>/reference/getSignatures.html</loc>
   </url>
   <url>
@@ -50,6 +56,9 @@
   </url>
   <url>
     <loc>/reference/restrictTaxLevel.html</loc>
+  </url>
+  <url>
+    <loc>/reference/subsetByOntology.html</loc>
   </url>
   <url>
     <loc>/reference/writeGMT.html</loc>

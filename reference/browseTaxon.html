@@ -18,7 +18,7 @@ BugSigDB taxon pages."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.10</span>
       </span>
     </div>
 
@@ -57,9 +57,10 @@ BugSigDB taxon pages."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
 BugSigDB taxon pages.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">browseTaxon</span><span class="op">(</span><span class="va">tax.id</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">browseTaxon</span><span class="op">(</span><span class="va">tax.id</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tax.id</dt>
@@ -74,11 +75,10 @@ opens the URL in the default web browser.</p>
     <h2>References</h2>
     <p>BugSigDB: <a href="https://bugsigdb.org" class="external-link">https://bugsigdb.org</a></p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in">  </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  </span>
 <span class="r-in">  <span class="co"># BugSigDB taxon page for Escherichia coli</span></span>
 <span class="r-in">  <span class="fu">browseTaxon</span><span class="op">(</span><span class="st">"562"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://bugsigdb.org/Special:RunQuery/Taxon?Taxon%5BNCBI%5D=562&amp;_run=1"</span>
@@ -97,7 +97,8 @@ opens the URL in the default web browser.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.9000.</p>
 </div>
 
       </footer></div>
