@@ -52,7 +52,16 @@ interest
 }
 \examples{
  df <- importBugSigDB()
+ # Body-site specific meta-signatures composed from signatures reported as both 
+ # increased or decreased across all conditions of study:
  bs.meta.sigs <- getMetaSignatures(df, column = "Body site")
+ # Condition-specific meta-signatures from feces samples, increased
+ # in conditions of study. Use taxonomic names instead of the default NCBI IDs:
+ df.feces <- df[df$`Body site` == "feces", ]
+ cond.meta.sigs <- getMetaSignatures(df.feces, column = "Condition", 
+                     direction = "UP", tax.id.type = "taxname")
+ names(cond.meta.sigs)
+ cond.meta.sigs["bipolar disorder"]
 }
 \seealso{
 getSignatures
