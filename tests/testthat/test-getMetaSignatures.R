@@ -18,7 +18,7 @@ checkSigs <- function(sigs, tax.id.type)
     else if(tax.id.type == "metaphlan") 
         expect_true(all(grepl("^[kpcofgst]__", names(s))))
     else if(tax.id.type == "taxname")
-        expect_true(all(grepl("^[A-Z][a-z ]+$", names(s))))
+        expect_true(all(grepl("^[A-Za-z ]+$", names(s))))
 }
 
 test_that("column of choice", {
