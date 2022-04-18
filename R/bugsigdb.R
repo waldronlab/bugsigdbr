@@ -17,7 +17,7 @@
 #'  df <- importBugSigDB()
 #'
 #' @export
-importBugSigDB <- function(version = "10.5281/zenodo.5819260", cache = TRUE) 
+importBugSigDB <- function(version = "10.5281/zenodo.6468009", cache = TRUE)
 {
     version <- tolower(version)
 
