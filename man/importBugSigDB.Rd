@@ -4,7 +4,7 @@
 \alias{importBugSigDB}
 \title{Obtain published microbial signatures from bugsigdb.org}
 \usage{
-importBugSigDB(version = "10.5281/zenodo.5819260", cache = TRUE)
+importBugSigDB(version = "10.5281/zenodo.6468009", cache = TRUE)
 }
 \arguments{
 \item{version}{character. A Zenodo DOI, git commit hash, or "devel".
