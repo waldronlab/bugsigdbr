@@ -18,7 +18,7 @@ factors and body sites."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.12</span>
       </span>
     </div>
 
@@ -98,11 +98,11 @@ of the chosen term in the chosen ontology.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"> <span class="co"># (1) Obtain BugSigDB data</span></span>
 <span class="r-in"> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-03-25 17:53:18</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-04-20 18:18:12</span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="co"># (2) Obtain ontology of interest as an R object</span></span>
 <span class="r-in"> <span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-03-25 17:51:26</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-04-20 18:18:48</span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="co"># (3) High-level query on body site</span></span>
 <span class="r-in"> <span class="va">sdf</span> <span class="op">&lt;-</span> <span class="fu">subsetByOntology</span><span class="op">(</span><span class="va">df</span>, </span>
@@ -120,7 +120,7 @@ of the chosen term in the chosen ontology.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                colonic mucosa </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                             2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               feces,mucosa of small intestine </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    feces,stomach,caecum,small intestine,colon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                             2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         ileum </span>
@@ -134,7 +134,7 @@ of the chosen term in the chosen ontology.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                    oral gland </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            51 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                        rectum </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            24 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        saliva-secreting gland </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                             2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               small intestine </span>
@@ -142,7 +142,7 @@ of the chosen term in the chosen ontology.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                       stomach </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            41 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                        tongue </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            27 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            28 </span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
