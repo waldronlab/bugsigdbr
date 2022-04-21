@@ -11,7 +11,9 @@
   body site and one condition at a time, weighted by sample size  
   (new function `getMetaSignatures`)
 
-## Version 1.0.0 released in Bioconductor 3.14!
+## Version 1.0.0
+
+* released in Bioconductor 3.14!
 
 ### New features
 
