@@ -9,14 +9,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/waldronlab/bugsigdbr/branch/main/graph/badge.svg)](https://codecov.io/gh/waldronlab/bugsigdbr?branch=main)
 <!-- badges: end -->
 
-Utilities for accessing data from BugSigDB.org and creating plain text
+Utilities for accessing data from [BugSigDB.org](https://bugsigdb.org) and creating plain text
 signatures.
 
 ## Installation instructions
 
 Get the latest stable `R` release from
-[CRAN](http://cran.r-project.org/). Then install `bugsigdbr` using from
-[Bioconductor](http://bioconductor.org/) the following code:
+[CRAN](http://cran.r-project.org/). Then install `bugsigdbr` from
+[Bioconductor](https://bioconductor.org/packages/bugsigdbr/) using the following code:
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
@@ -26,7 +26,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
 BiocManager::install("bugsigdbr")
 ```
 
-And the development version from
+Or the development version from
 [GitHub](https://github.com/waldronlab/bugsigdbr) with:
 
 ``` r
