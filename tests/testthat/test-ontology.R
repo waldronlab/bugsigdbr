@@ -1,8 +1,8 @@
 library(ontologyIndex)
 
 bsdb <- importBugSigDB()
-efo <- getOntology("efo")
-uberon <- getOntology("uberon")
+efo <- getOntology("efo", cache = FALSE)
+uberon <- getOntology("uberon", cache = FALSE)
 
 checkOnto <- function(onto, which = c("efo", "uberon"))
 {
