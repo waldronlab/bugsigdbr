@@ -9,7 +9,7 @@ checkOnto <- function(onto, which = c("efo", "uberon"))
     which <- match.arg(which)
 
     expect_true(is(onto, "ontology_index"))
-    expect_true(length(onto) == 6)
+    expect_true(length(onto) >= 6)
     n <- c("id", "name", "parents", "children", "ancestors")
     expect_true(all(n %in% names(onto)))
     
