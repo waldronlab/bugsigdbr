@@ -18,7 +18,7 @@ taxonomic levels such as genus and species."><!-- mathjax --><script src="https:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.2</span>
       </span>
     </div>
 
@@ -58,7 +58,7 @@ taxonomic levels such as genus and species.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">restrictTaxLevel</span><span class="op">(</span><span class="va">df</span>, tax.level <span class="op">=</span> <span class="st">"mixed"</span>, exact.tax.level <span class="op">=</span> <span class="cn">TRUE</span>, min.size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">restrictTaxLevel</span><span class="op">(</span><span class="va">df</span>, tax.level <span class="op">=</span> <span class="st">"mixed"</span>, exact.tax.level <span class="op">=</span> <span class="cn">TRUE</span>, min.size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -66,23 +66,32 @@ taxonomic levels such as genus and species.</p>
     <dl><dt>df</dt>
 <dd><p><code>data.frame</code> storing BugSigDB data. Typically obtained via
 <code><a href="importBugSigDB.html">importBugSigDB</a></code>.</p></dd>
+
+
 <dt>tax.level</dt>
 <dd><p>character. Either <code>"mixed"</code> or any subset of
 <code>c("kingdom", "phylum", "class", "order", "family", "genus", "species",
 "strain")</code>. This full vector is equivalent to <code>"mixed"</code>.</p></dd>
+
+
 <dt>exact.tax.level</dt>
 <dd><p>logical. Should only the exact taxonomic level
 specified by <code>tax.level</code> be returned? Defaults to <code>TRUE</code>.
 If <code>FALSE</code>, a more general <code>tax.level</code> is extracted for
 microbes given at a more specific taxonomic level.</p></dd>
+
+
 <dt>min.size</dt>
 <dd><p>integer. Minimum signature size. Defaults to 1, which will
 filter out empty signatures. Use <code>min.size = 0</code> to keep empty
 signatures.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a <code>data.frame</code> with microbe signature columns restricted to
+    
+
+<p>a <code>data.frame</code> with microbe signature columns restricted to
 chosen
 taxonomic level(s).</p>
     </div>
@@ -97,9 +106,9 @@ taxonomic level(s).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-04-20 18:18:12</span>
-<span class="r-in"> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">restrictTaxLevel</span><span class="op">(</span><span class="va">df</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-10-29 05:45:22</span>
+<span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">restrictTaxLevel</span><span class="op">(</span><span class="va">df</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -114,8 +123,7 @@ taxonomic level(s).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

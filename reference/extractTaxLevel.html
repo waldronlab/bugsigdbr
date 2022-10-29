@@ -19,7 +19,7 @@ clades in MetaPhlAn format."><!-- mathjax --><script src="https://cdnjs.cloudfla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.2</span>
       </span>
     </div>
 
@@ -60,12 +60,12 @@ clades in MetaPhlAn format.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extractTaxLevel</span><span class="op">(</span>
-  <span class="va">sig</span>,
-  tax.id.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"metaphlan"</span>, <span class="st">"taxname"</span><span class="op">)</span>,
-  tax.level <span class="op">=</span> <span class="st">"mixed"</span>,
-  exact.tax.level <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extractTaxLevel</span><span class="op">(</span></span>
+<span>  <span class="va">sig</span>,</span>
+<span>  tax.id.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"metaphlan"</span>, <span class="st">"taxname"</span><span class="op">)</span>,</span>
+<span>  tax.level <span class="op">=</span> <span class="st">"mixed"</span>,</span>
+<span>  exact.tax.level <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -73,23 +73,32 @@ clades in MetaPhlAn format.</p>
     <dl><dt>sig</dt>
 <dd><p>character. Microbe signature containing taxonomic
 clades in MetaPhlAn format.</p></dd>
+
+
 <dt>tax.id.type</dt>
 <dd><p>Character. Taxonomic ID type of the returned microbe
 sets.
 Either <code>"metaphlan"</code> (default) or <code>"taxname"</code>.</p></dd>
+
+
 <dt>tax.level</dt>
 <dd><p>character. Either <code>"mixed"</code> or any subset of
 <code>c("kingdom", "phylum", "class", "order", "family", "genus", "species",
 "strain")</code>. This full vector is equivalent to <code>"mixed"</code>.</p></dd>
+
+
 <dt>exact.tax.level</dt>
 <dd><p>logical. Should only the exact taxonomic level
 specified by <code>tax.level</code> be returned? Defaults to <code>TRUE</code>.
 If <code>FALSE</code>, a more general <code>tax.level</code> is extracted for
 microbes given at a more specific taxonomic level.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a character vector storing taxonomic clades restricted to
+    
+
+<p>a character vector storing taxonomic clades restricted to
 chosen taxonomic level(s).</p>
     </div>
     <div id="references">
@@ -99,19 +108,19 @@ chosen taxonomic level(s).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"> <span class="va">ord</span> <span class="op">&lt;-</span> <span class="st">"k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"</span></span>
-<span class="r-in"> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"f__Lactobacillaceae|g__Lactobacillus"</span>,</span>
-<span class="r-in">          <span class="st">"f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia defectiva"</span>,</span>
-<span class="r-in">          <span class="st">"f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">ord</span>, <span class="va">sig</span>, sep <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu">extractTaxLevel</span><span class="op">(</span><span class="va">sig</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu">extractTaxLevel</span><span class="op">(</span><span class="va">sig</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu">extractTaxLevel</span><span class="op">(</span><span class="va">sig</span>,</span>
-<span class="r-in">                        tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span>
-<span class="r-in">                        tax.level <span class="op">=</span> <span class="st">"genus"</span>,</span>
-<span class="r-in">                        exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">ord</span> <span class="op">&lt;-</span> <span class="st">"k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"</span></span></span>
+<span class="r-in"><span> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"f__Lactobacillaceae|g__Lactobacillus"</span>,</span></span>
+<span class="r-in"><span>          <span class="st">"f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia defectiva"</span>,</span></span>
+<span class="r-in"><span>          <span class="st">"f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">ord</span>, <span class="va">sig</span>, sep <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu">extractTaxLevel</span><span class="op">(</span><span class="va">sig</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu">extractTaxLevel</span><span class="op">(</span><span class="va">sig</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">sig</span> <span class="op">&lt;-</span> <span class="fu">extractTaxLevel</span><span class="op">(</span><span class="va">sig</span>,</span></span>
+<span class="r-in"><span>                        tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span></span>
+<span class="r-in"><span>                        tax.level <span class="op">=</span> <span class="st">"genus"</span>,</span></span>
+<span class="r-in"><span>                        exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -126,8 +135,7 @@ chosen taxonomic level(s).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

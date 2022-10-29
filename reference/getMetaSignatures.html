@@ -18,7 +18,7 @@ interest"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.2</span>
       </span>
     </div>
 
@@ -58,15 +58,15 @@ interest</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getMetaSignatures</span><span class="op">(</span>
-  <span class="va">df</span>,
-  <span class="va">column</span>,
-  direction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BOTH"</span>, <span class="st">"UP"</span>, <span class="st">"DOWN"</span><span class="op">)</span>,
-  min.studies <span class="op">=</span> <span class="fl">2</span>,
-  min.taxa <span class="op">=</span> <span class="fl">5</span>,
-  comb.fun <span class="op">=</span> <span class="va">sum</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getMetaSignatures</span><span class="op">(</span></span>
+<span>  <span class="va">df</span>,</span>
+<span>  <span class="va">column</span>,</span>
+<span>  direction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BOTH"</span>, <span class="st">"UP"</span>, <span class="st">"DOWN"</span><span class="op">)</span>,</span>
+<span>  min.studies <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  min.taxa <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  comb.fun <span class="op">=</span> <span class="va">sum</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -74,9 +74,13 @@ interest</p>
     <dl><dt>df</dt>
 <dd><p><code>data.frame</code> storing BugSigDB data. Typically obtained via
 <code><a href="importBugSigDB.html">importBugSigDB</a></code>.</p></dd>
+
+
 <dt>column</dt>
 <dd><p>character. Column of interest. Need to be a valid column name
 of <code>df</code>.</p></dd>
+
+
 <dt>direction</dt>
 <dd><p>character. Indicates direction of abundance change for signatures
 to be included in the computation of meta-signatures. Use <code>"UP"</code> to restrict
@@ -84,23 +88,34 @@ computation to signatures with increased abundance in the exposed group. Use
 <code>"DOWN"</code> to restrict to signatures with decreased abundance in the exposed
 group. Defaults to <code>"BOTH"</code> which will not filter signatures by direction
 of abundance change.</p></dd>
+
+
 <dt>min.studies</dt>
 <dd><p>integer. Minimum number of studies for a category in <code>column</code>
 to be included. Defaults to 2, which will then only compute meta-signatures for
 categories investigated by at least two studies.</p></dd>
+
+
 <dt>min.taxa</dt>
 <dd><p>integer. Minimum size for meta-signatures. Defaults to 5, which
 will then only include meta-signatures containing at least 5 taxa.</p></dd>
+
+
 <dt>comb.fun</dt>
 <dd><p>function. Function for combining sample size of the exposed group
 and sample size of the unexposed group into an overall study sample size. Defaults
 to <code>sum</code> which will simply add sample sizes of exposed and unexposed group.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additionals argument passed on to <code><a href="getSignatures.html">getSignatures</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>list</code> of meta-signatures, each meta-signature being a named
+    
+
+<p>A <code>list</code> of meta-signatures, each meta-signature being a named
 numeric vector. Names are the taxa of the meta-signature, numeric values 
 correspond to sample size weights associated with each taxon.</p>
     </div>
@@ -111,17 +126,17 @@ correspond to sample size weights associated with each taxon.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-04-20 18:18:12</span>
-<span class="r-in"> <span class="co"># Body-site specific meta-signatures composed from signatures reported as both </span></span>
-<span class="r-in"> <span class="co"># increased or decreased across all conditions of study:</span></span>
-<span class="r-in"> <span class="va">bs.meta.sigs</span> <span class="op">&lt;-</span> <span class="fu">getMetaSignatures</span><span class="op">(</span><span class="va">df</span>, column <span class="op">=</span> <span class="st">"Body site"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="co"># Condition-specific meta-signatures from feces samples, increased</span></span>
-<span class="r-in"> <span class="co"># in conditions of study. Use taxonomic names instead of the default NCBI IDs:</span></span>
-<span class="r-in"> <span class="va">df.feces</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span>, <span class="op">]</span></span>
-<span class="r-in"> <span class="va">cond.meta.sigs</span> <span class="op">&lt;-</span> <span class="fu">getMetaSignatures</span><span class="op">(</span><span class="va">df.feces</span>, column <span class="op">=</span> <span class="st">"Condition"</span>, </span>
-<span class="r-in">                     direction <span class="op">=</span> <span class="st">"UP"</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">cond.meta.sigs</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2022-10-29 05:45:22</span>
+<span class="r-in"><span> <span class="co"># Body-site specific meta-signatures composed from signatures reported as both </span></span></span>
+<span class="r-in"><span> <span class="co"># increased or decreased across all conditions of study:</span></span></span>
+<span class="r-in"><span> <span class="va">bs.meta.sigs</span> <span class="op">&lt;-</span> <span class="fu">getMetaSignatures</span><span class="op">(</span><span class="va">df</span>, column <span class="op">=</span> <span class="st">"Body site"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="co"># Condition-specific meta-signatures from feces samples, increased</span></span></span>
+<span class="r-in"><span> <span class="co"># in conditions of study. Use taxonomic names instead of the default NCBI IDs:</span></span></span>
+<span class="r-in"><span> <span class="va">df.feces</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="va">cond.meta.sigs</span> <span class="op">&lt;-</span> <span class="fu">getMetaSignatures</span><span class="op">(</span><span class="va">df.feces</span>, column <span class="op">=</span> <span class="st">"Condition"</span>, </span></span>
+<span class="r-in"><span>                     direction <span class="op">=</span> <span class="st">"UP"</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">cond.meta.sigs</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COVID-19"                                                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "Eczema"                                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "HIV infection"                                            </span>
@@ -167,7 +182,7 @@ correspond to sample size weights associated with each taxon.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [43] "type II diabetes mellitus"                                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [44] "unipolar depression"                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [45] "urinary tract infection"                                  </span>
-<span class="r-in"> <span class="va">cond.meta.sigs</span><span class="op">[</span><span class="st">"bipolar disorder"</span><span class="op">]</span></span>
+<span class="r-in"><span> <span class="va">cond.meta.sigs</span><span class="op">[</span><span class="st">"bipolar disorder"</span><span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bipolar disorder`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Flavonifractor   Lachnospiraceae    Actinobacteria Coriobacteriaceae </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         0.3459215         0.1767372         0.1193353         0.1193353 </span>
@@ -188,8 +203,7 @@ correspond to sample size weights associated with each taxon.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

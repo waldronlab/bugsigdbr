@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.2</span>
       </span>
     </div>
 
@@ -74,7 +74,7 @@ from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig
 Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">20 April 2022</h4>
+            <h4 data-toc-skip class="date">29 October 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/HEAD/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -113,7 +113,7 @@ package</a> and <a href="http://waldronlab.io/BugSigDBStats/articles/BugSigDBSta
 vignette</a>.</p>
 <p>We start by loading the package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugsigdbr" class="external-link">bugsigdbr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugsigdbr" class="external-link">bugsigdbr</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="obtaining-published-microbial-signatures-from-bugsigdb">Obtaining published microbial signatures from BugSigDB<a class="anchor" aria-label="anchor" href="#obtaining-published-microbial-signatures-from-bugsigdb"></a>
 </h3>
@@ -123,34 +123,34 @@ downloaded once and subsequently cached. Use <code>cache = FALSE</code>
 to force a fresh download of BugSigDB and overwrite the local copy in
 your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2270   48</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "Study"                      "Study design"              </span>
-<span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span>
-<span class="co">#&gt;  [5] "URL"                        "Authors list"              </span>
-<span class="co">#&gt;  [7] "Title"                      "Journal"                   </span>
-<span class="co">#&gt;  [9] "Year"                       "Experiment"                </span>
-<span class="co">#&gt; [11] "Location of subjects"       "Host species"              </span>
-<span class="co">#&gt; [13] "Body site"                  "UBERON ID"                 </span>
-<span class="co">#&gt; [15] "Condition"                  "EFO ID"                    </span>
-<span class="co">#&gt; [17] "Group 0 name"               "Group 1 name"              </span>
-<span class="co">#&gt; [19] "Group 1 definition"         "Group 0 sample size"       </span>
-<span class="co">#&gt; [21] "Group 1 sample size"        "Antibiotics exclusion"     </span>
-<span class="co">#&gt; [23] "Sequencing type"            "16S variable region"       </span>
-<span class="co">#&gt; [25] "Sequencing platform"        "Statistical test"          </span>
-<span class="co">#&gt; [27] "Significance threshold"     "MHT correction"            </span>
-<span class="co">#&gt; [29] "LDA Score above"            "Matched on"                </span>
-<span class="co">#&gt; [31] "Confounders controlled for" "Pielou"                    </span>
-<span class="co">#&gt; [33] "Shannon"                    "Chao1"                     </span>
-<span class="co">#&gt; [35] "Simpson"                    "Inverse Simpson"           </span>
-<span class="co">#&gt; [37] "Richness"                   "Signature page name"       </span>
-<span class="co">#&gt; [39] "Source"                     "Curated date"              </span>
-<span class="co">#&gt; [41] "Curator"                    "Revision editor"           </span>
-<span class="co">#&gt; [43] "Description"                "Abundance in Group 1"      </span>
-<span class="co">#&gt; [45] "MetaPhlAn taxon names"      "NCBI Taxonomy IDs"         </span>
-<span class="co">#&gt; [47] "State"                      "Reviewer"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2270   48</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "Study"                      "Study design"              </span></span>
+<span><span class="co">#&gt;  [3] "PMID"                       "DOI"                       </span></span>
+<span><span class="co">#&gt;  [5] "URL"                        "Authors list"              </span></span>
+<span><span class="co">#&gt;  [7] "Title"                      "Journal"                   </span></span>
+<span><span class="co">#&gt;  [9] "Year"                       "Experiment"                </span></span>
+<span><span class="co">#&gt; [11] "Location of subjects"       "Host species"              </span></span>
+<span><span class="co">#&gt; [13] "Body site"                  "UBERON ID"                 </span></span>
+<span><span class="co">#&gt; [15] "Condition"                  "EFO ID"                    </span></span>
+<span><span class="co">#&gt; [17] "Group 0 name"               "Group 1 name"              </span></span>
+<span><span class="co">#&gt; [19] "Group 1 definition"         "Group 0 sample size"       </span></span>
+<span><span class="co">#&gt; [21] "Group 1 sample size"        "Antibiotics exclusion"     </span></span>
+<span><span class="co">#&gt; [23] "Sequencing type"            "16S variable region"       </span></span>
+<span><span class="co">#&gt; [25] "Sequencing platform"        "Statistical test"          </span></span>
+<span><span class="co">#&gt; [27] "Significance threshold"     "MHT correction"            </span></span>
+<span><span class="co">#&gt; [29] "LDA Score above"            "Matched on"                </span></span>
+<span><span class="co">#&gt; [31] "Confounders controlled for" "Pielou"                    </span></span>
+<span><span class="co">#&gt; [33] "Shannon"                    "Chao1"                     </span></span>
+<span><span class="co">#&gt; [35] "Simpson"                    "Inverse Simpson"           </span></span>
+<span><span class="co">#&gt; [37] "Richness"                   "Signature page name"       </span></span>
+<span><span class="co">#&gt; [39] "Source"                     "Curated date"              </span></span>
+<span><span class="co">#&gt; [41] "Curator"                    "Revision editor"           </span></span>
+<span><span class="co">#&gt; [43] "Description"                "Abundance in Group 1"      </span></span>
+<span><span class="co">#&gt; [45] "MetaPhlAn taxon names"      "NCBI Taxonomy IDs"         </span></span>
+<span><span class="co">#&gt; [47] "State"                      "Reviewer"</span></span></code></pre></div>
 <p>Each row of the resulting <code>data.frame</code> corresponds to a
 microbe signature from differential abundance analysis, i.e. a set of
 microbes that has been found with increased or decreased abundance in
@@ -166,10 +166,10 @@ subsetting <code>data.frame</code>s.</p>
 dataset to signatures obtained from microbiome studies on obesity, based
 on fecal samples from participants in the US.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">us.obesity.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bsdb</span>,
-                           <span class="va">`Location of subjects`</span> <span class="op">==</span> <span class="st">"United States of America"</span> <span class="op">&amp;</span>
-                           <span class="va">Condition</span> <span class="op">==</span> <span class="st">"obesity"</span> <span class="op">&amp;</span>
-                           <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">us.obesity.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bsdb</span>,</span>
+<span>                           <span class="va">`Location of subjects`</span> <span class="op">==</span> <span class="st">"United States of America"</span> <span class="op">&amp;</span></span>
+<span>                           <span class="va">Condition</span> <span class="op">==</span> <span class="st">"obesity"</span> <span class="op">&amp;</span></span>
+<span>                           <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extracting-microbe-signatures">Extracting microbe signatures<a class="anchor" aria-label="anchor" href="#extracting-microbe-signatures"></a>
@@ -180,108 +180,108 @@ annotated to each signature.</p>
 <p>Microbes annotated to a signature are returned following the <a href="https://www.ncbi.nlm.nih.gov/taxonomy" class="external-link">NCBI Taxonomy</a>
 nomenclature per default.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2270</span>
-<span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt;  [1] "91061"  "1236"   "1654"   "1716"   "1301"   "162289" "189330" "33024" </span>
-<span class="co">#&gt;  [9] "40544"  "2037"   "2049"   "506"    "186826" "1300"   "31977"  "91347" </span>
-<span class="co">#&gt; [17] "1653"   "57037"  "1386"   "186817"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
-<span class="co">#&gt; [1] "100883" "1117"  </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "207244" "57037"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2270</span></span>
+<span><span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt;  [1] "91061"  "1236"   "1654"   "1716"   "1301"   "162289" "189330" "33024" </span></span>
+<span><span class="co">#&gt;  [9] "40544"  "2037"   "2049"   "506"    "186826" "1300"   "31977"  "91347" </span></span>
+<span><span class="co">#&gt; [17] "1653"   "57037"  "1386"   "186817"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "100883" "1117"  </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "207244" "57037"</span></span></code></pre></div>
 <p>It is also possible obtain signatures based on the full taxonomic
 classification in <a href="https://github.com/biobakery/MetaPhlAn" class="external-link">MetaPhlAn</a> format …</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mp.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"metaphlan"</span><span class="op">)</span>
-<span class="va">mp.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt;  [1] "k__Bacteria|p__Firmicutes|c__Bacilli"                                                                                        </span>
-<span class="co">#&gt;  [2] "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria"                                                                        </span>
-<span class="co">#&gt;  [3] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces"                        </span>
-<span class="co">#&gt;  [4] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium"                </span>
-<span class="co">#&gt;  [5] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus"                                </span>
-<span class="co">#&gt;  [6] "k__Bacteria|p__Firmicutes|c__Tissierellia|o__Tissierellales|f__Peptoniphilaceae|g__Peptoniphilus"                            </span>
-<span class="co">#&gt;  [7] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Dorea"                                        </span>
-<span class="co">#&gt;  [8] "k__Bacteria|p__Firmicutes|c__Negativicutes|o__Acidaminococcales|f__Acidaminococcaceae|g__Phascolarctobacterium"              </span>
-<span class="co">#&gt;  [9] "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella"                      </span>
-<span class="co">#&gt; [10] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales"                                                           </span>
-<span class="co">#&gt; [11] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales|f__Actinomycetaceae"                                       </span>
-<span class="co">#&gt; [12] "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Alcaligenaceae"                                    </span>
-<span class="co">#&gt; [13] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"                                                                     </span>
-<span class="co">#&gt; [14] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae"                                                 </span>
-<span class="co">#&gt; [15] "k__Bacteria|p__Firmicutes|c__Negativicutes|o__Veillonellales|f__Veillonellaceae"                                             </span>
-<span class="co">#&gt; [16] "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales"                                                    </span>
-<span class="co">#&gt; [17] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Corynebacteriales|f__Corynebacteriaceae"                                   </span>
-<span class="co">#&gt; [18] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span>
-<span class="co">#&gt; [19] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillaceae|g__Bacillus"                                               </span>
-<span class="co">#&gt; [20] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillaceae"                                                           </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
-<span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Coprobacillaceae|g__Coprobacillus"</span>
-<span class="co">#&gt; [2] "k__Bacteria|p__Cyanobacteria"                                                                            </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Anaerostipes"                                 </span>
-<span class="co">#&gt; [2] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mp.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"metaphlan"</span><span class="op">)</span></span>
+<span><span class="va">mp.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt;  [1] "k__Bacteria|p__Firmicutes|c__Bacilli"                                                                                        </span></span>
+<span><span class="co">#&gt;  [2] "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria"                                                                        </span></span>
+<span><span class="co">#&gt;  [3] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces"                        </span></span>
+<span><span class="co">#&gt;  [4] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium"                </span></span>
+<span><span class="co">#&gt;  [5] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus"                                </span></span>
+<span><span class="co">#&gt;  [6] "k__Bacteria|p__Firmicutes|c__Tissierellia|o__Tissierellales|f__Peptoniphilaceae|g__Peptoniphilus"                            </span></span>
+<span><span class="co">#&gt;  [7] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Dorea"                                        </span></span>
+<span><span class="co">#&gt;  [8] "k__Bacteria|p__Firmicutes|c__Negativicutes|o__Acidaminococcales|f__Acidaminococcaceae|g__Phascolarctobacterium"              </span></span>
+<span><span class="co">#&gt;  [9] "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella"                      </span></span>
+<span><span class="co">#&gt; [10] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales"                                                           </span></span>
+<span><span class="co">#&gt; [11] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Actinomycetales|f__Actinomycetaceae"                                       </span></span>
+<span><span class="co">#&gt; [12] "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Alcaligenaceae"                                    </span></span>
+<span><span class="co">#&gt; [13] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales"                                                                     </span></span>
+<span><span class="co">#&gt; [14] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae"                                                 </span></span>
+<span><span class="co">#&gt; [15] "k__Bacteria|p__Firmicutes|c__Negativicutes|o__Veillonellales|f__Veillonellaceae"                                             </span></span>
+<span><span class="co">#&gt; [16] "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales"                                                    </span></span>
+<span><span class="co">#&gt; [17] "k__Bacteria|p__Actinobacteria|c__Actinomycetia|o__Corynebacteriales|f__Corynebacteriaceae"                                   </span></span>
+<span><span class="co">#&gt; [18] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span></span>
+<span><span class="co">#&gt; [19] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillaceae|g__Bacillus"                                               </span></span>
+<span><span class="co">#&gt; [20] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillaceae"                                                           </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Coprobacillaceae|g__Coprobacillus"</span></span>
+<span><span class="co">#&gt; [2] "k__Bacteria|p__Cyanobacteria"                                                                            </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Lachnospiraceae|g__Anaerostipes"                                 </span></span>
+<span><span class="co">#&gt; [2] "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lacticaseibacillus|s__Lacticaseibacillus zeae"</span></span></code></pre></div>
 <p>… or using the taxonomic name only:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span><span class="op">)</span>
-<span class="va">tn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt;  [1] "Bacilli"                 "Gammaproteobacteria"    </span>
-<span class="co">#&gt;  [3] "Actinomyces"             "Corynebacterium"        </span>
-<span class="co">#&gt;  [5] "Streptococcus"           "Peptoniphilus"          </span>
-<span class="co">#&gt;  [7] "Dorea"                   "Phascolarctobacterium"  </span>
-<span class="co">#&gt;  [9] "Sutterella"              "Actinomycetales"        </span>
-<span class="co">#&gt; [11] "Actinomycetaceae"        "Alcaligenaceae"         </span>
-<span class="co">#&gt; [13] "Lactobacillales"         "Streptococcaceae"       </span>
-<span class="co">#&gt; [15] "Veillonellaceae"         "Enterobacterales"       </span>
-<span class="co">#&gt; [17] "Corynebacteriaceae"      "Lacticaseibacillus zeae"</span>
-<span class="co">#&gt; [19] "Bacillus"                "Bacillaceae"            </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
-<span class="co">#&gt; [1] "Coprobacillus" "Cyanobacteria"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Anaerostipes"            "Lacticaseibacillus zeae"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">tn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span><span class="op">)</span></span>
+<span><span class="va">tn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt;  [1] "Bacilli"                 "Gammaproteobacteria"    </span></span>
+<span><span class="co">#&gt;  [3] "Actinomyces"             "Corynebacterium"        </span></span>
+<span><span class="co">#&gt;  [5] "Streptococcus"           "Peptoniphilus"          </span></span>
+<span><span class="co">#&gt;  [7] "Dorea"                   "Phascolarctobacterium"  </span></span>
+<span><span class="co">#&gt;  [9] "Sutterella"              "Actinomycetales"        </span></span>
+<span><span class="co">#&gt; [11] "Actinomycetaceae"        "Alcaligenaceae"         </span></span>
+<span><span class="co">#&gt; [13] "Lactobacillales"         "Streptococcaceae"       </span></span>
+<span><span class="co">#&gt; [15] "Veillonellaceae"         "Enterobacterales"       </span></span>
+<span><span class="co">#&gt; [17] "Corynebacteriaceae"      "Lacticaseibacillus zeae"</span></span>
+<span><span class="co">#&gt; [19] "Bacillus"                "Bacillaceae"            </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Coprobacillus" "Cyanobacteria"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Anaerostipes"            "Lacticaseibacillus zeae"</span></span></code></pre></div>
 <p>As metagenomic profiling with 16S RNA sequencing or whole-metagenome
 shotgun sequencing is typically conducted on a certain taxonomic level,
 it is also possible to obtain signatures restricted to eg. the genus
 level …</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, 
-                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
-                         tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span>
-<span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Actinomyces"           "Corynebacterium"       "Streptococcus"        </span>
-<span class="co">#&gt; [4] "Peptoniphilus"         "Dorea"                 "Phascolarctobacterium"</span>
-<span class="co">#&gt; [7] "Sutterella"            "Bacillus"             </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
-<span class="co">#&gt; [1] "Coprobacillus"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Anaerostipes"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, </span>
+<span>                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span>
+<span>                         tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span>
+<span><span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Actinomyces"           "Corynebacterium"       "Streptococcus"        </span></span>
+<span><span class="co">#&gt; [4] "Peptoniphilus"         "Dorea"                 "Phascolarctobacterium"</span></span>
+<span><span class="co">#&gt; [7] "Sutterella"            "Bacillus"             </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Coprobacillus"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Anaerostipes"</span></span></code></pre></div>
 <p>… or the species level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, 
-                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
-                         tax.level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span>
-<span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/6/1_adenoma:Non-advanced-conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, </span>
+<span>                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span>
+<span>                         tax.level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></span>
+<span><span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/6/1_adenoma:Non-advanced-conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Lacticaseibacillus zeae"</span></span></code></pre></div>
 <p>Note that restricting signatures to microbes given at the genus
 level, will per default exclude microbes given at a more specific
 taxonomic rank such as species or strain.</p>
@@ -294,21 +294,21 @@ specific taxonomic level.</p>
 extract genus level taxon names, for taxa given at the species or strain
 level.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, 
-                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
-                         tax.level <span class="op">=</span> <span class="st">"genus"</span>,
-                         exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Actinomyces"           "Corynebacterium"       "Streptococcus"        </span>
-<span class="co">#&gt; [4] "Peptoniphilus"         "Dorea"                 "Phascolarctobacterium"</span>
-<span class="co">#&gt; [7] "Sutterella"            "Lacticaseibacillus"    "Bacillus"             </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span>
-<span class="co">#&gt; [1] "Coprobacillus"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span>
-<span class="co">#&gt; [1] "Anaerostipes"       "Lacticaseibacillus"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, </span>
+<span>                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span>
+<span>                         tax.level <span class="op">=</span> <span class="st">"genus"</span>,</span>
+<span>                         exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/1_adenoma:conventional-adenoma-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Actinomyces"           "Corynebacterium"       "Streptococcus"        </span></span>
+<span><span class="co">#&gt; [4] "Peptoniphilus"         "Dorea"                 "Phascolarctobacterium"</span></span>
+<span><span class="co">#&gt; [7] "Sutterella"            "Lacticaseibacillus"    "Bacillus"             </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/1/2_adenoma:conventional-adenoma-cases_vs_controls_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Coprobacillus"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`bsdb:1/2/1_Hyperplastic-Polyp:hyperplastic-polyp-cases_vs_controls_UP`</span></span>
+<span><span class="co">#&gt; [1] "Anaerostipes"       "Lacticaseibacillus"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="writing-microbe-signatures-to-file-in-gmt-format">Writing microbe signatures to file in GMT format<a class="anchor" aria-label="anchor" href="#writing-microbe-signatures-to-file-in-gmt-format"></a>
@@ -318,7 +318,7 @@ of choice, the function <code>writeGMT</code> allows to write the
 signatures to plain text files in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29" class="external-link">GMT
 format</a>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/writeGMT.html">writeGMT</a></span><span class="op">(</span><span class="va">sigs</span>, gmt.file <span class="op">=</span> <span class="st">"bugsigdb_signatures.gmt"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/writeGMT.html">writeGMT</a></span><span class="op">(</span><span class="va">sigs</span>, gmt.file <span class="op">=</span> <span class="st">"bugsigdb_signatures.gmt"</span><span class="op">)</span></span></code></pre></div>
 <p>This is the standard file format for gene sets used by <a href="https://www.gsea-msigdb.org/gsea/msigdb/" class="external-link">MSigDB</a> and <a href="https://pubmed.ncbi.nlm.nih.gov/22110038" class="external-link">GeneSigDB</a> and is
 compatible with most enrichment analysis software.</p>
 </div>
@@ -333,14 +333,14 @@ BugSigDB signature pages in an interactive session. For programmatic
 access in a non-interactive setting, the URL of the signature page is
 returned.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/browseSignature.html">browseSignature</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://bugsigdb.org/Study_1/Experiment_1/Signature_1"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/browseSignature.html">browseSignature</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "https://bugsigdb.org/Study_1/Experiment_1/Signature_1"</span></span></code></pre></div>
 <p>Analogously, the <code>browseTaxon</code> function displays BugSigDB
 taxon pages in an interactive session, or the URL of the corresponding
 taxon page otherwise.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/browseTaxon.html">browseTaxon</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://bugsigdb.org/Special:RunQuery/Taxon?Taxon%5BNCBI%5D=91061&amp;_run=1"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/browseTaxon.html">browseTaxon</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "https://bugsigdb.org/Special:RunQuery/Taxon?Taxon%5BNCBI%5D=91061&amp;_run=1"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -355,65 +355,66 @@ ontologies into R. The result is an object of class
 <code>ontology_index</code> from the <a href="https://cran.r-project.org/web/packages/ontologyIndex/index.html" class="external-link">ontologyIndex</a>
 package.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">efo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"efo"</span><span class="op">)</span>
-<span class="co">#&gt; Loading required namespace: ontologyIndex</span>
-<span class="co">#&gt; Using cached version from 2022-04-20 18:18:19</span>
-<span class="va">efo</span>
-<span class="co">#&gt; Ontology with 28234 terms</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; format-version: 1.2</span>
-<span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.39.1/efo.owl</span>
-<span class="co">#&gt; ontology: http://www.ebi.ac.uk/efo/efo.owl</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Properties:</span>
-<span class="co">#&gt;  id: character</span>
-<span class="co">#&gt;  name: character</span>
-<span class="co">#&gt;  parents: list</span>
-<span class="co">#&gt;  children: list</span>
-<span class="co">#&gt;  ancestors: list</span>
-<span class="co">#&gt;  obsolete: logical</span>
-<span class="co">#&gt; Roots:</span>
-<span class="co">#&gt;  EFO:0000001 - experimental factor</span>
-<span class="co">#&gt;  EFO:0000824 - relationship</span>
-<span class="co">#&gt;  RO:0000053 - bearer_of</span>
-<span class="co">#&gt;  RO:0000057 - has_participant</span>
-<span class="co">#&gt;  has_part - has part</span>
-<span class="co">#&gt;  RO:0000056 - participates_in</span>
-<span class="co">#&gt;  RO:0002502 - depends on</span>
-<span class="co">#&gt;  disease_has_feature - disease has feature</span>
-<span class="co">#&gt;  located_in - located_in</span>
-<span class="co">#&gt;  location_of - location_of</span>
-<span class="co">#&gt;  ... 43 more</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">efo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"efo"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required namespace: ontologyIndex</span></span>
+<span><span class="co">#&gt; Using cached version from 2022-10-29 05:45:28</span></span>
+<span><span class="va">efo</span></span>
+<span><span class="co">#&gt; Ontology with 31996 terms</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; format-version: 1.2</span></span>
+<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.47.0/efo.owl</span></span>
+<span><span class="co">#&gt; ontology: http://www.ebi.ac.uk/efo/efo.owl</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Properties:</span></span>
+<span><span class="co">#&gt;  id: character</span></span>
+<span><span class="co">#&gt;  name: character</span></span>
+<span><span class="co">#&gt;  parents: list</span></span>
+<span><span class="co">#&gt;  children: list</span></span>
+<span><span class="co">#&gt;  ancestors: list</span></span>
+<span><span class="co">#&gt;  obsolete: logical</span></span>
+<span><span class="co">#&gt;  equivalent_to: list</span></span>
+<span><span class="co">#&gt; Roots:</span></span>
+<span><span class="co">#&gt;  EFO:0000001 - experimental factor</span></span>
+<span><span class="co">#&gt;  EFO:0000824 - relationship</span></span>
+<span><span class="co">#&gt;  has_characteristic - bearer_of</span></span>
+<span><span class="co">#&gt;  RO:0000057 - has_participant</span></span>
+<span><span class="co">#&gt;  has_part - has part</span></span>
+<span><span class="co">#&gt;  RO:0000056 - participates_in</span></span>
+<span><span class="co">#&gt;  RO:0002502 - depends on</span></span>
+<span><span class="co">#&gt;  disease_has_feature - disease has feature</span></span>
+<span><span class="co">#&gt;  located_in - located_in</span></span>
+<span><span class="co">#&gt;  location_of - location_of</span></span>
+<span><span class="co">#&gt;  ... 45 more</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span>
-<span class="co">#&gt; Using cached version from 2022-04-20 18:18:48</span>
-<span class="va">uberon</span>
-<span class="co">#&gt; Ontology with 14107 terms</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; format-version: 1.2</span>
-<span class="co">#&gt; data-version: releases/2020-09-16</span>
-<span class="co">#&gt; default-namespace: uberon</span>
-<span class="co">#&gt; ontology: uberon</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Properties:</span>
-<span class="co">#&gt;  id: character</span>
-<span class="co">#&gt;  name: character</span>
-<span class="co">#&gt;  parents: list</span>
-<span class="co">#&gt;  children: list</span>
-<span class="co">#&gt;  ancestors: list</span>
-<span class="co">#&gt;  obsolete: logical</span>
-<span class="co">#&gt; Roots:</span>
-<span class="co">#&gt;  part_of - part of</span>
-<span class="co">#&gt;  has_part - has part</span>
-<span class="co">#&gt;  functionally_related_to - functionally related to</span>
-<span class="co">#&gt;  UBERON:0001062 - anatomical entity</span>
-<span class="co">#&gt;  adjacent_to - adjacent_to</span>
-<span class="co">#&gt;  UBERON:0000000 - processual entity</span>
-<span class="co">#&gt;  anterior_to - anterior_to</span>
-<span class="co">#&gt;  posterior_to - posterior_to</span>
-<span class="co">#&gt;  attaches_to_part_of - attaches_to_part_of</span>
-<span class="co">#&gt;  bearer_of - bearer of</span>
-<span class="co">#&gt;  ... 127 more</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using cached version from 2022-10-29 05:46:13</span></span>
+<span><span class="va">uberon</span></span>
+<span><span class="co">#&gt; Ontology with 14107 terms</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; format-version: 1.2</span></span>
+<span><span class="co">#&gt; data-version: releases/2020-09-16</span></span>
+<span><span class="co">#&gt; default-namespace: uberon</span></span>
+<span><span class="co">#&gt; ontology: uberon</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Properties:</span></span>
+<span><span class="co">#&gt;  id: character</span></span>
+<span><span class="co">#&gt;  name: character</span></span>
+<span><span class="co">#&gt;  parents: list</span></span>
+<span><span class="co">#&gt;  children: list</span></span>
+<span><span class="co">#&gt;  ancestors: list</span></span>
+<span><span class="co">#&gt;  obsolete: logical</span></span>
+<span><span class="co">#&gt; Roots:</span></span>
+<span><span class="co">#&gt;  part_of - part of</span></span>
+<span><span class="co">#&gt;  has_part - has part</span></span>
+<span><span class="co">#&gt;  functionally_related_to - functionally related to</span></span>
+<span><span class="co">#&gt;  UBERON:0001062 - anatomical entity</span></span>
+<span><span class="co">#&gt;  adjacent_to - adjacent_to</span></span>
+<span><span class="co">#&gt;  UBERON:0000000 - processual entity</span></span>
+<span><span class="co">#&gt;  anterior_to - anterior_to</span></span>
+<span><span class="co">#&gt;  posterior_to - posterior_to</span></span>
+<span><span class="co">#&gt;  attaches_to_part_of - attaches_to_part_of</span></span>
+<span><span class="co">#&gt;  bearer_of - bearer of</span></span>
+<span><span class="co">#&gt;  ... 127 more</span></span></code></pre></div>
 <p>As demonstrated above, subsets of BugSigDB signatures can be obtained
 for signatures associated with certain experimental factors or specific
 body sites of interest. Higher-level queries can be performed with the
@@ -426,70 +427,70 @@ of that term in the EFO ontology and that are present in the
 <code>Condition</code> column. Here, we demonstrate the usage by
 subsetting to signatures associated with cancer.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subsetByOntology.html">subsetByOntology</a></span><span class="op">(</span><span class="va">bsdb</span>,
-                        column <span class="op">=</span> <span class="st">"Condition"</span>,
-                        term <span class="op">=</span> <span class="st">"cancer"</span>,
-                        ontology <span class="op">=</span> <span class="va">efo</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span>
-<span class="co">#&gt; [1] 305  48</span>
-<span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Condition"</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;                                       acute myeloid leukemia </span>
-<span class="co">#&gt;                                                           10 </span>
-<span class="co">#&gt;                                                breast cancer </span>
-<span class="co">#&gt;                                                            4 </span>
-<span class="co">#&gt;                                             breast carcinoma </span>
-<span class="co">#&gt;                                                            4 </span>
-<span class="co">#&gt;                                              cervical cancer </span>
-<span class="co">#&gt;                                                           19 </span>
-<span class="co">#&gt; cervical glandular intraepithelial neoplasia,cervical cancer </span>
-<span class="co">#&gt;                                                            1 </span>
-<span class="co">#&gt;                                            colorectal cancer </span>
-<span class="co">#&gt;                                                           50 </span>
-<span class="co">#&gt;                                         colorectal carcinoma </span>
-<span class="co">#&gt;                                                            2 </span>
-<span class="co">#&gt;                                      digestive system cancer </span>
-<span class="co">#&gt;                                                            2 </span>
-<span class="co">#&gt;                                           endometrial cancer </span>
-<span class="co">#&gt;                                                            4 </span>
-<span class="co">#&gt;                                            esophageal cancer </span>
-<span class="co">#&gt;                                                           10 </span>
-<span class="co">#&gt;                           esophageal squamous cell carcinoma </span>
-<span class="co">#&gt;                                                            4 </span>
-<span class="co">#&gt;                                       gastric adenocarcinoma </span>
-<span class="co">#&gt;                                                            6 </span>
-<span class="co">#&gt;                                               gastric cancer </span>
-<span class="co">#&gt;                                                           61 </span>
-<span class="co">#&gt;                                            gastric carcinoma </span>
-<span class="co">#&gt;                                                            2 </span>
-<span class="co">#&gt;                                     Genital neoplasm, female </span>
-<span class="co">#&gt;                                                            2 </span>
-<span class="co">#&gt;                                      head and neck carcinoma </span>
-<span class="co">#&gt;                                                            7 </span>
-<span class="co">#&gt;                                     hepatocellular carcinoma </span>
-<span class="co">#&gt;                                                            4 </span>
-<span class="co">#&gt;                               HER2 Positive Breast Carcinoma </span>
-<span class="co">#&gt;                                                            2 </span>
-<span class="co">#&gt;              human papilloma virus infection,cervical cancer </span>
-<span class="co">#&gt;                                                            2 </span>
-<span class="co">#&gt;                                                  lung cancer </span>
-<span class="co">#&gt;                                                           23 </span>
-<span class="co">#&gt;                                             multiple myeloma </span>
-<span class="co">#&gt;                                                           10 </span>
-<span class="co">#&gt;           non-small cell lung carcinoma,renal cell carcinoma </span>
-<span class="co">#&gt;                                                            5 </span>
-<span class="co">#&gt;                                 oral squamous cell carcinoma </span>
-<span class="co">#&gt;                                                            6 </span>
-<span class="co">#&gt;                                               ovarian cancer </span>
-<span class="co">#&gt;                                                            4 </span>
-<span class="co">#&gt;                                         pancreatic carcinoma </span>
-<span class="co">#&gt;                                                           17 </span>
-<span class="co">#&gt;                                              prostate cancer </span>
-<span class="co">#&gt;                                                            6 </span>
-<span class="co">#&gt;                                      squamous cell carcinoma </span>
-<span class="co">#&gt;                                                           36 </span>
-<span class="co">#&gt;                                            thyroid carcinoma </span>
-<span class="co">#&gt;                                                            2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subsetByOntology.html">subsetByOntology</a></span><span class="op">(</span><span class="va">bsdb</span>,</span>
+<span>                        column <span class="op">=</span> <span class="st">"Condition"</span>,</span>
+<span>                        term <span class="op">=</span> <span class="st">"cancer"</span>,</span>
+<span>                        ontology <span class="op">=</span> <span class="va">efo</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 305  48</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Condition"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                                       acute myeloid leukemia </span></span>
+<span><span class="co">#&gt;                                                           10 </span></span>
+<span><span class="co">#&gt;                                                breast cancer </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
+<span><span class="co">#&gt;                                             breast carcinoma </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
+<span><span class="co">#&gt;                                              cervical cancer </span></span>
+<span><span class="co">#&gt;                                                           19 </span></span>
+<span><span class="co">#&gt; cervical glandular intraepithelial neoplasia,cervical cancer </span></span>
+<span><span class="co">#&gt;                                                            1 </span></span>
+<span><span class="co">#&gt;                                            colorectal cancer </span></span>
+<span><span class="co">#&gt;                                                           50 </span></span>
+<span><span class="co">#&gt;                                         colorectal carcinoma </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                      digestive system cancer </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                           endometrial cancer </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
+<span><span class="co">#&gt;                                            esophageal cancer </span></span>
+<span><span class="co">#&gt;                                                           10 </span></span>
+<span><span class="co">#&gt;                           esophageal squamous cell carcinoma </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
+<span><span class="co">#&gt;                                       gastric adenocarcinoma </span></span>
+<span><span class="co">#&gt;                                                            6 </span></span>
+<span><span class="co">#&gt;                                               gastric cancer </span></span>
+<span><span class="co">#&gt;                                                           61 </span></span>
+<span><span class="co">#&gt;                                            gastric carcinoma </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                     Genital neoplasm, female </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                      head and neck carcinoma </span></span>
+<span><span class="co">#&gt;                                                            7 </span></span>
+<span><span class="co">#&gt;                                     hepatocellular carcinoma </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
+<span><span class="co">#&gt;                               HER2 Positive Breast Carcinoma </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;              human papilloma virus infection,cervical cancer </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                                  lung cancer </span></span>
+<span><span class="co">#&gt;                                                           23 </span></span>
+<span><span class="co">#&gt;                                             multiple myeloma </span></span>
+<span><span class="co">#&gt;                                                           10 </span></span>
+<span><span class="co">#&gt;           non-small cell lung carcinoma,renal cell carcinoma </span></span>
+<span><span class="co">#&gt;                                                            5 </span></span>
+<span><span class="co">#&gt;                                 oral squamous cell carcinoma </span></span>
+<span><span class="co">#&gt;                                                            6 </span></span>
+<span><span class="co">#&gt;                                               ovarian cancer </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
+<span><span class="co">#&gt;                                         pancreatic carcinoma </span></span>
+<span><span class="co">#&gt;                                                           17 </span></span>
+<span><span class="co">#&gt;                                              prostate cancer </span></span>
+<span><span class="co">#&gt;                                                            6 </span></span>
+<span><span class="co">#&gt;                                      squamous cell carcinoma </span></span>
+<span><span class="co">#&gt;                                                           36 </span></span>
+<span><span class="co">#&gt;                                            thyroid carcinoma </span></span>
+<span><span class="co">#&gt;                                                            2</span></span></code></pre></div>
 <p>And analogously, subsetting by an UBERON term will involves
 subsetting the <code>Body site</code> column to all descendants of that
 term in the UBERON ontology and that are present in the
@@ -498,124 +499,125 @@ term in the UBERON ontology and that are present in the
 microbiome samples have been obtained from parts of the digestive
 system.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subsetByOntology.html">subsetByOntology</a></span><span class="op">(</span><span class="va">bsdb</span>,
-                        column <span class="op">=</span> <span class="st">"Body site"</span>,
-                        term <span class="op">=</span> <span class="st">"digestive system"</span>,
-                        ontology <span class="op">=</span> <span class="va">uberon</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span>
-<span class="co">#&gt; [1] 410  48</span>
-<span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Body site"</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;                                         bronchus,mouth </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                          buccal mucosa </span>
-<span class="co">#&gt;                                                      6 </span>
-<span class="co">#&gt;                                buccal mucosa,lower lip </span>
-<span class="co">#&gt;                                                      8 </span>
-<span class="co">#&gt;                                                 caecum </span>
-<span class="co">#&gt;                                                     15 </span>
-<span class="co">#&gt;                                                  colon </span>
-<span class="co">#&gt;                                                     19 </span>
-<span class="co">#&gt;                                         colonic mucosa </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                          dental plaque </span>
-<span class="co">#&gt;                                                     13 </span>
-<span class="co">#&gt; digestive system,digestive tract,lower digestive tract </span>
-<span class="co">#&gt;                                                     20 </span>
-<span class="co">#&gt;                                            feces,mouth </span>
-<span class="co">#&gt;                                                      4 </span>
-<span class="co">#&gt;                        feces,mucosa of small intestine </span>
-<span class="co">#&gt;                                                      4 </span>
-<span class="co">#&gt;             feces,stomach,caecum,small intestine,colon </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                                gingiva </span>
-<span class="co">#&gt;                                                      5 </span>
-<span class="co">#&gt;                                            hypopharynx </span>
-<span class="co">#&gt;                                                      1 </span>
-<span class="co">#&gt;                                                  ileum </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                   Major salivary gland </span>
-<span class="co">#&gt;                                                      1 </span>
-<span class="co">#&gt;                                                  mouth </span>
-<span class="co">#&gt;                                                     57 </span>
-<span class="co">#&gt;          mouth,skin of cheek,tongue,gingiva,oropharynx </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                        mucosa of small intestine,feces </span>
-<span class="co">#&gt;                                                      3 </span>
-<span class="co">#&gt;                                      mucosa of stomach </span>
-<span class="co">#&gt;                                                      3 </span>
-<span class="co">#&gt;                                            nasopharynx </span>
-<span class="co">#&gt;                                                     38 </span>
-<span class="co">#&gt;                                 nasopharynx,oropharynx </span>
-<span class="co">#&gt;                                                      8 </span>
-<span class="co">#&gt;                                             nose,mouth </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                             oral gland </span>
-<span class="co">#&gt;                                                     51 </span>
-<span class="co">#&gt;                                             oropharynx </span>
-<span class="co">#&gt;                                                     24 </span>
-<span class="co">#&gt;                                                 rectum </span>
-<span class="co">#&gt;                                                     24 </span>
-<span class="co">#&gt;                                 saliva-secreting gland </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                        small intestine </span>
-<span class="co">#&gt;                                                     10 </span>
-<span class="co">#&gt;                                           sputum,mouth </span>
-<span class="co">#&gt;                                                      2 </span>
-<span class="co">#&gt;                                                stomach </span>
-<span class="co">#&gt;                                                     41 </span>
-<span class="co">#&gt;                              subgingival dental plaque </span>
-<span class="co">#&gt;                                                     11 </span>
-<span class="co">#&gt;                                                 tongue </span>
-<span class="co">#&gt;                                                     28</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subsetByOntology.html">subsetByOntology</a></span><span class="op">(</span><span class="va">bsdb</span>,</span>
+<span>                        column <span class="op">=</span> <span class="st">"Body site"</span>,</span>
+<span>                        term <span class="op">=</span> <span class="st">"digestive system"</span>,</span>
+<span>                        ontology <span class="op">=</span> <span class="va">uberon</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 410  48</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Body site"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                                         bronchus,mouth </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                          buccal mucosa </span></span>
+<span><span class="co">#&gt;                                                      6 </span></span>
+<span><span class="co">#&gt;                                buccal mucosa,lower lip </span></span>
+<span><span class="co">#&gt;                                                      8 </span></span>
+<span><span class="co">#&gt;                                                 caecum </span></span>
+<span><span class="co">#&gt;                                                     15 </span></span>
+<span><span class="co">#&gt;                                                  colon </span></span>
+<span><span class="co">#&gt;                                                     19 </span></span>
+<span><span class="co">#&gt;                                         colonic mucosa </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                          dental plaque </span></span>
+<span><span class="co">#&gt;                                                     13 </span></span>
+<span><span class="co">#&gt; digestive system,digestive tract,lower digestive tract </span></span>
+<span><span class="co">#&gt;                                                     20 </span></span>
+<span><span class="co">#&gt;                                            feces,mouth </span></span>
+<span><span class="co">#&gt;                                                      4 </span></span>
+<span><span class="co">#&gt;                        feces,mucosa of small intestine </span></span>
+<span><span class="co">#&gt;                                                      4 </span></span>
+<span><span class="co">#&gt;             feces,stomach,caecum,small intestine,colon </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                                gingiva </span></span>
+<span><span class="co">#&gt;                                                      5 </span></span>
+<span><span class="co">#&gt;                                            hypopharynx </span></span>
+<span><span class="co">#&gt;                                                      1 </span></span>
+<span><span class="co">#&gt;                                                  ileum </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                   Major salivary gland </span></span>
+<span><span class="co">#&gt;                                                      1 </span></span>
+<span><span class="co">#&gt;                                                  mouth </span></span>
+<span><span class="co">#&gt;                                                     57 </span></span>
+<span><span class="co">#&gt;          mouth,skin of cheek,tongue,gingiva,oropharynx </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                        mucosa of small intestine,feces </span></span>
+<span><span class="co">#&gt;                                                      3 </span></span>
+<span><span class="co">#&gt;                                      mucosa of stomach </span></span>
+<span><span class="co">#&gt;                                                      3 </span></span>
+<span><span class="co">#&gt;                                            nasopharynx </span></span>
+<span><span class="co">#&gt;                                                     38 </span></span>
+<span><span class="co">#&gt;                                 nasopharynx,oropharynx </span></span>
+<span><span class="co">#&gt;                                                      8 </span></span>
+<span><span class="co">#&gt;                                             nose,mouth </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                             oral gland </span></span>
+<span><span class="co">#&gt;                                                     51 </span></span>
+<span><span class="co">#&gt;                                             oropharynx </span></span>
+<span><span class="co">#&gt;                                                     24 </span></span>
+<span><span class="co">#&gt;                                                 rectum </span></span>
+<span><span class="co">#&gt;                                                     24 </span></span>
+<span><span class="co">#&gt;                                 saliva-secreting gland </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                        small intestine </span></span>
+<span><span class="co">#&gt;                                                     10 </span></span>
+<span><span class="co">#&gt;                                           sputum,mouth </span></span>
+<span><span class="co">#&gt;                                                      2 </span></span>
+<span><span class="co">#&gt;                                                stomach </span></span>
+<span><span class="co">#&gt;                                                     41 </span></span>
+<span><span class="co">#&gt;                              subgingival dental plaque </span></span>
+<span><span class="co">#&gt;                                                     11 </span></span>
+<span><span class="co">#&gt;                                                 tongue </span></span>
+<span><span class="co">#&gt;                                                     28</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R Under development (unstable) (2022-03-14 r81896)</span>
-<span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
-<span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; locale:</span>
-<span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span>
-<span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span>
-<span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span>
-<span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span>
-<span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span>
-<span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; attached base packages:</span>
-<span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] bugsigdbr_1.1.12 BiocStyle_2.23.1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] tidyselect_1.1.2    xfun_0.30           bslib_0.3.1        </span>
-<span class="co">#&gt;  [4] purrr_0.3.4         vctrs_0.4.1         generics_0.1.2     </span>
-<span class="co">#&gt;  [7] htmltools_0.5.2     BiocFileCache_2.3.4 yaml_2.3.5         </span>
-<span class="co">#&gt; [10] utf8_1.2.2          blob_1.2.3          rlang_1.0.2        </span>
-<span class="co">#&gt; [13] pkgdown_2.0.2.9000  jquerylib_0.1.4     pillar_1.7.0       </span>
-<span class="co">#&gt; [16] glue_1.6.2          DBI_1.1.2           rappdirs_0.3.3     </span>
-<span class="co">#&gt; [19] bit64_4.0.5         dbplyr_2.1.1        lifecycle_1.0.1    </span>
-<span class="co">#&gt; [22] stringr_1.4.0       ragg_1.2.2          memoise_2.0.1      </span>
-<span class="co">#&gt; [25] evaluate_0.15       knitr_1.38          fastmap_1.1.0      </span>
-<span class="co">#&gt; [28] curl_4.3.2          fansi_1.0.3         ontologyIndex_2.7  </span>
-<span class="co">#&gt; [31] Rcpp_1.0.8.3        filelock_1.0.2      BiocManager_1.30.16</span>
-<span class="co">#&gt; [34] cachem_1.0.6        desc_1.4.1          jsonlite_1.8.0     </span>
-<span class="co">#&gt; [37] systemfonts_1.0.4   fs_1.5.2            bit_4.0.4          </span>
-<span class="co">#&gt; [40] textshaping_0.3.6   digest_0.6.29       stringi_1.7.6      </span>
-<span class="co">#&gt; [43] bookdown_0.26       dplyr_1.0.8         rprojroot_2.0.3    </span>
-<span class="co">#&gt; [46] cli_3.2.0           tools_4.2.0         magrittr_2.0.3     </span>
-<span class="co">#&gt; [49] sass_0.4.1          RSQLite_2.2.12      tibble_3.1.6       </span>
-<span class="co">#&gt; [52] crayon_1.5.1        pkgconfig_2.0.3     ellipsis_0.3.2     </span>
-<span class="co">#&gt; [55] assertthat_0.2.1    rmarkdown_2.13      httr_1.4.2         </span>
-<span class="co">#&gt; [58] R6_2.5.1            compiler_4.2.0</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.2.1 (2022-06-23)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
+<span><span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span></span>
+<span><span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span></span>
+<span><span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span></span>
+<span><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span><span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt; [1] bugsigdbr_1.3.2  BiocStyle_2.24.0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;  [1] Rcpp_1.0.9          pillar_1.8.1        bslib_0.4.0        </span></span>
+<span><span class="co">#&gt;  [4] compiler_4.2.1      BiocManager_1.30.19 jquerylib_0.1.4    </span></span>
+<span><span class="co">#&gt;  [7] dbplyr_2.2.1        tools_4.2.1         digest_0.6.30      </span></span>
+<span><span class="co">#&gt; [10] bit_4.0.4           tibble_3.1.8        lifecycle_1.0.3    </span></span>
+<span><span class="co">#&gt; [13] jsonlite_1.8.3      evaluate_0.17       memoise_2.0.1      </span></span>
+<span><span class="co">#&gt; [16] BiocFileCache_2.4.0 RSQLite_2.2.18      pkgconfig_2.0.3    </span></span>
+<span><span class="co">#&gt; [19] rlang_1.0.6         cli_3.4.1           DBI_1.1.3          </span></span>
+<span><span class="co">#&gt; [22] filelock_1.0.2      curl_4.3.3          yaml_2.3.6         </span></span>
+<span><span class="co">#&gt; [25] pkgdown_2.0.6.9000  xfun_0.34           fastmap_1.1.0      </span></span>
+<span><span class="co">#&gt; [28] withr_2.5.0         httr_1.4.4          dplyr_1.0.10       </span></span>
+<span><span class="co">#&gt; [31] stringr_1.4.1       knitr_1.40          rappdirs_0.3.3     </span></span>
+<span><span class="co">#&gt; [34] generics_0.1.3      desc_1.4.2          fs_1.5.2           </span></span>
+<span><span class="co">#&gt; [37] sass_0.4.2          vctrs_0.5.0         systemfonts_1.0.4  </span></span>
+<span><span class="co">#&gt; [40] tidyselect_1.2.0    rprojroot_2.0.3     bit64_4.0.5        </span></span>
+<span><span class="co">#&gt; [43] glue_1.6.2          R6_2.5.1            textshaping_0.3.6  </span></span>
+<span><span class="co">#&gt; [46] ontologyIndex_2.10  fansi_1.0.3         rmarkdown_2.17     </span></span>
+<span><span class="co">#&gt; [49] bookdown_0.29       purrr_0.3.5         blob_1.2.3         </span></span>
+<span><span class="co">#&gt; [52] magrittr_2.0.3      htmltools_0.5.3     assertthat_0.2.1   </span></span>
+<span><span class="co">#&gt; [55] ragg_1.2.4          utf8_1.2.2          stringi_1.7.8      </span></span>
+<span><span class="co">#&gt; [58] cachem_1.0.6</span></span></code></pre></div>
 </div>
   </div>
 
@@ -636,8 +638,7 @@ system.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer>

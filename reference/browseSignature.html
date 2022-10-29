@@ -18,7 +18,7 @@ signatures on BugSigDB signature pages."><!-- mathjax --><script src="https://cd
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.2</span>
       </span>
     </div>
 
@@ -58,7 +58,7 @@ signatures on BugSigDB signature pages.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">browseSignature</span><span class="op">(</span><span class="va">sname</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">browseSignature</span><span class="op">(</span><span class="va">sname</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -67,10 +67,13 @@ signatures on BugSigDB signature pages.</p>
 <dd><p>character. Signature name. Expected to start with a prefix
 of the form <code>"bsdb:&lt;X&gt;/&lt;Y&gt;/&lt;Z&gt;_"</code> encoding the corresponding
 BugSigDB signature ID.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The URL of the selected BugSigDB signature page. If interactive,
+    
+
+<p>The URL of the selected BugSigDB signature page. If interactive,
 opens the URL in the default web browser.</p>
     </div>
     <div id="references">
@@ -80,11 +83,11 @@ opens the URL in the default web browser.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in">  <span class="va">sname</span> <span class="op">&lt;-</span> <span class="st">"bsdb:215/1/1_eczema:infant-with-eczema_vs_healthy-control_UP"</span></span>
-<span class="r-in">  <span class="fu">browseSignature</span><span class="op">(</span><span class="va">sname</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">sname</span> <span class="op">&lt;-</span> <span class="st">"bsdb:215/1/1_eczema:infant-with-eczema_vs_healthy-control_UP"</span></span></span>
+<span class="r-in"><span>  <span class="fu">browseSignature</span><span class="op">(</span><span class="va">sname</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://bugsigdb.org/Study_215/Experiment_1/Signature_1"</span>
-<span class="r-in">  </span>
+<span class="r-in"><span>  </span></span>
 </code></pre></div>
     </div>
   </div>
@@ -99,8 +102,7 @@ opens the URL in the default web browser.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>
