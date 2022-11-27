@@ -36,45 +36,18 @@ BiocManager::install("waldronlab/bugsigdbr")
 ## Example
 
 ``` r
-library("bugsigdbr")
-
+library(bugsigdbr)
 bsdb <- bugsigdbr::importBugSigDB()
 ```
 
 ## Citation
 
-Below is the citation output from using `citation('bugsigdbr')` in R.
-Please run this yourself to check for any updates on how to cite
-**bugsigdbr**.
+Ludwig Geistlinger, Chloe Mirzayi, Fatima Zohra, Rimsha Azhar,
+Shaimaa Elsafoury, Claire Grieve, Jennifer Wokaty, Samuel David Gamboa-Tuz,
+Pratyay Sengupta, Isaac Hecht, Aarthi Ravikrishnan, Rafael Goncalves,
+Eric Franzosa, Karthik Raman, Vincent Carey, Jennifer B. Dowd,
+Heidi E. Jones, Sean Davis, Nicola Segata, Curtis Huttenhower, Levi Waldron (2022)
+BugSigDB: accelerating microbiome research through systematic comparison to published
+microbial signatures. medRxiv, doi:
+[10.1101/2022.10.24.22281483](https://doi.org/10.1101/2022.10.24.22281483).
 
-``` r
-print(citation('bugsigdbr'), bibtex = TRUE)
-```
-    ## 
-    ## To cite package 'bugsigdbr' in publications use:
-    ## 
-    ##   Ludwig Geistlinger and Levi Waldron (NA). bugsigdbr: R-side access to
-    ##   published microbial signatures from BugSigDB. R package version
-    ##   0.99.0. https://github.com/waldronlab/bugsigdbr
-    ## 
-    ## A BibTeX entry for LaTeX users is
-    ## 
-    ##   @Manual{,
-    ##     title = {bugsigdbr: R-side access to published microbial signatures from BugSigDB},
-    ##     author = {Ludwig Geistlinger and Levi Waldron},
-    ##     note = {R package version 0.99.0},
-    ##     url = {https://github.com/waldronlab/bugsigdbr},
-    ##   }
-
-Please note that the `bugsigdbr` was only made possible thanks to many
-other R and bioinformatics software authors, which are cited either in
-the vignettes and/or the paper(s) describing this package.
-
-## Code of Conduct
-
-Please note that the `bugsigdbr` project is released with a [Contributor
-Code of Conduct](http://bioconductor.org/about/code-of-conduct/). By
-contributing to this project, you agree to abide by its terms.
-
-This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.13/biocthis)*.
