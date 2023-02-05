@@ -45,13 +45,6 @@
             if(!isFALSE(nu)) 
                 suppressWarnings(BiocFileCache::bfcdownload(bfc, rid,
                                                             ask = FALSE, ...))
-            if(.Platform$OS.type == "windows")
-            {
-                tmp.files <- list.files(cache.dir,
-                                        pattern = "^file[0-9a-z]+$",
-                                        full.names = TRUE)
-                file.remove(tmp.files)
-            }
             message("Using cached version from ", qgsc$create_time)
             res <- BiocFileCache::bfcrpath(bfc, rname)
         }
