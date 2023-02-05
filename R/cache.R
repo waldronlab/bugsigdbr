@@ -43,10 +43,13 @@
             BiocFileCache:::.sql_set_expires(bfc, rid, NA)
             nu <- BiocFileCache::bfcneedsupdate(bfc, rid)
             if(!isFALSE(nu)) 
-                suppressWarnings(BiocFileCache::bfcdownload(bfc, rid, ask = FALSE, ...))
+                suppressWarnings(BiocFileCache::bfcdownload(bfc, rid,
+                                                            ask = FALSE, ...))
             if(.Platform$OS.type == "windows")
             {
-                tmp.files <- list.files(cache.dir, pattern = "^file[0-9a-z]+$")
+                tmp.files <- list.files(cache.dir,
+                                        pattern = "^file[0-9a-z]+$",
+                                        full.names = TRUE)
                 file.remove(tmp.files)
             }
             message("Using cached version from ", qgsc$create_time)
