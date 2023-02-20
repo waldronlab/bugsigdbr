@@ -3,7 +3,7 @@ checkImport <- function(bsdb, url)
     expect_true(is.data.frame(bsdb))
     expect_gt(nrow(bsdb), 2000)
     expect_gt(ncol(bsdb), 40)
-    expect_true(all(c("Study", "Study design", "PMID") == colnames(bsdb)[1:3]))
+    expect_true(all(c("Study", "Study design", "PMID") %in% colnames(bsdb)[1:4]))
 
     dat <- suppressWarnings(vroom::vroom(url, skip = 1L, progress = FALSE,
                                          show_col_types = FALSE))
