@@ -350,6 +350,7 @@ writeGMT <- function(sigs, gmt.file) {
         subind <- istl[unlist(ind)]
         subind <- relist(subind, ind)
         sigs <- mapply(`[`, sigs, subind)
+        if(is.matrix(sigs)) sigs <- as.list(data.frame(sigs))
     }
 
     if (tax.id.type != "metaphlan") {
