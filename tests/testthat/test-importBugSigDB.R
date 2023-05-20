@@ -11,6 +11,9 @@ checkImport <- function(bsdb, url)
     dat[["MetaPhlAn taxon names"]] <- strsplit(dat[["MetaPhlAn taxon names"]],
                                                ",")
     dat[["NCBI Taxonomy IDs"]] <- strsplit(dat[["NCBI Taxonomy IDs"]], ";")
+    .rmEmpty <- function(x) x[x != ""] 
+    dat[["MetaPhlAn taxon names"]] <- lapply(dat[["MetaPhlAn taxon names"]], .rmEmpty)
+    dat[["NCBI Taxonomy IDs"]] <- lapply(dat[["NCBI Taxonomy IDs"]], .rmEmpty)
     expect_true(identical(bsdb, dat))
 }
 
@@ -34,8 +37,8 @@ test_that("importBugSigDB from github hash", {
 })
 
 test_that("importBugSigDB error with bad version", {
-  expect_error(bugsigdbr::importBugSigDB(version = "abcdef1234", cache = FALSE),
-               paste("Version abcdef1234 does not exist. The version must be a DOI,",
-                     "such as '10.5281/zenodo.5819260', a Github hash, such as",
-                     "'30383a9', or 'devel'.", sep = " "))
+  expect_error(bugsigdbr::importBugSigDB(version = "abcde-1234", cache = FALSE),
+               paste("Version abcde-1234 does not exist. The version must be a DOI",
+                     "such as '10.5281/zenodo.5819260', a Github hash such as",
+                     "'30383a9', or 'devel'."))
 })
