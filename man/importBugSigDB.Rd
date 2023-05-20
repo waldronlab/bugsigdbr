@@ -9,7 +9,7 @@ importBugSigDB(version = "10.5281/zenodo.6468009", cache = TRUE)
 \arguments{
 \item{version}{character. A Zenodo DOI, git commit hash, or "devel".
 Defaults to the most recent stable release on Zenodo, which includes
-complete and reviewed content from BugSigDB.}
+complete and reviewed content from BugSigDB. See details.}
 
 \item{cache}{logical. Should a locally cached version used if available?
 Defaults to \code{TRUE}.}
@@ -19,6 +19,35 @@ a \code{\link{data.frame}}.
 }
 \description{
 Obtain published microbial signatures from bugsigdb.org
+}
+\details{
+There are three different options to obtain data from 
+BugSigDB, as determined by the \code{version} argument.
+\itemize{
+\item a Zenodo DOI: use this option if you would like to obtain
+one of the stable release versions of BugSigDB on Zenodo. These
+stable release versions of BugSigDB have been automatically checked and
+manually reviewed and provide for the highest data quality. Select this option
+if you would like to incorporate BugSigDB into analysis and published
+research. If not specified otherwise, the \code{importBugSigDB} function
+will obtain the most recent stable release from Zenodo by default.
+\item \code{"devel"}: use this option to obtain the latest version
+("bleeding edge") of BugSigDB from the BugSigDBExports GitHub repo 
+(see references).
+Note that this will also include incomplete and not reviewed content,
+which should be filtered out prior to an analysis.
+Select this option if you are a curator that actively contributes to
+BugSigDB and would like to access data that you and other curators have 
+recently contributed to BugSigDB and that has not been included in a stable
+release yet. 
+\item a git commit hash: it might be occasionally of interest to obtain
+a specific snapshot of the BugSigDBExports GitHub repo, e.g. for the sake of 
+debugging and troubleshooting. This can be done by providing the short
+7-character git commit hash (SHA) or the full SHA of the export of choice.
+To provide the full SHA, go to the BugSigDBExports commits page (see references)
+and use the copy symbol to the left of the 7-character codes to copy the full
+SHA code of the export version you want to use. 
+}
 }
 \examples{
 
@@ -32,4 +61,7 @@ Stable release: \url{https://doi.org/10.5281/zenodo.5606165}
 
 Latest version (incl. not reviewed content): 
      \url{https://github.com/waldronlab/BugSigDBExports}
+
+BugSigDBExports commits page:
+     \url{https://github.com/waldronlab/BugSigDBExports/commits/main}
 }

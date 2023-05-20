@@ -1,5 +1,5 @@
 Package: bugsigdbr
-Version: 1.7.1
+Version: 1.7.2
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
     person(given = "Ludwig",
@@ -38,4 +38,4 @@ License: GPL-3
 VignetteBuilder: knitr
 biocViews: DataImport, GeneSetEnrichment, Metagenomics, Microbiome
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
