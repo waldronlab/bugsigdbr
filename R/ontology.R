@@ -16,9 +16,9 @@
 #' @param column character. Column of \code{df} on which subsetting should be
 #' performed. Should be either \code{"Body site"} (default) or \code{"Condition"}.
 #' @param term character. A valid term of \code{ontology}. Subsetting by this term
-#' then involves subsetting \code{column} to all descendants of that term in the
-#' the chosen \code{ontology} and that are present in the chosen \code{column} of
-#' \code{df}. 
+#' then involves subsetting \code{column} to this term and all descendants of that
+#' term in the the chosen \code{ontology} and that are present in the chosen
+#' \code{column} of \code{df}. 
 #' @param ontology an object of class \code{ontology_index} as defined in the
 #' ontologyIndex package. Typically obtained via \code{\link{getOntology}}.
 #' @return a \code{data.frame} with the chosen column restricted to descendants
@@ -50,7 +50,6 @@ subsetByOntology <- function(df,
                              term, 
                              ontology)
 {
-    
     if(!requireNamespace("ontologyIndex"))
         stop("Please install the 'ontologyIndex' package to use 'subsetByOntology'")
     
@@ -69,6 +68,12 @@ subsetByOntology <- function(df,
     # ... and check whether term of interest is among them
     ancs <- lapply(ids, function(i) ontology$name[unlist(ontology$ancestors[i])])
     ind <- vapply(ancs, function(a) term %in% a, logical(1))
+
+    # include signatures associated with term itself
+    ind.term <- df[[column]] == term 
+    ind.nna <- !is.na(df[[column]])
+    ind.term <- ind.nna & ind.term 
+    ind <- ind | ind.term
 
     return(df[ind,])
 }

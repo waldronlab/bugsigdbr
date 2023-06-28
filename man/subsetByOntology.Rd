@@ -14,9 +14,9 @@ subsetByOntology(df, column = c("Body site", "Condition"), term, ontology)
 performed. Should be either \code{"Body site"} (default) or \code{"Condition"}.}
 
 \item{term}{character. A valid term of \code{ontology}. Subsetting by this term
-then involves subsetting \code{column} to all descendants of that term in the
-the chosen \code{ontology} and that are present in the chosen \code{column} of
-\code{df}.}
+then involves subsetting \code{column} to this term and all descendants of that
+term in the the chosen \code{ontology} and that are present in the chosen
+\code{column} of \code{df}.}
 
 \item{ontology}{an object of class \code{ontology_index} as defined in the
 ontologyIndex package. Typically obtained via \code{\link{getOntology}}.}

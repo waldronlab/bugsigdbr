@@ -243,9 +243,9 @@ implements subsetting by more general ontology terms. This facilitates grouping
 of signatures that semantically belong together.
 
 More specifically, subsetting BugSigDB signatures by an EFO term then involves
-subsetting the `Condition` column to all descendants of that term in the EFO
-ontology and that are present in the `Condition` column. Here, we demonstrate
-the usage by subsetting to signatures associated with cancer. 
+subsetting the `Condition` column to the term itself and all descendants of that
+term in the EFO ontology and that are present in the `Condition` column. Here,
+we demonstrate the usage by subsetting to signatures associated with cancer. 
 
 ```{r subsetByEfo}
 sdf <- subsetByOntology(bsdb,
@@ -256,11 +256,11 @@ dim(sdf)
 table(sdf[,"Condition"])
 ```
 
-And analogously, subsetting by an UBERON term will involves subsetting the
-`Body site` column to all  descendants of that term in the UBERON ontology and
-that are present in the `Body site` column. For example, we can use `subsetByOntology`
-to subset to signatures for which microbiome samples have been obtained from
-parts of the digestive system.
+And analogously, subsetting by an UBERON term involves subsetting the
+`Body site` column to the term itself and all descendants of that term in the
+UBERON ontology and that are present in the `Body site` column. For example,
+we can use `subsetByOntology` to subset to signatures for which microbiome
+samples have been obtained from parts of the digestive system.
 
 ```{r subsetByUberon}
 sdf <- subsetByOntology(bsdb,
