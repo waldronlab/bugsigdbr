@@ -41,11 +41,15 @@ getSignatures <- function(df,
              paste(TAX.LEVELS, collapse = ", "),
              " }")
 
+    # rm NA signatures
+    nna <- !is.na(df[["MetaPhlAn taxon names"]])
+    df <- df[nna,]
+
     # extract signatures
     is.study <- grepl("^Study [0-9]+$", df[["Study"]])
     is.exp <- grepl("^Experiment [0-9]+$", df[["Experiment"]])
     df <- df[is.study & is.exp, ]
-
+    
     snames <- .makeSigNames(df)
     sigs <- .extractSigs(df, tax.id.type, tax.level, exact.tax.level)
     names(sigs) <- paste(snames$id, snames$titles, sep = "_")
@@ -87,14 +91,18 @@ getSignatures <- function(df,
 #' @seealso getSignatures
 #' @examples
 #'  df <- importBugSigDB()
+#'
 #'  # Body-site specific meta-signatures composed from signatures reported as both 
 #'  # increased or decreased across all conditions of study:
 #'  bs.meta.sigs <- getMetaSignatures(df, column = "Body site")
-#'  # Condition-specific meta-signatures from feces samples, increased
+#'
+#'  # Condition-specific meta-signatures from fecal samples, increased
 #'  # in conditions of study. Use taxonomic names instead of the default NCBI IDs:
 #'  df.feces <- df[df$`Body site` == "feces", ]
 #'  cond.meta.sigs <- getMetaSignatures(df.feces, column = "Condition", 
-#'                      direction = "UP", tax.id.type = "taxname")
+#'                                      direction = "UP", tax.id.type = "taxname")
+#'
+#'  # Inspect the results
 #'  names(cond.meta.sigs)
 #'  cond.meta.sigs["bipolar disorder"]
 #' @export
@@ -198,6 +206,10 @@ restrictTaxLevel <- function(df,
         stop("tax.level must be a subset of { ",
              paste(TAX.LEVELS, collapse = ", "),
              " }")
+
+    # rm NA signatures
+    nna <- !is.na(df[["MetaPhlAn taxon names"]])
+    df <- df[nna,]
 
     # extract signatures
     is.study <- grepl("^Study [0-9]+$", df[["Study"]])
@@ -328,24 +340,22 @@ writeGMT <- function(sigs, gmt.file) {
     cat(all.str, file = gmt.file, sep = "")
 }
 
-.extractSigs <- function(sigdf, tax.id.type, tax.level, exact.tax.level) {
+.extractSigs <- function(sigdf, tax.id.type, tax.level, exact.tax.level)
+{
     id.col <- ifelse(tax.id.type == "ncbi",
                      "NCBI Taxonomy IDs",
                      "MetaPhlAn taxon names")
     sigs <- sigdf[[id.col]]
 
-    if (tax.level[1] != "mixed") {
-
+    if (tax.level[1] != "mixed")
+    {
         if (tax.id.type == "ncbi")
-            msigs <- sigdf[["MetaPhlAn taxon names"]]
-        else {
-            if (!exact.tax.level)
-                sigs <- lapply(sigs, .extractTaxLevelSig, tax.level = tax.level)
-            msigs <- sigs
-        }
+            sigs <- .addPrefix(sigs, sigdf[["MetaPhlAn taxon names"]])
+        if (!exact.tax.level)
+            sigs <- lapply(sigs, .extractTaxLevelSig, tax.level = tax.level)
 
-        bugs <- unique(unlist(msigs))
-        ind <- lapply(msigs, function(s) match(s, bugs))
+        bugs <- unique(unlist(sigs))
+        ind <- lapply(sigs, function(s) match(s, bugs))
         istl <- vapply(bugs, .isTaxLevel, logical(1), tax.level = tax.level)
         subind <- istl[unlist(ind)]
         subind <- relist(subind, ind)
@@ -355,20 +365,38 @@ writeGMT <- function(sigs, gmt.file) {
 
     if (tax.id.type != "metaphlan") {
         sigs <- lapply(sigs, .getTip)
-        if (tax.id.type == "taxname")
-            sigs <- lapply(sigs, function(s) sub(MPA.REGEXP, "", s))
+        sigs <- lapply(sigs, function(s) sub(MPA.REGEXP, "", s))
     }
+
     return(sigs)
 }
 
-.extractTaxLevelSig <- function(sig, tax.level) {
+.addPrefix <- function(sigs, msigs)
+{
+    s <- unlist(sigs)
+    m <- unlist(msigs)
+    s <- strsplit(s, "\\|")
+    m <- strsplit(m, "\\|")
+    sl <- unlist(s)
+    msl <- unlist(m)
+    msl <- substring(msl, 1, 3)
+    sl <- paste0(msl, sl)     
+    s <- relist(sl, s)   
+    s <- lapply(s, paste, collapse = "|")
+    s <- unlist(s)
+    s <- relist(s, sigs)
+}
+
+.extractTaxLevelSig <- function(sig, tax.level)
+{
     vapply(sig,
            .extractTaxLevel,
            character(1),
            tax.level = tax.level, USE.NAMES = FALSE)
 }
 
-.extractTaxLevel <- function(bug, tax.level) {
+.extractTaxLevel <- function(bug, tax.level)
+{
     if (is.na(bug))
         return(bug)
     tip <- .getTip(bug)
@@ -382,7 +410,8 @@ writeGMT <- function(sigs, gmt.file) {
     return(bug)
 }
 
-.isTaxLevel <- function(s, tax.level) {
+.isTaxLevel <- function(s, tax.level)
+{
     if (tax.level[1] == "mixed")
         return(s)
     tip <- .getTip(s)
@@ -391,12 +420,14 @@ writeGMT <- function(sigs, gmt.file) {
     tip %in% mtl
 }
 
-.getTip <- function(n) {
+.getTip <- function(n)
+{
     spl <- strsplit(n, "\\|")
     vapply(spl, function(s) s[length(s)], character(1))
 }
 
-.makeSigNames <- function(df) {
+.makeSigNames <- function(df)
+{
     # process experiment information
     eid <- sub("^Experiment ", "", df[["Experiment"]])
     sid <- sub("^Study ", "", df[["Study"]])
@@ -418,7 +449,8 @@ writeGMT <- function(sigs, gmt.file) {
     list(id = id, titles = titles)
 }
 
-.study2pmid <- function(df) {
+.study2pmid <- function(df)
+{
     df <- unique(df[, c("Study", "PMID")])
     s2pmid <- df[["PMID"]]
     names(s2pmid) <- df[["Study"]]
@@ -434,8 +466,9 @@ writeGMT <- function(sigs, gmt.file) {
 .getMAnalyst <- function(tax.id.type,
                          tax.level,
                          cache,
-                         lib = c("host_int", "host_ext", "env", "mic_int",
-                                 "gene")) {
+                         lib = c("host_int", "host_ext",
+                                 "env", "mic_int", "gene"))
+{
     lib <- match.arg(lib)
 
     # cache ?

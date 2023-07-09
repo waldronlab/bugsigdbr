@@ -1,5 +1,5 @@
 Package: bugsigdbr
-Version: 1.6.2
+Version: 1.6.3
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
     person(given = "Ludwig",
