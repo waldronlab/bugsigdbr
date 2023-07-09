@@ -51,7 +51,7 @@ test_that("min.taxa", {
     expect_true(all(lengths(co.msigs) > 4))
     bs.msigs.8 <- getMetaSignatures(bsdb, "Body site", min.taxa = 8)
     checkSigs(bs.msigs.8, tax.id.type = "ncbi")
-    expect_true(all(lengths(bs.msigs) > 7)) 
+    expect_true(all(lengths(bs.msigs.8) > 7)) 
 })    
 
 test_that("comb.fun", {
