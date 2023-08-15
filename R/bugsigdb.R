@@ -60,8 +60,7 @@ importBugSigDB <- function(version = "10.5281/zenodo.6468009", cache = TRUE)
     } 
     else if(version == "devel" || grepl("^[0-9a-z]{7}", version))
     {
-        if(version == "devel") version <- "main"
-        else version <- substring(version, 1, 7) 
+        if(version != "devel") version <- substring(version, 1, 7)
         url <- paste0("https://raw.githubusercontent.com/waldronlab/",
                       "BugSigDBExports/", version, "/full_dump.csv")
     } 
