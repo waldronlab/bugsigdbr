@@ -1,5 +1,5 @@
 Package: bugsigdbr
-Version: 1.7.5
+Version: 1.7.6
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
     person(given = "Ludwig",
@@ -19,7 +19,7 @@ Description:
     from within R/Bioconductor. The goal of the package is to facilitate import of 
     BugSigDB data into R/Bioconductor, provide utilities for extracting microbe
     signatures, and enable export of the extracted signatures to plain text files
-    in standard file formats such as GMT. 
+    in standard file formats such as GMT.
 URL: https://github.com/waldronlab/bugsigdbr
 BugReports: https://github.com/waldronlab/bugsigdbr/issues
 Depends: R (>= 4.1)
