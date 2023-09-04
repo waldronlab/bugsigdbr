@@ -4,13 +4,15 @@
 \alias{writeGMT}
 \title{Write microbe signatures to file in GMT format}
 \usage{
-writeGMT(sigs, gmt.file)
+writeGMT(sigs, gmt.file, ...)
 }
 \arguments{
 \item{sigs}{A list of microbe signatures (character vectors of taxonomic
 IDs).}
 
 \item{gmt.file}{character. Path to output file in GMT format.}
+
+\item{...}{Arguments passed on to cat()}
 }
 \value{
 none, writes to file.
