@@ -310,6 +310,7 @@ extractTaxLevel <- function(sig,
 #' @param sigs A list of microbe signatures (character vectors of taxonomic
 #' IDs).
 #' @param gmt.file character. Path to output file in GMT format.
+#' @param ... Arguments passed on to cat()
 #' @return none, writes to file.
 #' @references
 #' GMT file format:
@@ -320,7 +321,7 @@ extractTaxLevel <- function(sig,
 #' writeGMT(sigs, gmt.file = "signatures.gmt")
 #' file.remove("signatures.gmt") 
 #' @export
-writeGMT <- function(sigs, gmt.file) {
+writeGMT <- function(sigs, gmt.file, ...) {
     # collapse set members to one tab separated string
     gs.strings <- vapply(sigs,
                          function(x) paste(x, collapse = "\t"),
@@ -337,7 +338,7 @@ writeGMT <- function(sigs, gmt.file) {
     all.str <- paste(all, "\n", sep = "")
 
     # write in gmt format
-    cat(all.str, file = gmt.file, sep = "")
+    cat(all.str, file = gmt.file, sep = "", ...)
 }
 
 .extractSigs <- function(sigdf, tax.id.type, tax.level, exact.tax.level)
