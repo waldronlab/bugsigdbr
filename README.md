@@ -50,7 +50,7 @@ Heidi E. Jones, Sean Davis, Nicola Segata, Curtis Huttenhower, Levi Waldron (202
 BugSigDB captures patterns of differential abundance across a broad range of host-associated microbial signatures. 
 *Nature Biotechnology*, doi: [10.1038/s41587-023-01872-y](https://doi.org/10.1038/s41587-023-01872-y).
 
-# bugsigdb-related links
+## Useful links
 
 * [bugsigdb.org](https://bugsigdb.org): A Comprehensive Database of Published Microbial Signatures
 * [BugSigDB issue tracker](https://github.com/waldronlab/BugSigDB/issues): Report bugs or feature requests for bugsigdb.org
