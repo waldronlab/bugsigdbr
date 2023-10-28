@@ -491,8 +491,9 @@ writeGMT <- function(sigs, gmt.file, ...) {
                       mic_int = "microbiome_int",
                       env = "environment")
     ma.url <- paste0(ma.url, lib, ".csv")
-    cont <- vroom::vroom(ma.url)
-    cont <- as.data.frame(cont)
+    #cont <- vroom::vroom(ma.url)
+    #cont <- as.data.frame(cont)
+    cont <- read.csv(ma.url, check.names = FALSE)
     rel.cols <- c("name", "member", "abund_change")
     cont <- cont[, rel.cols]
 
