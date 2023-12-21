@@ -98,7 +98,7 @@ getSignatures <- function(df,
 #'
 #'  # Condition-specific meta-signatures from fecal samples, increased
 #'  # in conditions of study. Use taxonomic names instead of the default NCBI IDs:
-#'  df.feces <- df[df$`Body site` == "feces", ]
+#'  df.feces <- df[tolower(df$`Body site`) == "feces", ]
 #'  cond.meta.sigs <- getMetaSignatures(df.feces, column = "Condition", 
 #'                                      direction = "UP", tax.id.type = "taxname")
 #'

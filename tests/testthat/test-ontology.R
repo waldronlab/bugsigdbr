@@ -20,12 +20,13 @@ checkOnto <- function(onto, which = c("efo", "uberon"))
 
 checkSubset <- function(sdf, col, pos, neg)
 {
+    print(paste(pos,"and",neg))
     expect_true(is.data.frame(sdf))
     expect_true(nrow(sdf) > 0)
     rel.cols <- c("Body site", "Condition")
     expect_true(all(rel.cols %in% colnames(sdf)))
-    expect_true(all(pos %in% sdf[,col]))
-    expect_false(any(neg %in% sdf[,col]))
+    expect_true(all(tolower(pos) %in% tolower(sdf[,col])))
+    expect_false(any(tolower(neg) %in% tolower(sdf[,col])))
 } 
 
 test_that("getOntology", {
