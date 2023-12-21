@@ -53,9 +53,8 @@ getSignatures <- function(df,
     snames <- .makeSigNames(df)
     sigs <- .extractSigs(df, tax.id.type, tax.level, exact.tax.level)
     names(sigs) <- paste(snames$id, snames$titles, sep = "_")
-    if (min.size)
-        sigs <- sigs[lengths(sigs) >= min.size]
     sigs <- lapply(sigs, unique)
+    sigs <- sigs[lengths(sigs) >= min.size]
     return(sigs)
 }
 
