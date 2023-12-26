@@ -2,6 +2,7 @@ bsdb <- importBugSigDB()
 
 checkSigs <- function(sigs, tax.id.type)
 {
+    sigs <- getSignatures(bsdb)
     expect_true(is.list(sigs))
     expect_true(is.character(sigs[[1]]))
     expect_true(grepl("^bsdb", names(sigs)[1]))
@@ -56,6 +57,7 @@ test_that("min.size", {
     sigs <- getSignatures(bsdb, tax.level = "genus", min.size = 3)
     expect_true(all(lengths(sigs) > 2))
     expect_false(all(lengths(sigs) > 3))
+    expect_false(any(lengths(sigs) < 3))
 })    
 
 
