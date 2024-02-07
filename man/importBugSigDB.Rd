@@ -4,7 +4,7 @@
 \alias{importBugSigDB}
 \title{Obtain published microbial signatures from bugsigdb.org}
 \usage{
-importBugSigDB(version = "10.5281/zenodo.6468009", cache = TRUE)
+importBugSigDB(version = "10.5281/zenodo.10627578", cache = TRUE)
 }
 \arguments{
 \item{version}{character. A Zenodo DOI, git commit hash, or "devel".
@@ -57,11 +57,11 @@ SHA code of the export version you want to use.
 \references{
 BugSigDB: \url{https://bugsigdb.org}
 
-Stable release: \url{https://doi.org/10.5281/zenodo.5606165}
+Stable release: \url{https://doi.org/10.5281/zenodo.10627578}
 
 Latest version (incl. not reviewed content): 
      \url{https://github.com/waldronlab/BugSigDBExports}
 
 BugSigDBExports commits page:
-     \url{https://github.com/waldronlab/BugSigDBExports/commits/main}
+     \url{https://github.com/waldronlab/BugSigDBExports/commits/devel}
 }

@@ -2,7 +2,6 @@ bsdb <- importBugSigDB()
 
 checkSigs <- function(sigs, tax.id.type)
 {
-    sigs <- getSignatures(bsdb)
     expect_true(is.list(sigs))
     expect_true(is.character(sigs[[1]]))
     expect_true(grepl("^bsdb", names(sigs)[1]))

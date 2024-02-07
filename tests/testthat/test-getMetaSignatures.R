@@ -1,5 +1,5 @@
 bsdb <- importBugSigDB()
-df.feces <- subset(bsdb, `Body site` == "feces")
+df.feces <- subset(bsdb, `Body site` == "Feces")
 bs.msigs <- getMetaSignatures(bsdb, "Body site")
 co.msigs <- getMetaSignatures(df.feces, "Condition")
 
