@@ -1,6 +1,6 @@
 # bugsigdbr 
 
-## Changes in version 1.9.1
+## Changes in version 1.8.2
 
 * Uniform first-letter capitalization for Body site and Condition terms
 
