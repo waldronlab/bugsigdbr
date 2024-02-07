@@ -12,12 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="R-side access to published microbial signatures from BugSigDB">
-<meta property="og:description" content="
-    The bugsigdbr package implements convenient access to bugsigdb.org 
-    from within R/Bioconductor. The goal of the package is to facilitate import of 
-    BugSigDB data into R/Bioconductor, provide utilities for extracting microbe
-    signatures, and enable export of the extracted signatures to plain text files
-    in standard file formats such as GMT. ">
+<meta property="og:description" content="The bugsigdbr package implements convenient access to bugsigdb.org from within R/Bioconductor. The goal of the package is to facilitate import of BugSigDB data into R/Bioconductor, provide utilities for extracting microbe signatures, and enable export of the extracted signatures to plain text files in standard file formats such as GMT.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -38,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.9.2</span>
       </span>
     </div>
 
@@ -88,10 +83,10 @@
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"bugsigdbr"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"bugsigdbr"</span><span class="op">)</span></span></code></pre></div>
 <p>Or the development version from <a href="https://github.com/waldronlab/bugsigdbr" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugsigdbr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugsigdbr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -103,7 +98,34 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Ludwig Geistlinger, Chloe Mirzayi, Fatima Zohra, Rimsha Azhar, Shaimaa Elsafoury, Claire Grieve, Jennifer Wokaty, Samuel David Gamboa-Tuz, Pratyay Sengupta, Isaac Hecht, Aarthi Ravikrishnan, Rafael Goncalves, Eric Franzosa, Karthik Raman, Vincent Carey, Jennifer B. Dowd, Heidi E. Jones, Sean Davis, Nicola Segata, Curtis Huttenhower, Levi Waldron (2022) BugSigDB: accelerating microbiome research through systematic comparison to published microbial signatures. medRxiv, doi: <a href="https://doi.org/10.1101/2022.10.24.22281483" class="external-link">10.1101/2022.10.24.22281483</a>.</p>
+<p>Ludwig Geistlinger, Chloe Mirzayi, Fatima Zohra, Rimsha Azhar, Shaimaa Elsafoury, Clare Grieve, Jennifer Wokaty, Samuel David Gamboa-Tuz, Pratyay Sengupta, Isaac Hecht, Aarthi Ravikrishnan, Rafael S. Goncalves, Eric Franzosa, Karthik Raman, Vincent Carey, Jennifer B. Dowd, Heidi E. Jones, Sean Davis, Nicola Segata, Curtis Huttenhower, Levi Waldron (2023) BugSigDB captures patterns of differential abundance across a broad range of host-associated microbial signatures. <em>Nature Biotechnology</em>, doi: <a href="https://doi.org/10.1038/s41587-023-01872-y" class="external-link">10.1038/s41587-023-01872-y</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="useful-links">Useful links<a class="anchor" aria-label="anchor" href="#useful-links"></a>
+</h2>
+<ul>
+<li>
+<a href="https://bugsigdb.org" class="external-link">bugsigdb.org</a>: A Comprehensive Database of Published Microbial Signatures</li>
+<li>
+<a href="https://github.com/waldronlab/BugSigDB/issues" class="external-link">BugSigDB issue tracker</a>: Report bugs or feature requests for bugsigdb.org</li>
+<li>
+<a href="https://github.com/waldronlab/BugSigDBExports" class="external-link">BugSigDBExports</a>: Hourly data exports of bugsigdb.org</li>
+<li>
+<a href="https://zenodo.org/records/6468009" class="external-link">Stable data releases</a>: Periodic manually-reviewed stable data releases on Zenodo</li>
+<li>
+<a href="https://bioconductor.org/packages/bugsigdbr/" class="external-link">bugsigdbr</a>: R/Bioconductor access to published microbial signatures from BugSigDB</li>
+<li>
+<a href="https://github.com/waldronlab/BugSigDBcuration/issues" class="external-link">Curation issues</a>: Report curation issues, requests studies to be added</li>
+<li>
+<a href="https://github.com/waldronlab/bugSigSimple" class="external-link">bugSigSimple</a>: Simple analyses of BugSigDB data in R</li>
+<li>
+<a href="https://github.com/waldronlab/BugSigDBStats" class="external-link">BugSigDBStats</a>: Statistics and trends of BugSigDB</li>
+<li>
+<a href="https://github.com/waldronlab/BugSigDBPaper" class="external-link">BugSigDBPaper</a>: Reproduces analyses of the <a href="https://www.nature.com/articles/s41587-023-01872-y" class="external-link">Nature Biotechnology publication</a>
+</li>
+<li>
+<a href="https://slack.bioconductor.org/" class="external-link">community-bioc Slack Team</a>: Join #bugsigdb slack channel</li>
+</ul>
 </div>
 </div>
   </div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.9.2</span>
       </span>
     </div>
 
@@ -56,7 +56,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">importBugSigDB</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"10.5281/zenodo.6468009"</span>, cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">importBugSigDB</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"10.5281/zenodo.10627578"</span>, cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -64,7 +64,7 @@
     <dl><dt>version</dt>
 <dd><p>character. A Zenodo DOI, git commit hash, or "devel".
 Defaults to the most recent stable release on Zenodo, which includes
-complete and reviewed content from BugSigDB.</p></dd>
+complete and reviewed content from BugSigDB. See details.</p></dd>
 
 
 <dt>cache</dt>
@@ -78,19 +78,48 @@ Defaults to <code>TRUE</code>.</p></dd>
 
 <p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code>.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>There are three different options to obtain data from 
+BugSigDB, as determined by the <code>version</code> argument.</p><ul><li><p>a Zenodo DOI: use this option if you would like to obtain
+one of the stable release versions of BugSigDB on Zenodo. These
+stable release versions of BugSigDB have been automatically checked and
+manually reviewed and provide for the highest data quality. Select this option
+if you would like to incorporate BugSigDB into analysis and published
+research. If not specified otherwise, the <code>importBugSigDB</code> function
+will obtain the most recent stable release from Zenodo by default.</p></li>
+<li><p><code>"devel"</code>: use this option to obtain the latest version
+("bleeding edge") of BugSigDB from the BugSigDBExports GitHub repo 
+(see references).
+Note that this will also include incomplete and not reviewed content,
+which should be filtered out prior to an analysis.
+Select this option if you are a curator that actively contributes to
+BugSigDB and would like to access data that you and other curators have 
+recently contributed to BugSigDB and that has not been included in a stable
+release yet.</p></li>
+<li><p>a git commit hash: it might be occasionally of interest to obtain
+a specific snapshot of the BugSigDBExports GitHub repo, e.g. for the sake of 
+debugging and troubleshooting. This can be done by providing the short
+7-character git commit hash (SHA) or the full SHA of the export of choice.
+To provide the full SHA, go to the BugSigDBExports commits page (see references)
+and use the copy symbol to the left of the 7-character codes to copy the full
+SHA code of the export version you want to use.</p></li>
+</ul></div>
     <div id="references">
     <h2>References</h2>
     <p>BugSigDB: <a href="https://bugsigdb.org" class="external-link">https://bugsigdb.org</a></p>
-<p>Stable release: <a href="https://doi.org/10.5281/zenodo.5606165" class="external-link">https://doi.org/10.5281/zenodo.5606165</a></p>
+<p>Stable release: <a href="https://doi.org/10.5281/zenodo.10627578" class="external-link">https://doi.org/10.5281/zenodo.10627578</a></p>
 <p>Latest version (incl. not reviewed content): 
      <a href="https://github.com/waldronlab/BugSigDBExports" class="external-link">https://github.com/waldronlab/BugSigDBExports</a></p>
+<p>BugSigDBExports commits page:
+     <a href="https://github.com/waldronlab/BugSigDBExports/commits/devel" class="external-link">https://github.com/waldronlab/BugSigDBExports/commits/devel</a></p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">importBugSigDB</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2023-02-20 10:51:00</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-02-07 15:01:01</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
