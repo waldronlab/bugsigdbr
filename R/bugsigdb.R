@@ -37,20 +37,20 @@
 #' @return a \code{\link{data.frame}}.
 #' @references BugSigDB: \url{https://bugsigdb.org}
 #'
-#' Stable release: \url{https://doi.org/10.5281/zenodo.5606165}
+#' Stable release: \url{https://doi.org/10.5281/zenodo.10627578}
 #'
 #' Latest version (incl. not reviewed content): 
 #'      \url{https://github.com/waldronlab/BugSigDBExports}
 #'
 #' BugSigDBExports commits page:
-#'      \url{https://github.com/waldronlab/BugSigDBExports/commits/main}
+#'      \url{https://github.com/waldronlab/BugSigDBExports/commits/devel}
 #' @examples
 #'
 #'  df <- importBugSigDB()
 #'
 #' @importFrom utils read.csv
 #' @export
-importBugSigDB <- function(version = "10.5281/zenodo.6468009", cache = TRUE)
+importBugSigDB <- function(version = "10.5281/zenodo.10627578", cache = TRUE)
 {
     version <- tolower(version)
 

@@ -1,5 +1,9 @@
 # bugsigdbr 
 
+## Changes in version 1.9.1
+
+* Uniform first-letter capitalization for Body site and Condition terms
+
 ## Changes in version 1.2.0
 
 * `importBugSigDB` accepts Zenodo DOIs and Github hashes to obtain

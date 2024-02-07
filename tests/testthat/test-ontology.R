@@ -36,21 +36,21 @@ test_that("getOntology", {
 test_that("subsetByOntology", { 
 
     bterms <- c("excreta", "digestive system", "reproductive system")
-    bpos <- list( c("feces", "meconium", "urine"), 
-                  c("stomach", "colon", "mouth"),
-                  c("vagina", "uterus", "uterine cervix"))
-    bneg <- list( c("stomach", "colon", "mouth"),
-                  c("feces", "meconium", "urine"),
-                  c("feces", "meconium", "urine"))
+    bpos <- list( c("Feces", "Meconium", "Urine"),
+                  c("Stomach", "Colon", "Mouth"),
+                  c("Vagina", "Uterus", "Uterine cervix"))
+    bneg <- list( c("Stomach", "Colon", "Mouth"),
+                  c("Feces", "Meconium", "Urine"),
+                  c("Feces", "Meconium", "Urine"))
     names(bpos) <- names(bneg) <- bterms
 
     cterms <- c("cancer", "nervous system disease", "metabolic disease")
-    cpos <- list( c("gastric cancer", "cervical cancer", "breast cancer"), 
-                  c("autism", "unipolar depression", "schizophrenia"),
-                  c("obesity", "type II diabetes mellitus", "gestational diabetes"))
-    cneg <- list( c("obesity", "anorexia nervosa", "gestational diabetes"),
-                  c("gastric cancer", "cervical cancer", "breast cancer"), 
-                  c("gastric cancer", "cervical cancer", "breast cancer"))
+    cpos <- list( c("Gastric cancer", "Cervical cancer", "Breast cancer"),
+                  c("Autism", "Unipolar depression", "Schizophrenia"),
+                  c("Obesity", "Type II diabetes mellitus", "Gestational diabetes"))
+    cneg <- list( c("Obesity", "Anorexia nervosa", "Gestational diabetes"),
+                  c("Gastric cancer", "Cervical cancer", "Breast cancer"),
+                  c("Gastric cancer", "Cervical cancer", "Breast cancer"))
     names(cpos) <- names(cneg) <- cterms
     
     for(b in bterms)
