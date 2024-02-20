@@ -62,6 +62,16 @@ Stable release: \url{https://doi.org/10.5281/zenodo.10627578}
 Latest version (incl. not reviewed content): 
      \url{https://github.com/waldronlab/BugSigDBExports}
 
+Release v1.2.0: \url{https://zenodo.org/records/10407666}
+
+Release v1.1.0: \url{https://zenodo.org/records/6468009}
+
+Release v1.0.2: \url{https://zenodo.org/records/5904281}
+
+Release v1.0.1: \url{https://zenodo.org/records/5819260}
+
+Release v1.0.0: \url{https://zenodo.org/records/5606166}
+
 BugSigDBExports commits page:
      \url{https://github.com/waldronlab/BugSigDBExports/commits/devel}
 }
