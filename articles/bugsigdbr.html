@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R-side access to published microbial signatures from BugSigDB • bugsigdbr</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.9.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.0</span>
       </span>
     </div>
 
@@ -74,7 +74,7 @@ from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig
 Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">20 February 2024</h4>
+            <h4 data-toc-skip class="date">1 May 2024</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/HEAD/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -358,12 +358,12 @@ package.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">efo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"efo"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required namespace: ontologyIndex</span></span>
-<span><span class="co">#&gt; Using cached version from 2024-02-20 22:04:41</span></span>
+<span><span class="co">#&gt; Using cached version from 2024-05-01 20:19:22</span></span>
 <span><span class="va">efo</span></span>
-<span><span class="co">#&gt; Ontology with 46212 terms</span></span>
+<span><span class="co">#&gt; Ontology with 48680 terms</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; format-version: 1.2</span></span>
-<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.63.0/efo.owl</span></span>
+<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.65.0/efo.owl</span></span>
 <span><span class="co">#&gt; ontology: http://www.ebi.ac.uk/efo/efo.owl</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Properties:</span></span>
@@ -377,18 +377,18 @@ package.</p>
 <span><span class="co">#&gt; Roots:</span></span>
 <span><span class="co">#&gt;  EFO:0000001 - experimental factor</span></span>
 <span><span class="co">#&gt;  EFO:0000824 - relationship</span></span>
-<span><span class="co">#&gt;  has_characteristic - bearer_of</span></span>
+<span><span class="co">#&gt;  RO:0000053 - bearer_of</span></span>
 <span><span class="co">#&gt;  RO:0000057 - has_participant</span></span>
 <span><span class="co">#&gt;  has_part - has part</span></span>
 <span><span class="co">#&gt;  RO:0000056 - participates_in</span></span>
 <span><span class="co">#&gt;  RO:0002502 - depends on</span></span>
-<span><span class="co">#&gt;  disease_has_feature - disease has feature</span></span>
 <span><span class="co">#&gt;  located_in - located_in</span></span>
 <span><span class="co">#&gt;  location_of - location_of</span></span>
-<span><span class="co">#&gt;  ... 49 more</span></span></code></pre></div>
+<span><span class="co">#&gt;  CHEBI:16422 - NA</span></span>
+<span><span class="co">#&gt;  ... 61 more</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using cached version from 2024-02-20 22:05:06</span></span>
+<span><span class="co">#&gt; Using cached version from 2024-05-01 20:19:53</span></span>
 <span><span class="va">uberon</span></span>
 <span><span class="co">#&gt; Ontology with 14107 terms</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -634,9 +634,9 @@ system.</p>
 </h2>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R Under development (unstable) (2024-02-14 r85901)</span></span>
+<span><span class="co">#&gt; R version 4.4.0 Patched (2024-04-24 r86483)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 22.04.3 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.4 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -657,27 +657,27 @@ system.</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] bugsigdbr_1.9.4  BiocStyle_2.31.0</span></span>
+<span><span class="co">#&gt; [1] bugsigdbr_1.11.0 BiocStyle_2.32.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] bit_4.0.5            jsonlite_1.8.8       dplyr_1.1.4         </span></span>
-<span><span class="co">#&gt;  [4] compiler_4.4.0       BiocManager_1.30.22  filelock_1.0.3      </span></span>
-<span><span class="co">#&gt;  [7] tidyselect_1.2.0     blob_1.2.4           stringr_1.5.1       </span></span>
-<span><span class="co">#&gt; [10] jquerylib_0.1.4      systemfonts_1.0.5    textshaping_0.3.7   </span></span>
-<span><span class="co">#&gt; [13] yaml_2.3.8           fastmap_1.1.1        R6_2.5.1            </span></span>
-<span><span class="co">#&gt; [16] generics_0.1.3       curl_5.2.0           knitr_1.45          </span></span>
-<span><span class="co">#&gt; [19] ontologyIndex_2.11   tibble_3.2.1         bookdown_0.37       </span></span>
-<span><span class="co">#&gt; [22] desc_1.4.3           DBI_1.2.2            pillar_1.9.0        </span></span>
-<span><span class="co">#&gt; [25] bslib_0.6.1          rlang_1.1.3          utf8_1.2.4          </span></span>
-<span><span class="co">#&gt; [28] cachem_1.0.8         stringi_1.8.3        xfun_0.42           </span></span>
-<span><span class="co">#&gt; [31] fs_1.6.3             sass_0.4.8           bit64_4.0.5         </span></span>
-<span><span class="co">#&gt; [34] RSQLite_2.3.5        memoise_2.0.1        cli_3.6.2           </span></span>
-<span><span class="co">#&gt; [37] withr_3.0.0          pkgdown_2.0.7.9000   magrittr_2.0.3      </span></span>
-<span><span class="co">#&gt; [40] digest_0.6.34        dbplyr_2.4.0         lifecycle_1.0.4     </span></span>
-<span><span class="co">#&gt; [43] BiocFileCache_2.11.1 vctrs_0.6.5          evaluate_0.23       </span></span>
-<span><span class="co">#&gt; [46] glue_1.7.0           ragg_1.2.7           fansi_1.0.6         </span></span>
-<span><span class="co">#&gt; [49] httr_1.4.7           rmarkdown_2.25       purrr_1.0.2         </span></span>
-<span><span class="co">#&gt; [52] pkgconfig_2.0.3      tools_4.4.0          htmltools_0.5.7</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] sass_0.4.9           utf8_1.2.4           generics_0.1.3      </span></span>
+<span><span class="co">#&gt;  [4] RSQLite_2.3.6        digest_0.6.35        magrittr_2.0.3      </span></span>
+<span><span class="co">#&gt;  [7] evaluate_0.23        bookdown_0.39        fastmap_1.1.1       </span></span>
+<span><span class="co">#&gt; [10] blob_1.2.4           jsonlite_1.8.8       ontologyIndex_2.12  </span></span>
+<span><span class="co">#&gt; [13] DBI_1.2.2            BiocManager_1.30.22  httr_1.4.7          </span></span>
+<span><span class="co">#&gt; [16] purrr_1.0.2          fansi_1.0.6          textshaping_0.3.7   </span></span>
+<span><span class="co">#&gt; [19] jquerylib_0.1.4      cli_3.6.2            rlang_1.1.3         </span></span>
+<span><span class="co">#&gt; [22] dbplyr_2.5.0         bit64_4.0.5          withr_3.0.0         </span></span>
+<span><span class="co">#&gt; [25] cachem_1.0.8         yaml_2.3.8           tools_4.4.0         </span></span>
+<span><span class="co">#&gt; [28] memoise_2.0.1        dplyr_1.1.4          filelock_1.0.3      </span></span>
+<span><span class="co">#&gt; [31] curl_5.2.1           vctrs_0.6.5          R6_2.5.1            </span></span>
+<span><span class="co">#&gt; [34] BiocFileCache_2.12.0 lifecycle_1.0.4      fs_1.6.4            </span></span>
+<span><span class="co">#&gt; [37] htmlwidgets_1.6.4    bit_4.0.5            ragg_1.3.0          </span></span>
+<span><span class="co">#&gt; [40] pkgconfig_2.0.3      desc_1.4.3           pkgdown_2.0.9.9000  </span></span>
+<span><span class="co">#&gt; [43] bslib_0.7.0          pillar_1.9.0         glue_1.7.0          </span></span>
+<span><span class="co">#&gt; [46] systemfonts_1.0.6    xfun_0.43            tibble_3.2.1        </span></span>
+<span><span class="co">#&gt; [49] tidyselect_1.2.1     knitr_1.46           htmltools_0.5.8.1   </span></span>
+<span><span class="co">#&gt; [52] rmarkdown_2.26.2     compiler_4.4.0</span></span></code></pre></div>
 </div>
   </div>
 
@@ -698,7 +698,7 @@ system.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
 
       </footer>
