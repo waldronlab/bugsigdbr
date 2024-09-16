@@ -4,7 +4,7 @@ format."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -18,7 +18,7 @@ format."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.1</span>
       </span>
     </div>
 
@@ -35,20 +35,20 @@ format."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/waldronlab/bugsigdbr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Write microbe signatures to file in GMT format</h1>
-    <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/HEAD/R/getSignatures.R" class="external-link"><code>R/getSignatures.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/devel/R/getSignatures.R" class="external-link"><code>R/getSignatures.R</code></a></small>
     <div class="hidden name"><code>writeGMT.Rd</code></div>
     </div>
 
@@ -63,7 +63,9 @@ format.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt id="arg-sigs">sigs<a class="anchor" aria-label="anchor" href="#arg-sigs"></a></dt>
+
+
+<dl><dt id="arg-sigs">sigs<a class="anchor" aria-label="anchor" href="#arg-sigs"></a></dt>
 <dd><p>A list of microbe signatures (character vectors of taxonomic
 IDs).</p></dd>
 
@@ -78,9 +80,7 @@ IDs).</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>none, writes to file.</p>
+    <p>none, writes to file.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -91,7 +91,7 @@ IDs).</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-05-01 20:19:17</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-09-16 11:05:46</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">writeGMT</span><span class="op">(</span><span class="va">sigs</span>, gmt.file <span class="op">=</span> <span class="st">"signatures.gmt"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="st">"signatures.gmt"</span><span class="op">)</span> </span></span>
@@ -110,15 +110,15 @@ IDs).</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 

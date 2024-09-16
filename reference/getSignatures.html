@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.1</span>
       </span>
     </div>
 
@@ -34,20 +34,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/waldronlab/bugsigdbr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Obtain microbe signatures from BugSigDB</h1>
-    <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/HEAD/R/getSignatures.R" class="external-link"><code>R/getSignatures.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/devel/R/getSignatures.R" class="external-link"><code>R/getSignatures.R</code></a></small>
     <div class="hidden name"><code>getSignatures.Rd</code></div>
     </div>
 
@@ -67,7 +67,9 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt id="arg-df">df<a class="anchor" aria-label="anchor" href="#arg-df"></a></dt>
+
+
+<dl><dt id="arg-df">df<a class="anchor" aria-label="anchor" href="#arg-df"></a></dt>
 <dd><p><code>data.frame</code> storing BugSigDB data. Typically obtained via
 <code><a href="importBugSigDB.html">importBugSigDB</a></code>.</p></dd>
 
@@ -97,9 +99,7 @@ filter out empty signature. Use <code>min.size = 0</code> to keep empty signatur
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>a <code>list</code> of microbe signatures. Each signature is a character
+    <p>a <code>list</code> of microbe signatures. Each signature is a character
 vector of taxonomic IDs depending on the chosen <code>tax.id.type</code>.</p>
     </div>
     <div id="references">
@@ -114,7 +114,7 @@ vector of taxonomic IDs depending on the chosen <code>tax.id.type</code>.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-05-01 20:19:17</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-09-16 11:05:46</span>
 <span class="r-in"><span> <span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">getSignatures</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
@@ -130,15 +130,15 @@ vector of taxonomic IDs depending on the chosen <code>tax.id.type</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 

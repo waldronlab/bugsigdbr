@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.1</span>
       </span>
     </div>
 
@@ -34,20 +34,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/waldronlab/bugsigdbr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Obtain published microbial signatures from bugsigdb.org</h1>
-    <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/HEAD/R/bugsigdb.R" class="external-link"><code>R/bugsigdb.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/devel/R/bugsigdb.R" class="external-link"><code>R/bugsigdb.R</code></a></small>
     <div class="hidden name"><code>importBugSigDB.Rd</code></div>
     </div>
 
@@ -61,7 +61,9 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt id="arg-version">version<a class="anchor" aria-label="anchor" href="#arg-version"></a></dt>
+
+
+<dl><dt id="arg-version">version<a class="anchor" aria-label="anchor" href="#arg-version"></a></dt>
 <dd><p>character. A Zenodo DOI, git commit hash, or "devel".
 Defaults to the most recent stable release on Zenodo, which includes
 complete and reviewed content from BugSigDB. See details.</p></dd>
@@ -74,13 +76,11 @@ Defaults to <code>TRUE</code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code>.</p>
+    <p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>There are three different options to obtain data from 
+    <p>There are three different options to obtain data from
 BugSigDB, as determined by the <code>version</code> argument.</p><ul><li><p>a Zenodo DOI: use this option if you would like to obtain
 one of the stable release versions of BugSigDB on Zenodo. These
 stable release versions of BugSigDB have been automatically checked and
@@ -89,16 +89,16 @@ if you would like to incorporate BugSigDB into analysis and published
 research. If not specified otherwise, the <code>importBugSigDB</code> function
 will obtain the most recent stable release from Zenodo by default.</p></li>
 <li><p><code>"devel"</code>: use this option to obtain the latest version
-("bleeding edge") of BugSigDB from the BugSigDBExports GitHub repo 
+("bleeding edge") of BugSigDB from the BugSigDBExports GitHub repo
 (see references).
 Note that this will also include incomplete and not reviewed content,
 which should be filtered out prior to an analysis.
 Select this option if you are a curator that actively contributes to
-BugSigDB and would like to access data that you and other curators have 
+BugSigDB and would like to access data that you and other curators have
 recently contributed to BugSigDB and that has not been included in a stable
 release yet.</p></li>
 <li><p>a git commit hash: it might be occasionally of interest to obtain
-a specific snapshot of the BugSigDBExports GitHub repo, e.g. for the sake of 
+a specific snapshot of the BugSigDBExports GitHub repo, e.g. for the sake of
 debugging and troubleshooting. This can be done by providing the short
 7-character git commit hash (SHA) or the full SHA of the export of choice.
 To provide the full SHA, go to the BugSigDBExports commits page (see references)
@@ -109,7 +109,7 @@ SHA code of the export version you want to use.</p></li>
     <h2>References</h2>
     <p>BugSigDB: <a href="https://bugsigdb.org" class="external-link">https://bugsigdb.org</a></p>
 <p>Stable release: <a href="https://doi.org/10.5281/zenodo.10627578" class="external-link">https://doi.org/10.5281/zenodo.10627578</a></p>
-<p>Latest version (incl. not reviewed content): 
+<p>Latest version (incl. not reviewed content):
      <a href="https://github.com/waldronlab/BugSigDBExports" class="external-link">https://github.com/waldronlab/BugSigDBExports</a></p>
 <p>Release v1.2.0: <a href="https://zenodo.org/records/10407666" class="external-link">https://zenodo.org/records/10407666</a></p>
 <p>Release v1.1.0: <a href="https://zenodo.org/records/6468009" class="external-link">https://zenodo.org/records/6468009</a></p>
@@ -124,7 +124,7 @@ SHA code of the export version you want to use.</p></li>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">importBugSigDB</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-05-01 20:19:17</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-09-16 11:05:46</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -140,15 +140,15 @@ SHA code of the export version you want to use.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
