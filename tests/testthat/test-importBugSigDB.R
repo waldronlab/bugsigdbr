@@ -17,16 +17,54 @@ checkImport <- function(bsdb, url)
     expect_true(identical(bsdb, dat))
 }
 
+checkZenodoImport <- function(bsdb, url)
+{
+  expect_true(is.data.frame(bsdb))
+  expect_gt(nrow(bsdb), 3000)
+  expect_gt(ncol(bsdb), 40)
+  expect_true(all(c("Study", "Study design", "PMID") %in% colnames(bsdb)[1:4]))
+  
+  dat <- suppressWarnings(vroom::vroom(url, skip = 1L, progress = FALSE,
+                                       show_col_types = FALSE))
+  dat <- as.data.frame(dat)
+  dat[["MetaPhlAn taxon names"]] <- strsplit(dat[["MetaPhlAn taxon names"]],
+                                             ",")
+  dat[["NCBI Taxonomy IDs"]] <- strsplit(dat[["NCBI Taxonomy IDs"]], ";")
+  .rmEmpty <- function(x) x[x != ""] 
+  dat[["MetaPhlAn taxon names"]] <- lapply(dat[["MetaPhlAn taxon names"]], .rmEmpty)
+  dat[["NCBI Taxonomy IDs"]] <- lapply(dat[["NCBI Taxonomy IDs"]], .rmEmpty)
+  expect_true(identical(bsdb, dat))
+}
+
+checkDevelImport <- function(bsdb, url)
+{
+  expect_true(is.data.frame(bsdb))
+  expect_gt(nrow(bsdb), 5700)
+  expect_gt(ncol(bsdb), 40)
+  expect_true(all(c("Study", "Study design", "PMID") %in% colnames(bsdb)[1:4]))
+  
+  dat <- suppressWarnings(vroom::vroom(url, skip = 1L, progress = FALSE,
+                                       show_col_types = FALSE))
+  dat <- as.data.frame(dat)
+  dat[["MetaPhlAn taxon names"]] <- strsplit(dat[["MetaPhlAn taxon names"]],
+                                             ",")
+  dat[["NCBI Taxonomy IDs"]] <- strsplit(dat[["NCBI Taxonomy IDs"]], ";")
+  .rmEmpty <- function(x) x[x != ""] 
+  dat[["MetaPhlAn taxon names"]] <- lapply(dat[["MetaPhlAn taxon names"]], .rmEmpty)
+  dat[["NCBI Taxonomy IDs"]] <- lapply(dat[["NCBI Taxonomy IDs"]], .rmEmpty)
+  expect_true(identical(bsdb, dat))
+}
+
 test_that("importBugSigDB from Zenodo", {
-    bsdb <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.5819260", cache = FALSE)
-    url <- "https://zenodo.org/record/5819260/files/full_dump.csv"
-    checkImport(bsdb, url)
+    bsdb <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.10627578", cache = FALSE)
+    url <- "https://zenodo.org/records/10627578/files/full_dump.csv"
+    checkZenodoImport(bsdb, url)
 })
 
 test_that("importBugSigDB from the edge (devel)", {
     bsdb <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
     url <- "https://tinyurl.com/3nvzm3fx"
-    checkImport(bsdb, url)
+    checkDevelImport(bsdb, url)
 })
 
 test_that("importBugSigDB from github hash", {
