@@ -1,7 +1,7 @@
-checkImport <- function(bsdb, url)
+checkImport <- function(bsdb, url, nrows = 2000)
 {
     expect_true(is.data.frame(bsdb))
-    expect_gt(nrow(bsdb), 2000)
+    expect_gt(nrow(bsdb), nrows)
     expect_gt(ncol(bsdb), 40)
     expect_true(all(c("Study", "Study design", "PMID") %in% colnames(bsdb)[1:4]))
 
@@ -18,15 +18,15 @@ checkImport <- function(bsdb, url)
 }
 
 test_that("importBugSigDB from Zenodo", {
-    bsdb <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.5819260", cache = FALSE)
-    url <- "https://zenodo.org/record/5819260/files/full_dump.csv"
-    checkImport(bsdb, url)
+    bsdb <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.10627578", cache = FALSE)
+    url <- "https://zenodo.org/record/10627578/files/full_dump.csv"
+    checkImport(bsdb, url, nrows = 3500)
 })
 
 test_that("importBugSigDB from the edge (devel)", {
     bsdb <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
     url <- "https://tinyurl.com/3nvzm3fx"
-    checkImport(bsdb, url)
+    checkImport(bsdb, url, nrows = 5500)
 })
 
 test_that("importBugSigDB from github hash", {
