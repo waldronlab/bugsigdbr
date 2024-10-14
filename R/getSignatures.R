@@ -30,7 +30,8 @@ getSignatures <- function(df,
                           tax.id.type = c("ncbi", "metaphlan", "taxname"),
                           tax.level = "mixed",
                           exact.tax.level = TRUE,
-                          min.size = 1) {
+                          min.size = 1)
+{
     stopifnot(is.data.frame(df))
     tax.id.type <- match.arg(tax.id.type)
 
@@ -40,6 +41,11 @@ getSignatures <- function(df,
         stop("tax.level must be a subset of { ",
              paste(TAX.LEVELS, collapse = ", "),
              " }")
+
+    is.spec.tax.level <- length(tax.level) == 1 && tax.level != "mixed" 
+    if(!exact.tax.level && !is.spec.tax.level)
+        stop("Using exact.tax.level = FALSE requires ",
+             "to select a specific taxonomic level")
 
     # rm NA signatures
     nna <- !is.na(df[["MetaPhlAn taxon names"]])
