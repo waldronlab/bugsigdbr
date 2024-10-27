@@ -42,6 +42,10 @@
 #' Latest version (incl. not reviewed content): 
 #'      \url{https://github.com/waldronlab/BugSigDBExports}
 #'
+#' Release v1.2.2: \url{https://zenodo.org/records/13997429}
+#'
+#' Release v1.2.1: \url{https://zenodo.org/records/10627578}
+#'
 #' Release v1.2.0: \url{https://zenodo.org/records/10407666}
 #'
 #' Release v1.1.0: \url{https://zenodo.org/records/6468009}
@@ -59,7 +63,7 @@
 #'  df <- importBugSigDB()
 #'
 #' @export
-importBugSigDB <- function(version = "10.5281/zenodo.10627578", cache = TRUE)
+importBugSigDB <- function(version = "10.5281/zenodo.13997429", cache = TRUE)
 {
     version <- tolower(version)
 
