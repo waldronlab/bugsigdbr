@@ -18,7 +18,7 @@ interest"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.11.4</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@ correspond to sample size weights associated with each taxon.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-09-16 11:05:46</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2024-10-27 06:49:26</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="co"># Body-site specific meta-signatures composed from signatures reported as both </span></span></span>
 <span class="r-in"><span> <span class="co"># increased or decreased across all conditions of study:</span></span></span>
@@ -142,75 +142,99 @@ correspond to sample size weights associated with each taxon.</p>
 <span class="r-in"><span> <span class="co"># Inspect the results</span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">cond.meta.sigs</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Acute lymphoblastic leukemia"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "Acute myeloid leukemia"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Age"                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Air pollution"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "Age"                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Air pollution"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Allergic rhinitis"                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Alzheimer's disease"                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "Anorexia nervosa"                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "Antimicrobial agent"                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "Anxiety disorder"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Asthma"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "Atopic eczema"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "Attention deficit hyperactivity disorder"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "Autism"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Bipolar disorder"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "Breast cancer"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "COVID-19"                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "Cervical cancer"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "Cesarean section"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "Chronic fatigue syndrome"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "Chronic kidney disease"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "Colorectal adenoma"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "Colorectal cancer"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "Crohn's disease"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "Diabetes mellitus"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "Diarrhea"                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "Diet"                                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "Eczema"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "Endometriosis"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "Epilepsy"                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "Ethnic group"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "Exercise"                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "Food allergy"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "Gastric cancer"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Gestational diabetes"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "Graft versus host disease"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "Gut microbiome measurement"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "HIV infection"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "Hashimoto's thyroiditis"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "Hepatocellular carcinoma"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "High fat diet"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "Irritable bowel syndrome"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "Leukemia"                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "Lung cancer"                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "Milk allergic reaction"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "Multiple myeloma"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "Multiple sclerosis"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "Non-Hodgkins lymphoma"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "Non-alcoholic fatty liver disease"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "Obesity"                                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "Pancreatic carcinoma"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "Parkinson's disease"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "Physical activity"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "Polycystic ovary syndrome"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "Psoriasis"                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "Response to allogeneic hematopoietic stem cell transplant"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "Response to immunochemotherapy"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "Rheumatoid arthritis"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "Schizophrenia"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "Socioeconomic status"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "Treatment"                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [60] "Type I diabetes mellitus"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "Type II diabetes mellitus"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [62] "Ulcerative colitis"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "Unipolar depression"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [64] "Urinary tract infection"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Arthritis"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "Asthma"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "Atopic eczema"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "Attention deficit hyperactivity disorder"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Autism"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "Autism spectrum disorder"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "Behcet's syndrome"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "Bipolar disorder"                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "Breast cancer"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "Breastfeeding duration"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "Breed"                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "COVID-19"                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "Cervical cancer"                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "Cesarean section"                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "Chronic fatigue syndrome"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "Chronic kidney disease"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "Clinical treatment"                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "Cognitive impairment"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "Colorectal adenoma"                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "Colorectal cancer"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "Colorectal carcinoma"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "Crohn's disease"                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "Delivery method"                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "Depressive disorder"                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Diabetes mellitus"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "Diarrhea"                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "Diet"                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "Eczema"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "Endometriosis"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "Environmental exposure measurement"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "Epilepsy"                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "Ethnic group"                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "Exercise"                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "Food allergy"                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "Gastric cancer"                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "Gestational diabetes"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "Graft versus host disease"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "Gut microbiome measurement"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "HIV infection"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "HIV mother to child transmission"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "Hashimoto's thyroiditis"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "Health study participation"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "Hepatocellular carcinoma"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "High fat diet"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "Hypertension"                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "Inflammatory bowel disease"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "Irritable bowel syndrome"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "Ischemic stroke"                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "Leukemia"                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "Lung cancer"                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "Major depressive disorder"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [60] "Milk allergic reaction"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "Multiple myeloma"                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [62] "Multiple sclerosis"                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "Non-Hodgkins lymphoma"                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [64] "Non-alcoholic fatty liver disease"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "Non-alcoholic steatohepatitis"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [66] "Obesity"                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "Pancreatic carcinoma"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [68] "Parkinson's disease"                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "Physical activity"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [70] "Polycystic ovary syndrome"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [71] "Psoriasis"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [72] "Response to allogeneic hematopoietic stem cell transplant"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [73] "Response to antiviral drug"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [74] "Response to diet"                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [75] "Response to immunochemotherapy"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [76] "Response to transplant"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] "Rheumatoid arthritis"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [78] "Schizophrenia"                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [79] "Seasonal gut microbiome measurement"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [80] "Smoking behavior"                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [81] "Socioeconomic status"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [82] "Stroke"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [83] "Treatment"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [84] "Type I diabetes mellitus"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [85] "Type II diabetes mellitus"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [86] "Ulcerative colitis"                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [87] "Unipolar depression"                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [88] "Urinary tract infection"                                  </span>
 <span class="r-in"><span> <span class="va">cond.meta.sigs</span><span class="op">[</span><span class="st">"Bipolar disorder"</span><span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Bipolar disorder`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Flavonifractor   Lachnospiraceae    Actinomycetota Coriobacteriaceae </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         0.3459215         0.1767372         0.1193353         0.1193353 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         0.4412903         0.1509677         0.1019355         0.1019355 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Coriobacteriales    Coriobacteriia </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         0.1193353         0.1193353 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         0.1019355         0.1019355 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
@@ -226,7 +250,7 @@ correspond to sample size weights associated with each taxon.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
 </div>
 
       </footer></div>
