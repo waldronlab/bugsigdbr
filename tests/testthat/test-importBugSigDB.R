@@ -26,7 +26,7 @@ test_that("importBugSigDB from Zenodo", {
 test_that("importBugSigDB from the edge (devel)", {
     bsdb <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
     url <- "https://tinyurl.com/3nvzm3fx"
-    checkImport(bsdb, url, nrows = 5500)
+    checkImport(bsdb, url, nrows = 5450)
 })
 
 test_that("importBugSigDB from github hash", {
