@@ -1,5 +1,9 @@
 # bugsigdbr 
 
+## Changes in version 1.11.4
+
+* Update stable release version for data on Zenodo
+
 ## Changes in version 1.8.2
 
 * Uniform first-letter capitalization for Body site and Condition terms
