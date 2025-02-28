@@ -37,7 +37,8 @@ getSignatures <- function(df,
 
     stopifnot(is.character(tax.level))
     if ("mixed" %in% tax.level)
-        tax.level <- "mixed" else if (!all(tax.level %in% TAX.LEVELS))
+        tax.level <- "mixed"
+    else if (!all(tax.level %in% TAX.LEVELS))
         stop("tax.level must be a subset of { ",
              paste(TAX.LEVELS, collapse = ", "),
              " }")
