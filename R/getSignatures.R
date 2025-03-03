@@ -218,7 +218,7 @@ restrictTaxLevel <- function(df,
     df <- df[nna,]
 
     # extract signatures
-    is.study <- grepl("^Study [0-9]+$", df[["Study"]])
+    is.study <- grepl("^(Study )?[0-9]+$", df[["Study"]])
     is.exp <- grepl("^Experiment [0-9]+$", df[["Experiment"]])
     df <- df[is.study & is.exp, ]
 
