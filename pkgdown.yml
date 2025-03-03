@@ -1,6 +1,6 @@
-pandoc: '3.4'
+pandoc: 3.6.3
 pkgdown: 2.1.1.9000
-pkgdown_sha: ffe60d5f60934e95285d416dae12c05e24ed1dac
+pkgdown_sha: 7cf401f44a970ea13744fcdd883248552c68ff9d
 articles:
   bugsigdbr: bugsigdbr.html
-last_built: 2024-10-30T16:05Z
+last_built: 2025-03-03T20:41Z
