@@ -27,6 +27,8 @@ test_that("importBugSigDB from the edge (devel)", {
     bsdb <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
     url <- "https://tinyurl.com/3nvzm3fx"
     checkImport(bsdb, url, nrows = 5450)
+    expect_true(all(!is.na(bsdb$Study)))
+    expect_true(all(!is.na(bsdb$Condition)))
 })
 
 test_that("importBugSigDB from github hash", {
