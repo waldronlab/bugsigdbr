@@ -1,5 +1,9 @@
 # bugsigdbr 
 
+## Changes in version 1.13.2
+
+* Update functions to accommodate PMID as Study ID
+
 ## Changes in version 1.11.4
 
 * Update stable release version for data on Zenodo
