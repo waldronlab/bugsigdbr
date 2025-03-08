@@ -43,7 +43,7 @@ getSignatures <- function(df,
              paste(TAX.LEVELS, collapse = ", "),
              " }")
 
-    if(!exact.tax.level && length(tax.level) > 1)
+    if(!exact.tax.level && ("mixed" %in% tax.level || length(tax.level) > 1))
         stop("Using exact.tax.level = FALSE requires ",
              "to select a specific taxonomic level")
 
