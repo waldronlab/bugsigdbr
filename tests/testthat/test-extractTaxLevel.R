@@ -1,4 +1,4 @@
-ord <- "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales" 
+ord <- "d__Bacteria|k__Bacillati|p__Firmicutes|c__Bacilli|o__Lactobacillales" 
 sig <- c("f__Lactobacillaceae|g__Lactobacillus",
          "f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia defectiva",
          "f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus mucosae") 
@@ -8,7 +8,7 @@ checkSig <- function(sig, tax.id.type)
 {
     expect_true(is.character(sig))
     if(tax.id.type == "metaphlan") 
-        expect_true(grepl("^[kpcofgst]__", sig[1]))
+        expect_true(grepl("^[dkpcofgst]__", sig[1]))
     else if(tax.id.type == "taxname")
         expect_true(grepl("^[A-Z][a-z ]+$", sig[1]))
 }

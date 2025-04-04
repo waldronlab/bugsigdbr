@@ -6,7 +6,7 @@ checkDF <- function(df)
     expect_true(is.list(df[["NCBI Taxonomy IDs"]]))
     expect_true(is.list(df[["MetaPhlAn taxon names"]]))
     expect_true(grepl("^[0-9]+$", df[["NCBI Taxonomy IDs"]][[1]][1]))
-    expect_true(grepl("^[kpcofgst]__", df[["MetaPhlAn taxon names"]][[1]][1]))
+    expect_true(grepl("^[dkpcofgst]__", df[["MetaPhlAn taxon names"]][[1]][1]))
 }
 
 test_that("tax.level", {
