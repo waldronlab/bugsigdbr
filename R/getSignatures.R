@@ -52,8 +52,8 @@ getSignatures <- function(df,
     df <- df[nna,]
 
     # extract signatures
-    is.study <- !is.na(full.dat[["Study"]])
-    is.exp <- !is.na(full.dat[["Experiment"]])
+    is.study <- !is.na(df[["Study"]])
+    is.exp <- !is.na(df[["Experiment"]])
     df <- df[is.study & is.exp, ]
     
     snames <- .makeSigNames(df)
