@@ -1,9 +1,12 @@
 # ORDINARY
-TAX.LEVELS <- c("kingdom", "phylum", "class", "order", "family", "genus",
-                "species", "strain")
-MPA.TAX.LEVELS <- c(substring(TAX.LEVELS[-8], 1, 1), "t")
+TAX.LEVELS <- c("domain", "kingdom", "phylum", "class", "order", 
+                "family", "genus", "species", "strain")
+
+
+MPA.TAX.LEVELS <- c(substring(TAX.LEVELS[-9], 1, 1), "t")  # "-9" to exclude "strain"
 names(MPA.TAX.LEVELS) <- TAX.LEVELS
-MPA.REGEXP <- "^[kpcofgst]__"
+
+MPA.REGEXP <- "^[dkpcofgst]__"
 
 # URLs
 EFO.OBO.URL <- "https://www.ebi.ac.uk/efo/efo.obo"
