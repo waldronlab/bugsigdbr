@@ -217,8 +217,8 @@ restrictTaxLevel <- function(df,
     df <- df[nna,]
 
     # extract signatures
-    is.study <- grepl("^(Study )?[0-9]+$", df[["Study"]])
-    is.exp <- grepl("^Experiment [0-9]+$", df[["Experiment"]])
+    is.study <- !is.na(df[["Study"]])
+    is.exp <- !is.na(df[["Experiment"]])
     df <- df[is.study & is.exp, ]
 
     df[["NCBI Taxonomy IDs"]] <- .extractSigs(df,
@@ -352,7 +352,9 @@ writeGMT <- function(sigs, gmt.file, ...) {
                      "NCBI Taxonomy IDs",
                      "MetaPhlAn taxon names")
     sigs <- sigdf[[id.col]]
-    sigs <- lapply(sigs, function(x) sub("^k__Bacteria(\\|?|$)", "d__Bacteria\\1", x))
+    sigs <- lapply(sigs, function(x) {
+      sub("^k__(Bacteria|Eukaryota|Archaea|Viruses)(\\|?|$)", "d__\\1\\2", x)
+    })
 
     if (tax.level[1] != "mixed")
     {
