@@ -1,5 +1,9 @@
 # bugsigdbr 
 
+## Changes in version 1.13.6
+
+* Add domain support for signatures
+
 ## Changes in version 1.13.2
 
 * Update functions to accommodate PMID as Study ID
