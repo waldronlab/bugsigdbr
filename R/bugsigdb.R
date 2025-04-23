@@ -26,6 +26,10 @@
 #' To provide the full SHA, go to the BugSigDBExports commits page (see references)
 #' and use the copy symbol to the left of the 7-character codes to copy the full
 #' SHA code of the export version you want to use. 
+#'
+#' Note: Zenodo DOIs for versions after 1.2.2, commit hashes after Feb 16, 2025,
+#' and \code{"devel"} will contain records where the PubMed ID is the Study ID
+#' if available.
 #'}
 #'
 #' @param version character. A Zenodo DOI, git commit hash, or "devel".
@@ -37,24 +41,26 @@
 #' @return a \code{\link{data.frame}}.
 #' @references BugSigDB: \url{https://bugsigdb.org}
 #'
-#' Stable release: \url{https://doi.org/10.5281/zenodo.10627578}
+#' Stable release: \url{https://doi.org/10.5281/zenodo.13997429}
 #'
 #' Latest version (incl. not reviewed content): 
 #'      \url{https://github.com/waldronlab/BugSigDBExports}
 #'
-#' Release v1.2.2: \url{https://zenodo.org/records/13997429}
+#' All releases: \url{https://doi.org/10.5281/zenodo.5606165}
 #'
-#' Release v1.2.1: \url{https://zenodo.org/records/10627578}
+#' Release v1.2.2: \url{https://doi.org/10.5281/zenodo.13997429}
 #'
-#' Release v1.2.0: \url{https://zenodo.org/records/10407666}
+#' Release v1.2.1: \url{https://doi.org/10.5281/zenodo.10627578}
 #'
-#' Release v1.1.0: \url{https://zenodo.org/records/6468009}
+#' Release v1.2.0: \url{https://doi.org/10.5281/zenodo.10407666}
 #'
-#' Release v1.0.2: \url{https://zenodo.org/records/5904281}
+#' Release v1.1.0: \url{https://doi.org/10.5281/zenodo.6468009}
 #'
-#' Release v1.0.1: \url{https://zenodo.org/records/5819260}
+#' Release v1.0.2: \url{https://doi.org/10.5281/zenodo.5904281}
 #'
-#' Release v1.0.0: \url{https://zenodo.org/records/5606166}
+#' Release v1.0.1: \url{https://doi.org/10.5281/zenodo.5819260}
+#'
+#' Release v1.0.0: \url{https://doi.org/10.5281/zenodo.5606166}
 #'
 #' BugSigDBExports commits page:
 #'      \url{https://github.com/waldronlab/BugSigDBExports/commits/devel}
