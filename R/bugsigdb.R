@@ -41,12 +41,14 @@
 #' @return a \code{\link{data.frame}}.
 #' @references BugSigDB: \url{https://bugsigdb.org}
 #'
-#' Stable release: \url{https://doi.org/10.5281/zenodo.13997429}
+#' Stable release: \url{https://doi.org/10.5281/zenodo.15272273}
 #'
 #' Latest version (incl. not reviewed content): 
 #'      \url{https://github.com/waldronlab/BugSigDBExports}
 #'
 #' All releases: \url{https://doi.org/10.5281/zenodo.5606165}
+#'
+#' Release v1.3.0: \url{https://doi.org/10.5281/zenodo.15272273}
 #'
 #' Release v1.2.2: \url{https://doi.org/10.5281/zenodo.13997429}
 #'
@@ -69,7 +71,7 @@
 #'  df <- importBugSigDB()
 #'
 #' @export
-importBugSigDB <- function(version = "10.5281/zenodo.13997429", cache = TRUE)
+importBugSigDB <- function(version = "10.5281/zenodo.15272273", cache = TRUE)
 {
     version <- tolower(version)
 
