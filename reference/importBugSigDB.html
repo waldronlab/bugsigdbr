@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.15.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.15.2</span>
       </span>
     </div>
 
@@ -56,7 +56,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">importBugSigDB</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"10.5281/zenodo.13997429"</span>, cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">importBugSigDB</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"10.5281/zenodo.15272273"</span>, cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -103,21 +103,26 @@ debugging and troubleshooting. This can be done by providing the short
 7-character git commit hash (SHA) or the full SHA of the export of choice.
 To provide the full SHA, go to the BugSigDBExports commits page (see references)
 and use the copy symbol to the left of the 7-character codes to copy the full
-SHA code of the export version you want to use.</p></li>
+SHA code of the export version you want to use.</p>
+<p>Note: Zenodo DOIs for versions after 1.2.2, commit hashes after Feb 16, 2025,
+and <code>"devel"</code> will contain records where the PubMed ID is the Study ID
+if available.</p></li>
 </ul></div>
     <div id="references">
     <h2>References</h2>
     <p>BugSigDB: <a href="https://bugsigdb.org" class="external-link">https://bugsigdb.org</a></p>
-<p>Stable release: <a href="https://doi.org/10.5281/zenodo.10627578" class="external-link">https://doi.org/10.5281/zenodo.10627578</a></p>
+<p>Stable release: <a href="https://doi.org/10.5281/zenodo.15272273" class="external-link">https://doi.org/10.5281/zenodo.15272273</a></p>
 <p>Latest version (incl. not reviewed content):
      <a href="https://github.com/waldronlab/BugSigDBExports" class="external-link">https://github.com/waldronlab/BugSigDBExports</a></p>
-<p>Release v1.2.2: <a href="https://zenodo.org/records/13997429" class="external-link">https://zenodo.org/records/13997429</a></p>
-<p>Release v1.2.1: <a href="https://zenodo.org/records/10627578" class="external-link">https://zenodo.org/records/10627578</a></p>
-<p>Release v1.2.0: <a href="https://zenodo.org/records/10407666" class="external-link">https://zenodo.org/records/10407666</a></p>
-<p>Release v1.1.0: <a href="https://zenodo.org/records/6468009" class="external-link">https://zenodo.org/records/6468009</a></p>
-<p>Release v1.0.2: <a href="https://zenodo.org/records/5904281" class="external-link">https://zenodo.org/records/5904281</a></p>
-<p>Release v1.0.1: <a href="https://zenodo.org/records/5819260" class="external-link">https://zenodo.org/records/5819260</a></p>
-<p>Release v1.0.0: <a href="https://zenodo.org/records/5606166" class="external-link">https://zenodo.org/records/5606166</a></p>
+<p>All releases: <a href="https://doi.org/10.5281/zenodo.5606165" class="external-link">https://doi.org/10.5281/zenodo.5606165</a></p>
+<p>Release v1.3.0: <a href="https://doi.org/10.5281/zenodo.15272273" class="external-link">https://doi.org/10.5281/zenodo.15272273</a></p>
+<p>Release v1.2.2: <a href="https://doi.org/10.5281/zenodo.13997429" class="external-link">https://doi.org/10.5281/zenodo.13997429</a></p>
+<p>Release v1.2.1: <a href="https://doi.org/10.5281/zenodo.10627578" class="external-link">https://doi.org/10.5281/zenodo.10627578</a></p>
+<p>Release v1.2.0: <a href="https://doi.org/10.5281/zenodo.10407666" class="external-link">https://doi.org/10.5281/zenodo.10407666</a></p>
+<p>Release v1.1.0: <a href="https://doi.org/10.5281/zenodo.6468009" class="external-link">https://doi.org/10.5281/zenodo.6468009</a></p>
+<p>Release v1.0.2: <a href="https://doi.org/10.5281/zenodo.5904281" class="external-link">https://doi.org/10.5281/zenodo.5904281</a></p>
+<p>Release v1.0.1: <a href="https://doi.org/10.5281/zenodo.5819260" class="external-link">https://doi.org/10.5281/zenodo.5819260</a></p>
+<p>Release v1.0.0: <a href="https://doi.org/10.5281/zenodo.5606166" class="external-link">https://doi.org/10.5281/zenodo.5606166</a></p>
 <p>BugSigDBExports commits page:
      <a href="https://github.com/waldronlab/BugSigDBExports/commits/devel" class="external-link">https://github.com/waldronlab/BugSigDBExports/commits/devel</a></p>
     </div>
@@ -126,7 +131,7 @@ SHA code of the export version you want to use.</p></li>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">importBugSigDB</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2025-04-16 22:29:58</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2025-04-24 05:10:58</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

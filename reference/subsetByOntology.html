@@ -18,7 +18,7 @@ factors and body sites."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.15.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.15.2</span>
       </span>
     </div>
 
@@ -107,11 +107,11 @@ of the chosen term in the chosen ontology.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="co"># (1) Obtain BugSigDB data</span></span></span>
 <span class="r-in"><span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2025-04-16 22:29:58</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2025-04-24 05:10:58</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="co"># (2) Obtain ontology of interest as an R object</span></span></span>
 <span class="r-in"><span> <span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2025-04-16 22:30:31</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using cached version from 2025-04-24 05:11:35</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="co"># (3) High-level query on body site</span></span></span>
 <span class="r-in"><span> <span class="va">sdf</span> <span class="op">&lt;-</span> <span class="fu">subsetByOntology</span><span class="op">(</span><span class="va">df</span>, </span></span>
@@ -120,18 +120,18 @@ of the chosen term in the chosen ontology.</p>
 <span class="r-in"><span>                         ontology <span class="op">=</span> <span class="va">uberon</span><span class="op">)</span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Body site"</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                           Body of stomach </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         5 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                    Caecum </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        41 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         Cardia of stomach </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                              Cecum mucosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        12 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        31 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cecum mucosa,Colonic mucosa,Mucosa of rectum,Ileal mucosa </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         5 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                     Colon </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        70 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                         Colon,Blood serum </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               Colon,Feces </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            Colonic mucosa </span>
@@ -145,45 +145,47 @@ of the chosen term in the chosen ontology.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                           Duodenal mucosa </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         6 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                  Duodenum </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        18 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                        Duodenum,Bile duct </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                 Esophagus </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        40 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               Feces,Colon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                      Feces,Colonic mucosa </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                   Feces,Colorectal mucosa </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                     Feces,Large intestine </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            Feces,Duodenum </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         6 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          Feces,Mucosa of descending colon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         5 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                           Feces,Mucosa of small intestine </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                              Feces,Spleen </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                Feces,Stomach,Caecum,Small intestine,Colon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               Gastric pit </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                     Ileum </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        23 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               Ileum,Colon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               Ileum,Feces </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                        Ileum,Feces,Rectum </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                             Ileum,Jejunum </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                              Ileum,Rectum </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                        Ileum,Rectum,Feces </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                   Jejunum </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        25 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        29 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         Lumen of duodenum </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                             Midgut,Saliva-secreting gland </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       Midgut,Saliva-secreting gland,Ovary </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         6 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                 Mucosa of ascending colon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                 Mucosa of body of stomach </span>
@@ -204,22 +206,34 @@ of the chosen term in the chosen ontology.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                Oropharyngeal gland,Saliva </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                     Proventriculus,Cloaca </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         9 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                              Rectal lumen </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                    Rectum </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        23 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        31 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                     Rumen </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        13 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              Saliva,Esophagus,Gastric juice,Stomach,Feces </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              Saliva,Esophagus,Stomach,Gastric juice,Feces </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              Saliva-secreting gland,Ovary </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             Sigmoid colon </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                           Small intestine </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                    Spleen </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                   Stomach </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        48 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                Superior surface of tongue </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         Surface of tongue </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        10 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        16 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                    Tongue </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        29 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        33 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                   Wall of small intestine </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         2 </span>
 <span class="r-in"><span></span></span>
