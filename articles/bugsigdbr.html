@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.15.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.15.3</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@ from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig
 Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">24 April 2025</h4>
+            <h4 data-toc-skip class="date">29 May 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/devel/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -321,12 +321,12 @@ package.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">efo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"efo"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required namespace: ontologyIndex</span></span>
-<span><span class="co">#&gt; Using cached version from 2025-04-24 05:11:11</span></span>
+<span><span class="co">#&gt; Using cached version from 2025-05-29 17:04:01</span></span>
 <span><span class="va">efo</span></span>
-<span><span class="co">#&gt; Ontology with 59452 terms</span></span>
+<span><span class="co">#&gt; Ontology with 59992 terms</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; format-version: 1.2</span></span>
-<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.77.0/efo.owl</span></span>
+<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.78.0/efo.owl</span></span>
 <span><span class="co">#&gt; ontology: http://www.ebi.ac.uk/efo/efo.owl</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Properties:</span></span>
@@ -338,8 +338,8 @@ package.</p>
 <span><span class="co">#&gt;  obsolete: logical</span></span>
 <span><span class="co">#&gt;  equivalent_to: list</span></span>
 <span><span class="co">#&gt; Roots:</span></span>
-<span><span class="co">#&gt;  EFO:0000001 - experimental factor</span></span>
-<span><span class="co">#&gt;  EFO:0000824 - relationship</span></span>
+<span><span class="co">#&gt;  efo:EFO_0000001 - experimental factor</span></span>
+<span><span class="co">#&gt;  efo:EFO_0000824 - relationship</span></span>
 <span><span class="co">#&gt;  RO:0000053 - bearer_of</span></span>
 <span><span class="co">#&gt;  RO:0000057 - has_participant</span></span>
 <span><span class="co">#&gt;  RO:0000056 - participates_in</span></span>
@@ -351,7 +351,7 @@ package.</p>
 <span><span class="co">#&gt;  ... 64 more</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using cached version from 2025-04-24 05:11:35</span></span>
+<span><span class="co">#&gt; Using cached version from 2025-05-29 17:04:29</span></span>
 <span><span class="va">uberon</span></span>
 <span><span class="co">#&gt; Ontology with 14107 terms</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -396,101 +396,39 @@ usage by subsetting to signatures associated with cancer.</p>
 <span>                        term <span class="op">=</span> <span class="st">"cancer"</span>,</span>
 <span>                        ontology <span class="op">=</span> <span class="va">efo</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 554  50</span></span>
+<span><span class="co">#&gt; [1] 283  50</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Condition"</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                                                             Acute myeloid leukemia </span></span>
-<span><span class="co">#&gt;                                                                                 11 </span></span>
-<span><span class="co">#&gt;                                                                  Bladder carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                                      Breast cancer </span></span>
-<span><span class="co">#&gt;                                                                                 40 </span></span>
-<span><span class="co">#&gt;                                                                   Breast carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  8 </span></span>
-<span><span class="co">#&gt;                                                    Breast ductal carcinoma in situ </span></span>
-<span><span class="co">#&gt;                                                                                  6 </span></span>
-<span><span class="co">#&gt;                                                                    Cervical cancer </span></span>
-<span><span class="co">#&gt;                                                                                 22 </span></span>
-<span><span class="co">#&gt;                       Cervical glandular intraepithelial neoplasia,Cervical cancer </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                   Cervical squamous cell carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  4 </span></span>
-<span><span class="co">#&gt;                                                                    Colon carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                          Colorectal adenocarcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  9 </span></span>
-<span><span class="co">#&gt;                                                               Colorectal carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 13 </span></span>
-<span><span class="co">#&gt;                                                                 Cutaneous melanoma </span></span>
-<span><span class="co">#&gt;                                                                                  9 </span></span>
-<span><span class="co">#&gt;                                                          Cutaneous T-cell lymphoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                            Digestive system cancer </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                         Digestive System Carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  4 </span></span>
-<span><span class="co">#&gt;                                                                 Endometrial cancer </span></span>
-<span><span class="co">#&gt;                                                                                 19 </span></span>
-<span><span class="co">#&gt;                                                          Esophageal adenocarcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 17 </span></span>
-<span><span class="co">#&gt;                                                                  Esophageal cancer </span></span>
-<span><span class="co">#&gt;                                                                                 10 </span></span>
-<span><span class="co">#&gt;                                                               Esophageal carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                 Esophageal squamous cell carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  7 </span></span>
-<span><span class="co">#&gt;                                                          Essential thrombocythemia </span></span>
-<span><span class="co">#&gt;                                                                                  8 </span></span>
-<span><span class="co">#&gt;                                                             Gastric adenocarcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  6 </span></span>
-<span><span class="co">#&gt;                                                                     Gastric cancer </span></span>
-<span><span class="co">#&gt;                                                                                 91 </span></span>
-<span><span class="co">#&gt;                                                                  Gastric carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                           Genital neoplasm, female </span></span>
-<span><span class="co">#&gt;                                                                                  8 </span></span>
-<span><span class="co">#&gt;                                                            Head and neck carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  7 </span></span>
-<span><span class="co">#&gt;                                              Head and neck squamous cell carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 25 </span></span>
-<span><span class="co">#&gt;                                   Hepatitis virus-related hepatocellular carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  5 </span></span>
-<span><span class="co">#&gt;                                                           Hepatocellular carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 12 </span></span>
-<span><span class="co">#&gt;                                                     HER2 Positive Breast Carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                    Human papilloma virus infection,Cervical cancer </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                                        Lung cancer </span></span>
-<span><span class="co">#&gt;                                                                                 26 </span></span>
-<span><span class="co">#&gt;                                                       Metastatic colorectal cancer </span></span>
-<span><span class="co">#&gt;                                                                                  7 </span></span>
-<span><span class="co">#&gt;                                                                   Multiple myeloma </span></span>
-<span><span class="co">#&gt;                                                                                 11 </span></span>
-<span><span class="co">#&gt;                                             Mycobacterium tuberculosis,Lung cancer </span></span>
-<span><span class="co">#&gt;                                                                                  1 </span></span>
-<span><span class="co">#&gt;                                             Nasopharyngeal squamous cell carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  4 </span></span>
-<span><span class="co">#&gt; Non-small cell lung carcinoma,Renal cell carcinoma,Disease progression measurement </span></span>
-<span><span class="co">#&gt;                                                                                  5 </span></span>
-<span><span class="co">#&gt;                                                              Oral cavity carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 19 </span></span>
-<span><span class="co">#&gt;                                                       Oral squamous cell carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 25 </span></span>
-<span><span class="co">#&gt;                                                                     Ovarian cancer </span></span>
-<span><span class="co">#&gt;                                                                                 36 </span></span>
-<span><span class="co">#&gt;                                                               Pancreatic carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 14 </span></span>
-<span><span class="co">#&gt;                                                        Papillary thyroid carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 19 </span></span>
-<span><span class="co">#&gt;                                                                    Prostate cancer </span></span>
-<span><span class="co">#&gt;                                                                                  4 </span></span>
-<span><span class="co">#&gt;                                                                 Prostate carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2 </span></span>
-<span><span class="co">#&gt;                                                            Squamous cell carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                 20 </span></span>
-<span><span class="co">#&gt;                                                                  Thyroid carcinoma </span></span>
-<span><span class="co">#&gt;                                                                                  2</span></span></code></pre></div>
+<span><span class="co">#&gt;                                            Bladder carcinoma </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                                Breast cancer </span></span>
+<span><span class="co">#&gt;                                                           40 </span></span>
+<span><span class="co">#&gt;                                              Cervical cancer </span></span>
+<span><span class="co">#&gt;                                                           22 </span></span>
+<span><span class="co">#&gt; Cervical glandular intraepithelial neoplasia,Cervical cancer </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                      Digestive system cancer </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                           Endometrial cancer </span></span>
+<span><span class="co">#&gt;                                                           19 </span></span>
+<span><span class="co">#&gt;                                            Esophageal cancer </span></span>
+<span><span class="co">#&gt;                                                           10 </span></span>
+<span><span class="co">#&gt;                                               Gastric cancer </span></span>
+<span><span class="co">#&gt;                                                           91 </span></span>
+<span><span class="co">#&gt;                                      Head and neck carcinoma </span></span>
+<span><span class="co">#&gt;                                                            7 </span></span>
+<span><span class="co">#&gt;              Human papilloma virus infection,Cervical cancer </span></span>
+<span><span class="co">#&gt;                                                            2 </span></span>
+<span><span class="co">#&gt;                                                  Lung cancer </span></span>
+<span><span class="co">#&gt;                                                           26 </span></span>
+<span><span class="co">#&gt;                       Mycobacterium tuberculosis,Lung cancer </span></span>
+<span><span class="co">#&gt;                                                            1 </span></span>
+<span><span class="co">#&gt;                                        Oral cavity carcinoma </span></span>
+<span><span class="co">#&gt;                                                           19 </span></span>
+<span><span class="co">#&gt;                                               Ovarian cancer </span></span>
+<span><span class="co">#&gt;                                                           36 </span></span>
+<span><span class="co">#&gt;                                              Prostate cancer </span></span>
+<span><span class="co">#&gt;                                                            4</span></span></code></pre></div>
 <p>And analogously, subsetting by an UBERON term involves subsetting the
 <code>Body site</code> column to the term itself and all descendants of
 that term in the UBERON ontology and that are present in the
@@ -738,21 +676,21 @@ system.</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] bugsigdbr_1.15.2 BiocStyle_2.36.0</span></span>
+<span><span class="co">#&gt; [1] bugsigdbr_1.15.3 BiocStyle_2.36.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] bit_4.6.0            jsonlite_2.0.0       dplyr_1.1.4         </span></span>
 <span><span class="co">#&gt;  [4] compiler_4.5.0       BiocManager_1.30.25  filelock_1.0.3      </span></span>
 <span><span class="co">#&gt;  [7] tidyselect_1.2.1     blob_1.2.4           jquerylib_0.1.4     </span></span>
-<span><span class="co">#&gt; [10] systemfonts_1.2.2    textshaping_1.0.0    yaml_2.3.10         </span></span>
-<span><span class="co">#&gt; [13] fastmap_1.2.0        R6_2.6.1             generics_0.1.3      </span></span>
-<span><span class="co">#&gt; [16] curl_6.2.2           knitr_1.50           htmlwidgets_1.6.4   </span></span>
+<span><span class="co">#&gt; [10] systemfonts_1.2.3    textshaping_1.0.1    yaml_2.3.10         </span></span>
+<span><span class="co">#&gt; [13] fastmap_1.2.0        R6_2.6.1             generics_0.1.4      </span></span>
+<span><span class="co">#&gt; [16] curl_6.2.3           knitr_1.50           htmlwidgets_1.6.4   </span></span>
 <span><span class="co">#&gt; [19] ontologyIndex_2.12   tibble_3.2.1         bookdown_0.43       </span></span>
 <span><span class="co">#&gt; [22] desc_1.4.3           DBI_1.2.3            bslib_0.9.0         </span></span>
 <span><span class="co">#&gt; [25] pillar_1.10.2        rlang_1.1.6          cachem_1.1.0        </span></span>
 <span><span class="co">#&gt; [28] xfun_0.52            fs_1.6.6             sass_0.4.10         </span></span>
-<span><span class="co">#&gt; [31] bit64_4.6.0-1        RSQLite_2.3.9        memoise_2.0.1       </span></span>
-<span><span class="co">#&gt; [34] cli_3.6.4            withr_3.0.2          pkgdown_2.1.1.9000  </span></span>
+<span><span class="co">#&gt; [31] bit64_4.6.0-1        RSQLite_2.3.11       memoise_2.0.1       </span></span>
+<span><span class="co">#&gt; [34] cli_3.6.5            withr_3.0.2          pkgdown_2.1.3.9000  </span></span>
 <span><span class="co">#&gt; [37] magrittr_2.0.3       digest_0.6.37        dbplyr_2.5.0        </span></span>
 <span><span class="co">#&gt; [40] lifecycle_1.0.4      BiocFileCache_2.16.0 vctrs_0.6.5         </span></span>
 <span><span class="co">#&gt; [43] evaluate_1.0.3       glue_1.8.0           ragg_1.4.0          </span></span>
@@ -776,7 +714,7 @@ system.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.9000.</p>
 </div>
 
       </footer>
