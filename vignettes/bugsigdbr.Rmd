@@ -23,6 +23,11 @@ knitr::opts_chunk$set(
     comment = "#>",
     crop = NULL
 )
+
+# remove once fixed
+cache.dir <- tools::R_user_dir("bugsigdbr", which = "cache")
+bfc <- BiocFileCache::BiocFileCache(cache.dir)
+BiocFileCache::removebfc(bfc, ask = FALSE)
 ```
 
 # BugSigDB: a comprehensive database of published microbial signatures
