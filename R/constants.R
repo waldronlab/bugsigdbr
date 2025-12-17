@@ -10,4 +10,4 @@ MPA.REGEXP <- "^[dkpcofgst]__"
 
 # URLs
 EFO.OBO.URL <- "https://www.ebi.ac.uk/efo/efo.obo"
-UBERON.OBO.URL <- "http://ontologies.berkeleybop.org/uberon.obo"
+UBERON.OBO.URL <- "http://purl.obolibrary.org/obo/uberon/basic.obo"
