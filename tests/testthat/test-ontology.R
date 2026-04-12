@@ -44,7 +44,7 @@ test_that("subsetByOntology", {
                   c("Feces", "Meconium", "Urine"))
     names(bpos) <- names(bneg) <- bterms
 
-    cterms <- c("cancer", "nervous system disease", "metabolic disease")
+    cterms <- c("cancer", "nervous system disorder", "metabolic disease")
     cpos <- list( c("Gastric cancer", "Cervical cancer", "Breast cancer"),
                   c("Alzheimer's disease", "Bipolar disorder", "Schizophrenia"),
                   c(paste("Type", c("I", "II"), "diabetes mellitus"), "Phenylketonuria"))
