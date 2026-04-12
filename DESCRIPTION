@@ -2,18 +2,12 @@ Package: bugsigdbr
 Version: 1.17.3
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
-    person(given = "Ludwig",
-           family = "Geistlinger",
-           role = c("aut", "cre"),
-           email = "ludwig.geistlinger@gmail.com"),
-    person(given = "Jennifer",
-           family = "Wokaty",
-           role = "aut",
-           email = "jennifer.wokaty@sph.cuny.edu"),
-    person(given = "Levi",
-           family = "Waldron",
-           role = "aut",
-           email = "lwaldron.research@gmail.com"))
+    person("Ludwig", "Geistlinger", , "ludwig.geistlinger@gmail.com", role = c("aut", "cre")),
+    person("Jennifer", "Wokaty", , "jennifer.wokaty@sph.cuny.edu", role = "aut"),
+    person("Levi", "Waldron", , "lwaldron.research@gmail.com", role = "aut"),
+    person("NCI", role = "fnd",
+           comment = c(GrantNo. = "R01CA230551"))
+  )
 Description:
     The bugsigdbr package implements convenient access to bugsigdb.org 
     from within R/Bioconductor. The goal of the package is to facilitate import of 
