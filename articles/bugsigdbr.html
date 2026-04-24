@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugsigdbr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.17.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.17.3</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@ from BugSigDB</h1>
                         <h4 data-toc-skip class="author">Ludwig
 Geistlinger, Jennifer Wokaty, and Levi Waldron</h4>
             
-            <h4 data-toc-skip class="date">30 October 2025</h4>
+            <h4 data-toc-skip class="date">24 April 2026</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugsigdbr/blob/devel/vignettes/bugsigdbr.Rmd" class="external-link"><code>vignettes/bugsigdbr.Rmd</code></a></small>
       <div class="hidden name"><code>bugsigdbr.Rmd</code></div>
@@ -124,7 +124,7 @@ your cache.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bsdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 8163   50</span></span>
+<span><span class="co">#&gt; [1] 7425   51</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "BSDB ID"                    "Study"                     </span></span>
 <span><span class="co">#&gt;  [3] "Study design"               "PMID"                      </span></span>
@@ -139,18 +139,19 @@ your cache.</p>
 <span><span class="co">#&gt; [21] "Group 1 definition"         "Group 0 sample size"       </span></span>
 <span><span class="co">#&gt; [23] "Group 1 sample size"        "Antibiotics exclusion"     </span></span>
 <span><span class="co">#&gt; [25] "Sequencing type"            "16S variable region"       </span></span>
-<span><span class="co">#&gt; [27] "Sequencing platform"        "Statistical test"          </span></span>
-<span><span class="co">#&gt; [29] "Significance threshold"     "MHT correction"            </span></span>
-<span><span class="co">#&gt; [31] "LDA Score above"            "Matched on"                </span></span>
-<span><span class="co">#&gt; [33] "Confounders controlled for" "Pielou"                    </span></span>
-<span><span class="co">#&gt; [35] "Shannon"                    "Chao1"                     </span></span>
-<span><span class="co">#&gt; [37] "Simpson"                    "Inverse Simpson"           </span></span>
-<span><span class="co">#&gt; [39] "Richness"                   "Signature page name"       </span></span>
-<span><span class="co">#&gt; [41] "Source"                     "Curated date"              </span></span>
-<span><span class="co">#&gt; [43] "Curator"                    "Revision editor"           </span></span>
-<span><span class="co">#&gt; [45] "Description"                "Abundance in Group 1"      </span></span>
-<span><span class="co">#&gt; [47] "MetaPhlAn taxon names"      "NCBI Taxonomy IDs"         </span></span>
-<span><span class="co">#&gt; [49] "State"                      "Reviewer"</span></span></code></pre></div>
+<span><span class="co">#&gt; [27] "Sequencing platform"        "Data transformation"       </span></span>
+<span><span class="co">#&gt; [29] "Statistical test"           "Significance threshold"    </span></span>
+<span><span class="co">#&gt; [31] "MHT correction"             "LDA Score above"           </span></span>
+<span><span class="co">#&gt; [33] "Matched on"                 "Confounders controlled for"</span></span>
+<span><span class="co">#&gt; [35] "Pielou"                     "Shannon"                   </span></span>
+<span><span class="co">#&gt; [37] "Chao1"                      "Simpson"                   </span></span>
+<span><span class="co">#&gt; [39] "Inverse Simpson"            "Richness"                  </span></span>
+<span><span class="co">#&gt; [41] "Signature page name"        "Source"                    </span></span>
+<span><span class="co">#&gt; [43] "Curated date"               "Curator"                   </span></span>
+<span><span class="co">#&gt; [45] "Revision editor"            "Description"               </span></span>
+<span><span class="co">#&gt; [47] "Abundance in Group 1"       "MetaPhlAn taxon names"     </span></span>
+<span><span class="co">#&gt; [49] "NCBI Taxonomy IDs"          "State"                     </span></span>
+<span><span class="co">#&gt; [51] "Reviewer"</span></span></code></pre></div>
 <p>Each row of the resulting <code>data.frame</code> corresponds to a
 microbe signature from differential abundance analysis, i.e. a set of
 microbes that has been found with increased or decreased abundance in
@@ -182,41 +183,91 @@ nomenclature per default.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 7910</span></span>
+<span><span class="co">#&gt; [1] 7365</span></span>
 <span><span class="va">sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; $`bsdb:11/1/1_Cervical-glandular-intraepithelial-neoplasia:HIV-patients-with-lesion-at-12-months_vs_HIV-pateints-with-normal-tissue-at-6-months_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "2702"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/1_Obesity:before-surgery_vs_after-surgery_UP`</span></span>
+<span><span class="co">#&gt;  [1] "40214"  "207244" "105841" "159"    "33042"  "410072" "216851" "853"   </span></span>
+<span><span class="co">#&gt;  [9] "833"    "860"    "209"    "1579"   "173"    "1598"   "1768"   "53461" </span></span>
+<span><span class="co">#&gt; [17] "300"    "1282"   "500"    "160"    "29348"  "5782"   "40637" </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/1_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_UP`</span></span>
-<span><span class="co">#&gt; [1] "1282"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/2_Obesity:before-surgery_vs_after-surgery_DOWN`</span></span>
+<span><span class="co">#&gt;  [1] "544"   "547"   "69218" "590"   "28901" "621"   "29465" "39778" "29466"</span></span>
+<span><span class="co">#&gt; [10] "5140" </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/2_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "265"</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bsdb:817/1/1_Granulomatosis-with-Polyangiitis:Kidneys-with-calcification_vs_Healthy/Healthy-with-no-visible-granuloma_UP`</span></span>
+<span><span class="co">#&gt; [1] "2578121" "49546"</span></span></code></pre></div>
 <p>It is also possible obtain signatures based on the full taxonomic
 classification in <a href="https://github.com/biobakery/MetaPhlAn" class="external-link">MetaPhlAn</a> format …</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mp.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"metaphlan"</span><span class="op">)</span></span>
 <span><span class="va">mp.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; $`bsdb:11/1/1_Cervical-glandular-intraepithelial-neoplasia:HIV-patients-with-lesion-at-12-months_vs_HIV-pateints-with-normal-tissue-at-6-months_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "d__Bacteria|k__Bacillati|p__Actinomycetota|c__Actinomycetes|o__Bifidobacteriales|f__Bifidobacteriaceae|g__Gardnerella|s__Gardnerella vaginalis"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/1_Obesity:before-surgery_vs_after-surgery_UP`</span></span>
+<span><span class="co">#&gt;  [1] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Moraxellales|f__Moraxellaceae|g__Acinetobacter|s__Acinetobacter johnsonii"          </span></span>
+<span><span class="co">#&gt;  [2] "k__Bacillati|p__Bacillota|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Anaerostipes"                                                     </span></span>
+<span><span class="co">#&gt;  [3] "k__Bacillati|p__Bacillota|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Anaerostipes|s__Anaerostipes caccae"                              </span></span>
+<span><span class="co">#&gt;  [4] "k__Pseudomonadati|p__Spirochaetota|c__Spirochaetia|o__Brachyspirales|f__Brachyspiraceae|g__Brachyspira|s__Brachyspira hyodysenteriae"             </span></span>
+<span><span class="co">#&gt;  [5] "k__Bacillati|p__Bacillota|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Coprococcus"                                                      </span></span>
+<span><span class="co">#&gt;  [6] "k__Bacillati|p__Bacillota|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Allocoprococcus|s__Allocoprococcus comes"                         </span></span>
+<span><span class="co">#&gt;  [7] "k__Bacillati|p__Bacillota|c__Clostridia|o__Eubacteriales|f__Oscillospiraceae|g__Faecalibacterium"                                                 </span></span>
+<span><span class="co">#&gt;  [8] "k__Bacillati|p__Bacillota|c__Clostridia|o__Eubacteriales|f__Oscillospiraceae|g__Faecalibacterium|s__Faecalibacterium prausnitzii"                 </span></span>
+<span><span class="co">#&gt;  [9] "k__Pseudomonadati|p__Fibrobacterota|c__Fibrobacteria|o__Fibrobacterales|f__Fibrobacteraceae|g__Fibrobacter|s__Fibrobacter succinogenes"           </span></span>
+<span><span class="co">#&gt; [10] "k__Fusobacteriati|p__Fusobacteriota|c__Fusobacteriia|o__Fusobacteriales|f__Fusobacteriaceae|g__Fusobacterium|s__Fusobacterium periodonticum"      </span></span>
+<span><span class="co">#&gt; [11] "k__Pseudomonadati|p__Campylobacterota|c__Epsilonproteobacteria|o__Campylobacterales|f__Helicobacteraceae|g__Helicobacter"                         </span></span>
+<span><span class="co">#&gt; [12] "k__Bacillati|p__Bacillota|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lactobacillus|s__Lactobacillus acidophilus"                        </span></span>
+<span><span class="co">#&gt; [13] "k__Pseudomonadati|p__Spirochaetota|c__Leptospiria|o__Leptospirales|f__Leptospiraceae|g__Leptospira|s__Leptospira interrogans"                     </span></span>
+<span><span class="co">#&gt; [14] "k__Bacillati|p__Bacillota|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Limosilactobacillus|s__Limosilactobacillus reuteri"                </span></span>
+<span><span class="co">#&gt; [15] "k__Bacillati|p__Actinomycetota|c__Actinomycetes|o__Mycobacteriales|f__Mycobacteriaceae|g__Mycobacterium|s__Mycobacterium kansasii"                </span></span>
+<span><span class="co">#&gt; [16] "k__Bacillati|p__Actinomycetota|c__Actinomycetes|o__Nakamurellales|f__Nakamurellaceae|g__Nakamurella|s__Nakamurella multipartita"                  </span></span>
+<span><span class="co">#&gt; [17] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Pseudomonadales|f__Pseudomonadaceae|g__Ectopseudomonas|s__Ectopseudomonas mendocina"</span></span>
+<span><span class="co">#&gt; [18] "k__Bacillati|p__Bacillota|c__Bacilli|o__Bacillales|f__Staphylococcaceae|g__Staphylococcus|s__Staphylococcus epidermidis"                          </span></span>
+<span><span class="co">#&gt; [19] "k__Pseudomonadati|p__Thermomicrobiota|c__Thermomicrobia|o__Thermomicrobiales|f__Thermomicrobiaceae|g__Thermomicrobium|s__Thermomicrobium roseum"  </span></span>
+<span><span class="co">#&gt; [20] "k__Pseudomonadati|p__Spirochaetota|c__Spirochaetia|o__Spirochaetales|f__Treponemataceae|g__Treponema|s__Treponema pallidum"                       </span></span>
+<span><span class="co">#&gt; [21] "k__Bacillati|p__Bacillota|c__Erysipelotrichia|o__Erysipelotrichales|f__Coprobacillaceae|g__Thomasclavelia|s__Thomasclavelia spiroformis"          </span></span>
+<span><span class="co">#&gt; [22] "p__Evosea|c__Eumycetozoa|o__Dictyosteliales|f__Dictyosteliaceae|g__Dictyostelium"                                                                 </span></span>
+<span><span class="co">#&gt; [23] "p__Ciliophora|c__Litostomatea|o__Entodiniomorphida|f__Ophryoscolecidae|g__Epidinium"                                                              </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/1_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_UP`</span></span>
-<span><span class="co">#&gt; [1] "d__Bacteria|k__Bacillati|p__Bacillota|c__Bacilli|o__Bacillales|f__Staphylococcaceae|g__Staphylococcus|s__Staphylococcus epidermidis"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/2_Obesity:before-surgery_vs_after-surgery_DOWN`</span></span>
+<span><span class="co">#&gt;  [1] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Citrobacter"                              </span></span>
+<span><span class="co">#&gt;  [2] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Enterobacter"                             </span></span>
+<span><span class="co">#&gt;  [3] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Enterobacter|s__Enterobacter cancerogenus"</span></span>
+<span><span class="co">#&gt;  [4] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Salmonella"                               </span></span>
+<span><span class="co">#&gt;  [5] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Salmonella|s__Salmonella enterica"        </span></span>
+<span><span class="co">#&gt;  [6] "k__Pseudomonadati|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Shigella|s__Shigella boydii"              </span></span>
+<span><span class="co">#&gt;  [7] "k__Bacillati|p__Bacillota|c__Negativicutes|o__Veillonellales|f__Veillonellaceae|g__Veillonella"                                                   </span></span>
+<span><span class="co">#&gt;  [8] "k__Bacillati|p__Bacillota|c__Negativicutes|o__Veillonellales|f__Veillonellaceae|g__Veillonella|s__Veillonella dispar"                             </span></span>
+<span><span class="co">#&gt;  [9] "k__Bacillati|p__Bacillota|c__Negativicutes|o__Veillonellales|f__Veillonellaceae|g__Veillonella|s__Veillonella parvula"                            </span></span>
+<span><span class="co">#&gt; [10] "k__Fungi|p__Ascomycota|c__Sordariomycetes|o__Sordariales|f__Sordariaceae|g__Neurospora"                                                           </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/2_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "d__Bacteria|k__Pseudomonadati|p__Pseudomonadota|c__Alphaproteobacteria|o__Rhodobacterales|f__Paracoccaceae|g__Paracoccus"</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bsdb:817/1/1_Granulomatosis-with-Polyangiitis:Kidneys-with-calcification_vs_Healthy/Healthy-with-no-visible-granuloma_UP`</span></span>
+<span><span class="co">#&gt; [1] "k__Bacillati|p__Actinomycetota|c__Actinomycetes|o__Candidatus Actinomarinales|f__Candidatus Actinomarinaceae|g__Candidatus Actinomarina|s__Candidatus Actinomarina sp."</span></span>
+<span><span class="co">#&gt; [2] "k__Pseudomonadati|p__Bacteroidota|c__Flavobacteriia|o__Flavobacteriales|f__Flavobacteriaceae"</span></span></code></pre></div>
 <p>… or using the taxonomic name only:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span><span class="op">)</span></span>
 <span><span class="va">tn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; $`bsdb:11/1/1_Cervical-glandular-intraepithelial-neoplasia:HIV-patients-with-lesion-at-12-months_vs_HIV-pateints-with-normal-tissue-at-6-months_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Gardnerella vaginalis"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/1_Obesity:before-surgery_vs_after-surgery_UP`</span></span>
+<span><span class="co">#&gt;  [1] "Acinetobacter johnsonii"      "Anaerostipes"                </span></span>
+<span><span class="co">#&gt;  [3] "Anaerostipes caccae"          "Brachyspira hyodysenteriae"  </span></span>
+<span><span class="co">#&gt;  [5] "Coprococcus"                  "Allocoprococcus comes"       </span></span>
+<span><span class="co">#&gt;  [7] "Faecalibacterium"             "Faecalibacterium prausnitzii"</span></span>
+<span><span class="co">#&gt;  [9] "Fibrobacter succinogenes"     "Fusobacterium periodonticum" </span></span>
+<span><span class="co">#&gt; [11] "Helicobacter"                 "Lactobacillus acidophilus"   </span></span>
+<span><span class="co">#&gt; [13] "Leptospira interrogans"       "Limosilactobacillus reuteri" </span></span>
+<span><span class="co">#&gt; [15] "Mycobacterium kansasii"       "Nakamurella multipartita"    </span></span>
+<span><span class="co">#&gt; [17] "Ectopseudomonas mendocina"    "Staphylococcus epidermidis"  </span></span>
+<span><span class="co">#&gt; [19] "Thermomicrobium roseum"       "Treponema pallidum"          </span></span>
+<span><span class="co">#&gt; [21] "Thomasclavelia spiroformis"   "Dictyostelium"               </span></span>
+<span><span class="co">#&gt; [23] "Epidinium"                   </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/1_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_UP`</span></span>
-<span><span class="co">#&gt; [1] "Staphylococcus epidermidis"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/2_Obesity:before-surgery_vs_after-surgery_DOWN`</span></span>
+<span><span class="co">#&gt;  [1] "Citrobacter"               "Enterobacter"             </span></span>
+<span><span class="co">#&gt;  [3] "Enterobacter cancerogenus" "Salmonella"               </span></span>
+<span><span class="co">#&gt;  [5] "Salmonella enterica"       "Shigella boydii"          </span></span>
+<span><span class="co">#&gt;  [7] "Veillonella"               "Veillonella dispar"       </span></span>
+<span><span class="co">#&gt;  [9] "Veillonella parvula"       "Neurospora"               </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/2_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Paracoccus"</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bsdb:817/1/1_Granulomatosis-with-Polyangiitis:Kidneys-with-calcification_vs_Healthy/Healthy-with-no-visible-granuloma_UP`</span></span>
+<span><span class="co">#&gt; [1] "Candidatus Actinomarina sp." "Flavobacteriaceae"</span></span></code></pre></div>
 <p>As metagenomic profiling with 16S RNA sequencing or whole-metagenome
 shotgun sequencing is typically conducted on a certain taxonomic level,
 it is also possible to obtain signatures restricted to eg. the genus
@@ -226,28 +277,39 @@ level …</p>
 <span>                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span>
 <span>                         tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span>
 <span><span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/2_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Paracoccus"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/1_Obesity:before-surgery_vs_after-surgery_UP`</span></span>
+<span><span class="co">#&gt; [1] "Anaerostipes"     "Coprococcus"      "Faecalibacterium" "Helicobacter"    </span></span>
+<span><span class="co">#&gt; [5] "Dictyostelium"    "Epidinium"       </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/2/1_Body-odor-measurement:youth-Neck-before_vs_after-excercise_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Acinetobacter"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/2_Obesity:before-surgery_vs_after-surgery_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Citrobacter"  "Enterobacter" "Salmonella"   "Veillonella"  "Neurospora"  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/3/1_Body-odor-measurement:Children-underarm-before_vs_after-excercise_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Paracoccus"</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bsdb:817/1/2_Granulomatosis-with-Polyangiitis:Kidneys-with-calcification_vs_Healthy/Healthy-with-no-visible-granuloma_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Anoxybacillus" "Dermacoccus"   "Micrococcus"   "Paracoccus"</span></span></code></pre></div>
 <p>… or the species level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gn.sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">bsdb</span>, </span>
 <span>                         tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,</span>
 <span>                         tax.level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></span>
 <span><span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; $`bsdb:11/1/1_Cervical-glandular-intraepithelial-neoplasia:HIV-patients-with-lesion-at-12-months_vs_HIV-pateints-with-normal-tissue-at-6-months_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Gardnerella vaginalis"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/1_Obesity:before-surgery_vs_after-surgery_UP`</span></span>
+<span><span class="co">#&gt;  [1] "Acinetobacter johnsonii"      "Anaerostipes caccae"         </span></span>
+<span><span class="co">#&gt;  [3] "Brachyspira hyodysenteriae"   "Allocoprococcus comes"       </span></span>
+<span><span class="co">#&gt;  [5] "Faecalibacterium prausnitzii" "Fibrobacter succinogenes"    </span></span>
+<span><span class="co">#&gt;  [7] "Fusobacterium periodonticum"  "Lactobacillus acidophilus"   </span></span>
+<span><span class="co">#&gt;  [9] "Leptospira interrogans"       "Limosilactobacillus reuteri" </span></span>
+<span><span class="co">#&gt; [11] "Mycobacterium kansasii"       "Nakamurella multipartita"    </span></span>
+<span><span class="co">#&gt; [13] "Ectopseudomonas mendocina"    "Staphylococcus epidermidis"  </span></span>
+<span><span class="co">#&gt; [15] "Thermomicrobium roseum"       "Treponema pallidum"          </span></span>
+<span><span class="co">#&gt; [17] "Thomasclavelia spiroformis"  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/1_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_UP`</span></span>
-<span><span class="co">#&gt; [1] "Staphylococcus epidermidis"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/2_Obesity:before-surgery_vs_after-surgery_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Enterobacter cancerogenus" "Salmonella enterica"      </span></span>
+<span><span class="co">#&gt; [3] "Shigella boydii"           "Veillonella dispar"       </span></span>
+<span><span class="co">#&gt; [5] "Veillonella parvula"      </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/2/1_Body-odor-measurement:youth-Neck-before_vs_after-excercise_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Cutibacterium granulosum" "Acinetobacter schindleri"</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bsdb:817/1/1_Granulomatosis-with-Polyangiitis:Kidneys-with-calcification_vs_Healthy/Healthy-with-no-visible-granuloma_UP`</span></span>
+<span><span class="co">#&gt; [1] "Candidatus Actinomarina sp."</span></span></code></pre></div>
 <p>Note that restricting signatures to microbes given at the genus
 level, will per default exclude microbes given at a more specific
 taxonomic rank such as species or strain.</p>
@@ -265,14 +327,15 @@ level.</p>
 <span>                         tax.level <span class="op">=</span> <span class="st">"genus"</span>,</span>
 <span>                         exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">gn.sigs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; $`bsdb:11/1/1_Cervical-glandular-intraepithelial-neoplasia:HIV-patients-with-lesion-at-12-months_vs_HIV-pateints-with-normal-tissue-at-6-months_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Gardnerella"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/1_Obesity:before-surgery_vs_after-surgery_UP`</span></span>
+<span><span class="co">#&gt; [1] "Anaerostipes"     "Coprococcus"      "Faecalibacterium" "Helicobacter"    </span></span>
+<span><span class="co">#&gt; [5] "Dictyostelium"    "Epidinium"       </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/1_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_UP`</span></span>
-<span><span class="co">#&gt; [1] "Staphylococcus"</span></span>
+<span><span class="co">#&gt; $`bsdb:83/1/2_Obesity:before-surgery_vs_after-surgery_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Citrobacter"  "Enterobacter" "Salmonella"   "Veillonella"  "Neurospora"  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bsdb:39/1/2_Body-odor-measurement:youth-underarm-after-exercise_vs_youth-underarm-before_DOWN`</span></span>
-<span><span class="co">#&gt; [1] "Paracoccus"</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bsdb:817/1/2_Granulomatosis-with-Polyangiitis:Kidneys-with-calcification_vs_Healthy/Healthy-with-no-visible-granuloma_DOWN`</span></span>
+<span><span class="co">#&gt; [1] "Anoxybacillus" "Dermacoccus"   "Micrococcus"   "Paracoccus"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="writing-microbe-signatures-to-file-in-gmt-format">Writing microbe signatures to file in GMT format<a class="anchor" aria-label="anchor" href="#writing-microbe-signatures-to-file-in-gmt-format"></a>
@@ -298,13 +361,13 @@ access in a non-interactive setting, the URL of the signature page is
 returned.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/browseSignature.html">browseSignature</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "https://bugsigdb.org/Study_11/Experiment_1/Signature_1"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "https://bugsigdb.org/Study_83/Experiment_1/Signature_1"</span></span></code></pre></div>
 <p>Analogously, the <code>browseTaxon</code> function displays BugSigDB
 taxon pages in an interactive session, or the URL of the corresponding
 taxon page otherwise.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/browseTaxon.html">browseTaxon</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "https://bugsigdb.org/Special:RunQuery/Taxon?Taxon%5BNCBI%5D=2702&amp;_run=1"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "https://bugsigdb.org/Special:RunQuery/Taxon?Taxon%5BNCBI%5D=40214&amp;_run=1"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -321,12 +384,12 @@ package.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">efo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"efo"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required namespace: ontologyIndex</span></span>
-<span><span class="co">#&gt; Using cached version from 2025-10-30 18:34:27</span></span>
+<span><span class="co">#&gt; Using cached version from 2026-04-24 20:40:00</span></span>
 <span><span class="va">efo</span></span>
-<span><span class="co">#&gt; Ontology with 82309 terms</span></span>
+<span><span class="co">#&gt; Ontology with 83520 terms</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; format-version: 1.2</span></span>
-<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.83.0/efo.owl</span></span>
+<span><span class="co">#&gt; data-version: http://www.ebi.ac.uk/efo/releases/v3.89.0/efo.owl</span></span>
 <span><span class="co">#&gt; ontology: http://www.ebi.ac.uk/efo/efo.owl</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Properties:</span></span>
@@ -348,17 +411,16 @@ package.</p>
 <span><span class="co">#&gt;  RO:0002502 - depends on</span></span>
 <span><span class="co">#&gt;  genomically_related_to - genomically_related_to</span></span>
 <span><span class="co">#&gt;  located_in - located_in</span></span>
-<span><span class="co">#&gt;  ... 64 more</span></span></code></pre></div>
+<span><span class="co">#&gt;  ... 66 more</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">uberon</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getOntology.html">getOntology</a></span><span class="op">(</span><span class="st">"uberon"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using cached version from 2025-10-30 18:34:58</span></span>
+<span><span class="co">#&gt; Using cached version from 2026-04-24 20:40:34</span></span>
 <span><span class="va">uberon</span></span>
-<span><span class="co">#&gt; Ontology with 14107 terms</span></span>
+<span><span class="co">#&gt; Ontology with 15037 terms</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; format-version: 1.2</span></span>
-<span><span class="co">#&gt; data-version: releases/2020-09-16</span></span>
-<span><span class="co">#&gt; default-namespace: uberon</span></span>
-<span><span class="co">#&gt; ontology: uberon</span></span>
+<span><span class="co">#&gt; data-version: uberon/releases/2026-04-01/uberon-basic.owl</span></span>
+<span><span class="co">#&gt; ontology: uberon/uberon-basic</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Properties:</span></span>
 <span><span class="co">#&gt;  id: character</span></span>
@@ -368,17 +430,17 @@ package.</p>
 <span><span class="co">#&gt;  ancestors: list</span></span>
 <span><span class="co">#&gt;  obsolete: logical</span></span>
 <span><span class="co">#&gt; Roots:</span></span>
-<span><span class="co">#&gt;  part_of - part of</span></span>
-<span><span class="co">#&gt;  has_part - has part</span></span>
-<span><span class="co">#&gt;  functionally_related_to - functionally related to</span></span>
 <span><span class="co">#&gt;  UBERON:0001062 - anatomical entity</span></span>
-<span><span class="co">#&gt;  adjacent_to - adjacent_to</span></span>
-<span><span class="co">#&gt;  UBERON:0000000 - processual entity</span></span>
-<span><span class="co">#&gt;  anterior_to - anterior_to</span></span>
-<span><span class="co">#&gt;  posterior_to - posterior_to</span></span>
-<span><span class="co">#&gt;  attaches_to_part_of - attaches_to_part_of</span></span>
-<span><span class="co">#&gt;  bearer_of - bearer of</span></span>
-<span><span class="co">#&gt;  ... 127 more</span></span></code></pre></div>
+<span><span class="co">#&gt;  UBERON:0035943 - life cycle temporal boundary</span></span>
+<span><span class="co">#&gt;  develops_from - develops from</span></span>
+<span><span class="co">#&gt;  UBERON:0000104 - life cycle</span></span>
+<span><span class="co">#&gt;  action_notes - actions_notes</span></span>
+<span><span class="co">#&gt;  ambiguous_for_taxon - ambiguous for taxon</span></span>
+<span><span class="co">#&gt;  appendage_segment_number - appendage segment number</span></span>
+<span><span class="co">#&gt;  axiom_lost_from_external_ontology - axiom_lost_from_external_ontology</span></span>
+<span><span class="co">#&gt;  curator_notes - curator note</span></span>
+<span><span class="co">#&gt;  dc-contributor - contributor</span></span>
+<span><span class="co">#&gt;  ... 57 more</span></span></code></pre></div>
 <p>As demonstrated above, subsets of BugSigDB signatures can be obtained
 for signatures associated with certain experimental factors or specific
 body sites of interest. Higher-level queries can be performed with the
@@ -396,13 +458,15 @@ usage by subsetting to signatures associated with cancer.</p>
 <span>                        term <span class="op">=</span> <span class="st">"cancer"</span>,</span>
 <span>                        ontology <span class="op">=</span> <span class="va">efo</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 283  50</span></span>
+<span><span class="co">#&gt; [1] 259  51</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Condition"</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;                                            Bladder carcinoma </span></span>
 <span><span class="co">#&gt;                                                            2 </span></span>
 <span><span class="co">#&gt;                                                Breast cancer </span></span>
-<span><span class="co">#&gt;                                                           40 </span></span>
+<span><span class="co">#&gt;                                                           33 </span></span>
+<span><span class="co">#&gt;                                                       Cancer </span></span>
+<span><span class="co">#&gt;                                                            4 </span></span>
 <span><span class="co">#&gt;                                              Cervical cancer </span></span>
 <span><span class="co">#&gt;                                                           22 </span></span>
 <span><span class="co">#&gt; Cervical glandular intraepithelial neoplasia,Cervical cancer </span></span>
@@ -410,23 +474,21 @@ usage by subsetting to signatures associated with cancer.</p>
 <span><span class="co">#&gt;                                      Digestive system cancer </span></span>
 <span><span class="co">#&gt;                                                            2 </span></span>
 <span><span class="co">#&gt;                                           Endometrial cancer </span></span>
-<span><span class="co">#&gt;                                                           19 </span></span>
+<span><span class="co">#&gt;                                                           11 </span></span>
 <span><span class="co">#&gt;                                            Esophageal cancer </span></span>
 <span><span class="co">#&gt;                                                           10 </span></span>
 <span><span class="co">#&gt;                                               Gastric cancer </span></span>
-<span><span class="co">#&gt;                                                           91 </span></span>
+<span><span class="co">#&gt;                                                           76 </span></span>
 <span><span class="co">#&gt;                                      Head and neck carcinoma </span></span>
 <span><span class="co">#&gt;                                                            7 </span></span>
 <span><span class="co">#&gt;              Human papilloma virus infection,Cervical cancer </span></span>
 <span><span class="co">#&gt;                                                            2 </span></span>
 <span><span class="co">#&gt;                                                  Lung cancer </span></span>
-<span><span class="co">#&gt;                                                           26 </span></span>
-<span><span class="co">#&gt;                       Mycobacterium tuberculosis,Lung cancer </span></span>
-<span><span class="co">#&gt;                                                            1 </span></span>
+<span><span class="co">#&gt;                                                           27 </span></span>
 <span><span class="co">#&gt;                                        Oral cavity carcinoma </span></span>
-<span><span class="co">#&gt;                                                           19 </span></span>
+<span><span class="co">#&gt;                                                           12 </span></span>
 <span><span class="co">#&gt;                                               Ovarian cancer </span></span>
-<span><span class="co">#&gt;                                                           36 </span></span>
+<span><span class="co">#&gt;                                                           45 </span></span>
 <span><span class="co">#&gt;                                              Prostate cancer </span></span>
 <span><span class="co">#&gt;                                                            4</span></span></code></pre></div>
 <p>And analogously, subsetting by an UBERON term involves subsetting the
@@ -442,220 +504,194 @@ system.</p>
 <span>                        term <span class="op">=</span> <span class="st">"digestive system"</span>,</span>
 <span>                        ontology <span class="op">=</span> <span class="va">uberon</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1205   50</span></span>
+<span><span class="co">#&gt; [1] 1147   51</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">sdf</span><span class="op">[</span>,<span class="st">"Body site"</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                                Actinopterygian pyloric caecum </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                Bronchus,Mouth </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                 Buccal mucosa </span></span>
-<span><span class="co">#&gt;                                                            16 </span></span>
-<span><span class="co">#&gt;                                                        Caecum </span></span>
-<span><span class="co">#&gt;                                                            41 </span></span>
-<span><span class="co">#&gt;                                             Cardia of stomach </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                             Cavity of pharynx </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                  Cecum mucosa </span></span>
-<span><span class="co">#&gt;                                                            31 </span></span>
-<span><span class="co">#&gt;     Cecum mucosa,Colonic mucosa,Mucosa of rectum,Ileal mucosa </span></span>
-<span><span class="co">#&gt;                                                             5 </span></span>
-<span><span class="co">#&gt;                                                         Colon </span></span>
-<span><span class="co">#&gt;                                                            70 </span></span>
-<span><span class="co">#&gt;                                             Colon,Blood serum </span></span>
-<span><span class="co">#&gt;                                                             1 </span></span>
-<span><span class="co">#&gt;                                                   Colon,Feces </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                Colonic mucosa </span></span>
-<span><span class="co">#&gt;                                                             8 </span></span>
-<span><span class="co">#&gt;                                             Colorectal mucosa </span></span>
-<span><span class="co">#&gt;                                                            18 </span></span>
-<span><span class="co">#&gt;                                       Colorectal mucosa,Feces </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                    Colorectum </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                                                 Dental plaque </span></span>
-<span><span class="co">#&gt;                                                            17 </span></span>
-<span><span class="co">#&gt;                     Dental plaque,Internal cheek pouch,Saliva </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                               Digestive tract </span></span>
-<span><span class="co">#&gt;                                                             8 </span></span>
-<span><span class="co">#&gt;                                               Duodenal mucosa </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                                      Duodenum </span></span>
-<span><span class="co">#&gt;                                                            18 </span></span>
-<span><span class="co">#&gt;                                            Duodenum,Bile duct </span></span>
-<span><span class="co">#&gt;                                                             1 </span></span>
-<span><span class="co">#&gt;                                      Epithelium of oropharynx </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                                                     Esophagus </span></span>
-<span><span class="co">#&gt;                                                            40 </span></span>
-<span><span class="co">#&gt;                                                   Feces,Colon </span></span>
-<span><span class="co">#&gt;                                                             4 </span></span>
-<span><span class="co">#&gt;                                          Feces,Colonic mucosa </span></span>
-<span><span class="co">#&gt;                                                             1 </span></span>
-<span><span class="co">#&gt;                                       Feces,Colorectal mucosa </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                Feces,Duodenum </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                              Feces,Mucosa of descending colon </span></span>
-<span><span class="co">#&gt;                                                             5 </span></span>
-<span><span class="co">#&gt;                               Feces,Mucosa of small intestine </span></span>
-<span><span class="co">#&gt;                                                             4 </span></span>
-<span><span class="co">#&gt;                                             Feces,Oral cavity </span></span>
-<span><span class="co">#&gt;                                                             9 </span></span>
-<span><span class="co">#&gt;                    Feces,Stomach,Caecum,Small intestine,Colon </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                   Gastric pit </span></span>
-<span><span class="co">#&gt;                                                             4 </span></span>
-<span><span class="co">#&gt;                                                       Gingiva </span></span>
-<span><span class="co">#&gt;                                                             5 </span></span>
-<span><span class="co">#&gt;                                               Gingival groove </span></span>
-<span><span class="co">#&gt;                                                             9 </span></span>
-<span><span class="co">#&gt;                                                       Hindgut </span></span>
-<span><span class="co">#&gt;                                                             4 </span></span>
-<span><span class="co">#&gt;                                                   Hypopharynx </span></span>
-<span><span class="co">#&gt;                                                             1 </span></span>
-<span><span class="co">#&gt;                                                         Ileum </span></span>
-<span><span class="co">#&gt;                                                            23 </span></span>
-<span><span class="co">#&gt;                                                   Ileum,Colon </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                   Ileum,Feces </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                            Ileum,Feces,Rectum </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                 Ileum,Jejunum </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                  Ileum,Rectum </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                          Internal cheek pouch </span></span>
-<span><span class="co">#&gt;                                                            21 </span></span>
-<span><span class="co">#&gt;                                             Intestinal mucosa </span></span>
-<span><span class="co">#&gt;                                                            12 </span></span>
-<span><span class="co">#&gt;                                                     Intestine </span></span>
-<span><span class="co">#&gt;                                                            59 </span></span>
-<span><span class="co">#&gt;                                                       Jejunum </span></span>
-<span><span class="co">#&gt;                                                            29 </span></span>
-<span><span class="co">#&gt;                                       Lower lip,Buccal mucosa </span></span>
-<span><span class="co">#&gt;                                                             8 </span></span>
-<span><span class="co">#&gt;                                             Lumen of duodenum </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                        Midgut </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                  Midgut,Ovary </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                 Midgut,Saliva-secreting gland </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                           Midgut,Saliva-secreting gland,Ovary </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                                         Mouth </span></span>
-<span><span class="co">#&gt;                                                           111 </span></span>
-<span><span class="co">#&gt;                                                  Mouth mucosa </span></span>
-<span><span class="co">#&gt;                                                             4 </span></span>
-<span><span class="co">#&gt;                                     Mucosa of ascending colon </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                     Mucosa of body of stomach </span></span>
-<span><span class="co">#&gt;                                                             1 </span></span>
-<span><span class="co">#&gt;                                         Mucosa of oral region </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt; Mucosa of oral region,Vagina,Skin of forehead,Skin of forearm </span></span>
-<span><span class="co">#&gt;                                                             1 </span></span>
-<span><span class="co">#&gt;                                          Mucosa of oropharynx </span></span>
-<span><span class="co">#&gt;                                                             4 </span></span>
-<span><span class="co">#&gt;                                              Mucosa of rectum </span></span>
-<span><span class="co">#&gt;                                                             5 </span></span>
-<span><span class="co">#&gt;                                       Mucosa of sigmoid colon </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                                     Mucosa of small intestine </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                             Mucosa of stomach </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                                          Nasopharyngeal gland </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                   Nasopharyngeal gland,Saliva </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                                   Nasopharynx </span></span>
-<span><span class="co">#&gt;                                                            82 </span></span>
-<span><span class="co">#&gt;                                              Nasopharynx,Lung </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                                        Nasopharynx,Oropharynx </span></span>
-<span><span class="co">#&gt;                                                             8 </span></span>
-<span><span class="co">#&gt;                                            Nasopharynx,Throat </span></span>
-<span><span class="co">#&gt;                                                            12 </span></span>
-<span><span class="co">#&gt;                                                    Nose,Mouth </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                   Oral cavity </span></span>
-<span><span class="co">#&gt;                                                            60 </span></span>
-<span><span class="co">#&gt;                                         Oral cavity,Esophagus </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                             Oral cavity,Feces </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                  Oral opening </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                    Oropharyngeal gland,Saliva </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                                    Oropharynx </span></span>
-<span><span class="co">#&gt;                                                            32 </span></span>
-<span><span class="co">#&gt;                                                       Pharynx </span></span>
-<span><span class="co">#&gt;                                                             8 </span></span>
-<span><span class="co">#&gt;                                  Posterior wall of oropharynx </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                         Proventriculus,Cloaca </span></span>
-<span><span class="co">#&gt;                                                             9 </span></span>
-<span><span class="co">#&gt;                                                  Rectal lumen </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                        Rectum </span></span>
-<span><span class="co">#&gt;                                                            31 </span></span>
-<span><span class="co">#&gt;                                                         Rumen </span></span>
-<span><span class="co">#&gt;                                                            13 </span></span>
-<span><span class="co">#&gt;                                  Saliva-secreting gland,Ovary </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                  Saliva,Esophagus,Gastric juice,Stomach,Feces </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                  Saliva,Esophagus,Stomach,Gastric juice,Feces </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                              Saliva,Subgingival dental plaque </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                            Saliva,Supragingival dental plaque </span></span>
-<span><span class="co">#&gt;                                                             6 </span></span>
-<span><span class="co">#&gt;                                                 Sigmoid colon </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                               Small intestine </span></span>
-<span><span class="co">#&gt;                                                            19 </span></span>
-<span><span class="co">#&gt;                                                        Spleen </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                  Sputum,Mouth </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                                       Stomach </span></span>
-<span><span class="co">#&gt;                                                            48 </span></span>
-<span><span class="co">#&gt;                                     Subgingival dental plaque </span></span>
-<span><span class="co">#&gt;                                                            85 </span></span>
-<span><span class="co">#&gt;                               Subgingival dental plaque,Feces </span></span>
-<span><span class="co">#&gt;                                                             3 </span></span>
-<span><span class="co">#&gt;                                    Superior surface of tongue </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                   Supragingival dental plaque </span></span>
-<span><span class="co">#&gt;                                                             8 </span></span>
-<span><span class="co">#&gt;                            Supragingival dental plaque,Saliva </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                             Surface of tongue </span></span>
-<span><span class="co">#&gt;                                                            16 </span></span>
-<span><span class="co">#&gt;                                                        Tongue </span></span>
-<span><span class="co">#&gt;                                                            33 </span></span>
-<span><span class="co">#&gt;                                               Tonsillar fossa </span></span>
-<span><span class="co">#&gt;                                                             2 </span></span>
-<span><span class="co">#&gt;                                       Wall of small intestine </span></span>
-<span><span class="co">#&gt;                                                             2</span></span></code></pre></div>
+<span><span class="co">#&gt;                            Actinopterygian pyloric caecum </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                            Bronchus,Mouth </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                             Buccal mucosa </span></span>
+<span><span class="co">#&gt;                                                        35 </span></span>
+<span><span class="co">#&gt;                                                    Caecum </span></span>
+<span><span class="co">#&gt;                                                        80 </span></span>
+<span><span class="co">#&gt;                                         Cardia of stomach </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                         Cavity of pharynx </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                              Cecum mucosa </span></span>
+<span><span class="co">#&gt;                                                        28 </span></span>
+<span><span class="co">#&gt; Cecum mucosa,Colonic mucosa,Mucosa of rectum,Ileal mucosa </span></span>
+<span><span class="co">#&gt;                                                         5 </span></span>
+<span><span class="co">#&gt;                                                     Colon </span></span>
+<span><span class="co">#&gt;                                                        52 </span></span>
+<span><span class="co">#&gt;                                               Colon,Feces </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                            Colonic mucosa </span></span>
+<span><span class="co">#&gt;                                                         8 </span></span>
+<span><span class="co">#&gt;                                         Colorectal mucosa </span></span>
+<span><span class="co">#&gt;                                                        18 </span></span>
+<span><span class="co">#&gt;                                                Colorectum </span></span>
+<span><span class="co">#&gt;                                                        15 </span></span>
+<span><span class="co">#&gt;                                             Dental plaque </span></span>
+<span><span class="co">#&gt;                                                        10 </span></span>
+<span><span class="co">#&gt;                 Dental plaque,Internal cheek pouch,Saliva </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                           Digestive tract </span></span>
+<span><span class="co">#&gt;                                                         1 </span></span>
+<span><span class="co">#&gt;                                           Duodenal mucosa </span></span>
+<span><span class="co">#&gt;                                                         6 </span></span>
+<span><span class="co">#&gt;                                                  Duodenum </span></span>
+<span><span class="co">#&gt;                                                        13 </span></span>
+<span><span class="co">#&gt;               Duodenum,Mucosa of pyloric antrum,Esophagus </span></span>
+<span><span class="co">#&gt;                                                         1 </span></span>
+<span><span class="co">#&gt;                                  Epithelium of oropharynx </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                                 Esophagus </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                              Feces,Caecum </span></span>
+<span><span class="co">#&gt;                                                         8 </span></span>
+<span><span class="co">#&gt;                           Feces,Mucosa of small intestine </span></span>
+<span><span class="co">#&gt;                                                         1 </span></span>
+<span><span class="co">#&gt;                                         Feces,Oral cavity </span></span>
+<span><span class="co">#&gt;                                                         9 </span></span>
+<span><span class="co">#&gt;                Feces,Stomach,Caecum,Small intestine,Colon </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                                   Gingiva </span></span>
+<span><span class="co">#&gt;                                                         5 </span></span>
+<span><span class="co">#&gt;                                                   Hindgut </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                                               Hypopharynx </span></span>
+<span><span class="co">#&gt;                                                         1 </span></span>
+<span><span class="co">#&gt;                                                     Ileum </span></span>
+<span><span class="co">#&gt;                                                        13 </span></span>
+<span><span class="co">#&gt;                                               Ileum,Feces </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                             Ileum,Jejunum </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                  Ileum,Right colon,Rectum </span></span>
+<span><span class="co">#&gt;                                                        10 </span></span>
+<span><span class="co">#&gt;                                      Internal cheek pouch </span></span>
+<span><span class="co">#&gt;                                                         8 </span></span>
+<span><span class="co">#&gt;                                         Intestinal mucosa </span></span>
+<span><span class="co">#&gt;                                                        39 </span></span>
+<span><span class="co">#&gt;                                                 Intestine </span></span>
+<span><span class="co">#&gt;                                                        56 </span></span>
+<span><span class="co">#&gt;                                                   Jejunum </span></span>
+<span><span class="co">#&gt;                                                        16 </span></span>
+<span><span class="co">#&gt;                                   Lower lip,Buccal mucosa </span></span>
+<span><span class="co">#&gt;                                                         8 </span></span>
+<span><span class="co">#&gt;                                         Lumen of duodenum </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                                    Midgut </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                              Midgut,Ovary </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                             Midgut,Saliva-secreting gland </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                       Midgut,Saliva-secreting gland,Ovary </span></span>
+<span><span class="co">#&gt;                                                         6 </span></span>
+<span><span class="co">#&gt;                                                     Mouth </span></span>
+<span><span class="co">#&gt;                                                        94 </span></span>
+<span><span class="co">#&gt;                                              Mouth mucosa </span></span>
+<span><span class="co">#&gt;                                                        13 </span></span>
+<span><span class="co">#&gt;                                                Mouth,Nose </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                 Mucosa of ascending colon </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                 Mucosa of body of stomach </span></span>
+<span><span class="co">#&gt;                                                         7 </span></span>
+<span><span class="co">#&gt;                                     Mucosa of oral region </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                      Mucosa of oropharynx </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                                  Mucosa of pyloric antrum </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;               Mucosa of pyloric antrum,Duodenum,Esophagus </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                          Mucosa of rectum </span></span>
+<span><span class="co">#&gt;                                                         5 </span></span>
+<span><span class="co">#&gt;                                   Mucosa of sigmoid colon </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                 Mucosa of small intestine </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                         Mucosa of stomach </span></span>
+<span><span class="co">#&gt;                                                         7 </span></span>
+<span><span class="co">#&gt;                                      Nasopharyngeal gland </span></span>
+<span><span class="co">#&gt;                                                         1 </span></span>
+<span><span class="co">#&gt;                                               Nasopharynx </span></span>
+<span><span class="co">#&gt;                                                        68 </span></span>
+<span><span class="co">#&gt;                                          Nasopharynx,Lung </span></span>
+<span><span class="co">#&gt;                                                         3 </span></span>
+<span><span class="co">#&gt;                                    Nasopharynx,Oropharynx </span></span>
+<span><span class="co">#&gt;                                                         8 </span></span>
+<span><span class="co">#&gt;                                        Nasopharynx,Throat </span></span>
+<span><span class="co">#&gt;                                                        12 </span></span>
+<span><span class="co">#&gt;                                               Oral cavity </span></span>
+<span><span class="co">#&gt;                                                        83 </span></span>
+<span><span class="co">#&gt;                                     Oral cavity,Esophagus </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                         Oral cavity,Feces </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                              Oral opening </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                                                Oropharynx </span></span>
+<span><span class="co">#&gt;                                                        29 </span></span>
+<span><span class="co">#&gt;                                                   Pharynx </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                              Posterior wall of oropharynx </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                                              Rectal lumen </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                                    Rectum </span></span>
+<span><span class="co">#&gt;                                                        57 </span></span>
+<span><span class="co">#&gt;                                               Right colon </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                                                     Rumen </span></span>
+<span><span class="co">#&gt;                                                         9 </span></span>
+<span><span class="co">#&gt;                              Saliva-secreting gland,Ovary </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                      Saliva,Buccal mucosa </span></span>
+<span><span class="co">#&gt;                                                         6 </span></span>
+<span><span class="co">#&gt;                                      Saliva,Dental plaque </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;              Saliva,Gastric juice,Stomach,Feces,Esophagus </span></span>
+<span><span class="co">#&gt;                                                         3 </span></span>
+<span><span class="co">#&gt;              Saliva,Stomach,Gastric juice,Feces,Esophagus </span></span>
+<span><span class="co">#&gt;                                                         3 </span></span>
+<span><span class="co">#&gt;                        Saliva,Supragingival dental plaque </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;   Saliva,Supragingival dental plaque,Buccal mucosa,Tongue </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                             Sigmoid colon </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                           Small intestine </span></span>
+<span><span class="co">#&gt;                                                        15 </span></span>
+<span><span class="co">#&gt;                                              Sputum,Mouth </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                                   Stomach </span></span>
+<span><span class="co">#&gt;                                                        46 </span></span>
+<span><span class="co">#&gt;                                 Subgingival dental plaque </span></span>
+<span><span class="co">#&gt;                                                        79 </span></span>
+<span><span class="co">#&gt;                               Supragingival dental plaque </span></span>
+<span><span class="co">#&gt;                                                        23 </span></span>
+<span><span class="co">#&gt;                        Supragingival dental plaque,Saliva </span></span>
+<span><span class="co">#&gt;                                                         4 </span></span>
+<span><span class="co">#&gt;                                                    Tongue </span></span>
+<span><span class="co">#&gt;                                                        27 </span></span>
+<span><span class="co">#&gt;                                           Tonsillar fossa </span></span>
+<span><span class="co">#&gt;                                                         2 </span></span>
+<span><span class="co">#&gt;                                   Wall of small intestine </span></span>
+<span><span class="co">#&gt;                                                         1</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.1 (2025-06-13)</span></span>
+<span><span class="co">#&gt; R version 4.6.0 (2026-04-24)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 24.04.3 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 24.04.4 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -676,26 +712,27 @@ system.</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] bugsigdbr_1.17.0 BiocStyle_2.36.0</span></span>
+<span><span class="co">#&gt; [1] bugsigdbr_1.17.3 BiocStyle_2.39.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] bit_4.6.0            jsonlite_2.0.0       dplyr_1.1.4         </span></span>
-<span><span class="co">#&gt;  [4] compiler_4.5.1       BiocManager_1.30.26  filelock_1.0.3      </span></span>
-<span><span class="co">#&gt;  [7] tidyselect_1.2.1     blob_1.2.4           jquerylib_0.1.4     </span></span>
-<span><span class="co">#&gt; [10] systemfonts_1.3.1    textshaping_1.0.4    yaml_2.3.10         </span></span>
-<span><span class="co">#&gt; [13] fastmap_1.2.0        R6_2.6.1             generics_0.1.4      </span></span>
-<span><span class="co">#&gt; [16] curl_7.0.0           knitr_1.50           htmlwidgets_1.6.4   </span></span>
-<span><span class="co">#&gt; [19] ontologyIndex_2.12   tibble_3.3.0         bookdown_0.45       </span></span>
-<span><span class="co">#&gt; [22] desc_1.4.3           DBI_1.2.3            bslib_0.9.0         </span></span>
-<span><span class="co">#&gt; [25] pillar_1.11.1        rlang_1.1.6          cachem_1.1.0        </span></span>
-<span><span class="co">#&gt; [28] xfun_0.53            fs_1.6.6             sass_0.4.10         </span></span>
-<span><span class="co">#&gt; [31] bit64_4.6.0-1        RSQLite_2.4.3        memoise_2.0.1       </span></span>
-<span><span class="co">#&gt; [34] cli_3.6.5            withr_3.0.2          pkgdown_2.1.3.9000  </span></span>
-<span><span class="co">#&gt; [37] magrittr_2.0.4       digest_0.6.37        dbplyr_2.5.1        </span></span>
-<span><span class="co">#&gt; [40] lifecycle_1.0.4      BiocFileCache_2.16.2 vctrs_0.6.5         </span></span>
-<span><span class="co">#&gt; [43] evaluate_1.0.5       glue_1.8.0           ragg_1.5.0          </span></span>
-<span><span class="co">#&gt; [46] purrr_1.1.0          httr_1.4.7           rmarkdown_2.30      </span></span>
-<span><span class="co">#&gt; [49] pkgconfig_2.0.3      tools_4.5.1          htmltools_0.5.8.1</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] bit_4.6.0           jsonlite_2.0.0      dplyr_1.2.1        </span></span>
+<span><span class="co">#&gt;  [4] compiler_4.6.0      BiocManager_1.30.27 filelock_1.0.3     </span></span>
+<span><span class="co">#&gt;  [7] tidyselect_1.2.1    blob_1.3.0          jquerylib_0.1.4    </span></span>
+<span><span class="co">#&gt; [10] systemfonts_1.3.2   textshaping_1.0.5   yaml_2.3.12        </span></span>
+<span><span class="co">#&gt; [13] fastmap_1.2.0       R6_2.6.1            generics_0.1.4     </span></span>
+<span><span class="co">#&gt; [16] curl_7.1.0          httr2_1.2.2         knitr_1.51         </span></span>
+<span><span class="co">#&gt; [19] htmlwidgets_1.6.4   ontologyIndex_2.12  tibble_3.3.1       </span></span>
+<span><span class="co">#&gt; [22] bookdown_0.46       desc_1.4.3          DBI_1.3.0          </span></span>
+<span><span class="co">#&gt; [25] bslib_0.10.0        pillar_1.11.1       rlang_1.2.0        </span></span>
+<span><span class="co">#&gt; [28] cachem_1.1.0        xfun_0.57           fs_2.1.0           </span></span>
+<span><span class="co">#&gt; [31] sass_0.4.10         bit64_4.8.0         otel_0.2.0         </span></span>
+<span><span class="co">#&gt; [34] RSQLite_2.4.6       memoise_2.0.1       cli_3.6.6          </span></span>
+<span><span class="co">#&gt; [37] withr_3.0.2         pkgdown_2.2.0.9000  magrittr_2.0.5     </span></span>
+<span><span class="co">#&gt; [40] digest_0.6.39       dbplyr_2.5.2        rappdirs_0.3.4     </span></span>
+<span><span class="co">#&gt; [43] lifecycle_1.0.5     BiocFileCache_3.1.0 vctrs_0.7.3        </span></span>
+<span><span class="co">#&gt; [46] evaluate_1.0.5      glue_1.8.1          ragg_1.5.2         </span></span>
+<span><span class="co">#&gt; [49] purrr_1.2.2         rmarkdown_2.31      pkgconfig_2.0.3    </span></span>
+<span><span class="co">#&gt; [52] tools_4.6.0         htmltools_0.5.9</span></span></code></pre></div>
 </div>
   </div>
 
@@ -709,12 +746,12 @@ system.</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Ludwig Geistlinger, Jennifer Wokaty, Levi Waldron.</p>
+<p>Developed by Ludwig Geistlinger, Jennifer Wokaty, Levi Waldron, NCI.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000.</p>
 </div>
 
       </footer>
