@@ -1,5 +1,5 @@
 Package: bugsigdbr
-Version: 1.17.4
+Version: 1.18.0
 Title: R-side access to published microbial signatures from BugSigDB
 Authors@R: c(
     person("Ludwig", "Geistlinger", , "ludwig.geistlinger@gmail.com", role = c("aut", "cre")),
