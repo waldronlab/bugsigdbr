@@ -1,0 +1,108 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "bugsigdbr" in publications use:'
+type: software
+license: GPL-3.0-only
+title: 'bugsigdbr: R-side access to published microbial signatures from BugSigDB'
+version: 1.19.0
+doi: 10.1038/s41587-023-01872-y
+abstract: The bugsigdbr package implements convenient access to bugsigdb.org from
+  within R/Bioconductor. The goal of the package is to facilitate import of BugSigDB
+  data into R/Bioconductor, provide utilities for extracting microbe signatures, and
+  enable export of the extracted signatures to plain text files in standard file formats
+  such as GMT.
+authors:
+- family-names: Geistlinger
+  given-names: Ludwig
+  email: ludwig.geistlinger@gmail.com
+- family-names: Wokaty
+  given-names: Jennifer
+  email: jennifer.wokaty@sph.cuny.edu
+- family-names: Waldron
+  given-names: Levi
+  email: lwaldron.research@gmail.com
+preferred-citation:
+  type: article
+  title: BugSigDB captures patterns of differential abundance across a broad range
+    of host-associated microbial signatures
+  authors:
+  - family-names: Geistlinger
+    given-names: Ludwig
+    email: ludwig.geistlinger@gmail.com
+  - family-names: Mirzayi
+    given-names: Chloe
+  - family-names: Zohra
+    given-names: Fatima
+  - family-names: Azhar
+    given-names: Rimsha
+  - family-names: Elsafoury
+    given-names: Shaimaa
+  - family-names: Grieve
+    given-names: Clare
+  - family-names: Wokaty
+    given-names: Jennifer
+    email: jennifer.wokaty@sph.cuny.edu
+  - family-names: Gamboa-Tuz
+    given-names: Samuel David
+  - family-names: Sengupta
+    given-names: Pratyay
+  - family-names: Hecht
+    given-names: Isaac
+  - family-names: Ravikrishnan
+    given-names: Aarthi
+  - family-names: Goncalves
+    given-names: Rafael
+  - family-names: Franzosa
+    given-names: Eric
+  - family-names: Raman
+    given-names: Karthik
+  - family-names: Carey
+    given-names: Vincent
+  - family-names: Dowd
+    given-names: Jennifer
+  - family-names: Jones
+    given-names: Heidi
+  - family-names: Davis
+    given-names: Sean
+  - family-names: Segata
+    given-names: Nicola
+  - family-names: Huttenhower
+    given-names: Curtis
+  - family-names: Waldron
+    given-names: Levi
+    email: lwaldron.research@gmail.com
+  year: '2023'
+  journal: Nature Biotechnology
+  doi: 10.1038/s41587-023-01872-y
+repository: https://bioconductor.org/
+repository-code: https://github.com/waldronlab/bugsigdbr
+url: https://github.com/waldronlab/bugsigdbr
+date-released: '2026-05-14'
+contact:
+- family-names: Geistlinger
+  given-names: Ludwig
+  email: ludwig.geistlinger@gmail.com
+keywords:
+- bioconductor-package
+- r01ca230551
+references:
+- type: manual
+  title: 'bugsigdbr: R-side access to published microbial signatures from BugSigDB'
+  authors:
+  - family-names: Geistlinger
+    given-names: Ludwig
+    email: ludwig.geistlinger@gmail.com
+  - family-names: Wokaty
+    given-names: Jennifer
+    email: jennifer.wokaty@sph.cuny.edu
+  - family-names: Waldron
+    given-names: Levi
+    email: lwaldron.research@gmail.com
+  year: '2026'
+  notes: R package version 1.19.0
+  url: https://github.com/waldronlab/bugsigdbr
+
