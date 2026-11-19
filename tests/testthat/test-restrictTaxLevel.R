@@ -8,6 +8,7 @@ checkDF <- function(df)
     # the first signature with taxa: with min.size = 0, a signature can have
     # none at the requested level
     i <- which(lengths(df[["NCBI Taxonomy IDs"]]) > 0)[1]
+    expect_false(is.na(i))
     expect_true(grepl("^[0-9]+$", df[["NCBI Taxonomy IDs"]][[i]][1]))
     expect_true(grepl("^[dkpcofgst]__", df[["MetaPhlAn taxon names"]][[i]][1]))
 }
