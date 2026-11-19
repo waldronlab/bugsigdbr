@@ -4,7 +4,7 @@
 \alias{importBugSigDB}
 \title{Obtain published microbial signatures from bugsigdb.org}
 \usage{
-importBugSigDB(version = "10.5281/zenodo.19740674", cache = TRUE)
+importBugSigDB(version = "10.5281/zenodo.24379934", cache = TRUE)
 }
 \arguments{
 \item{version}{character. A Zenodo DOI, git commit hash, or "devel".
@@ -52,6 +52,35 @@ Note: Zenodo DOIs for versions after 1.2.2, commit hashes after Feb 16, 2025,
 and \code{"devel"} will contain records where the PubMed ID is the Study ID
 if available.
 }
+
+Releases from v1.4.0 on differ from \code{"devel"} as follows:
+\itemize{
+\item Releases exclude retracted studies, studies whose review found
+them incorrect, studies with neither a valid PMID nor a valid DOI, and
+signatures with no taxa resolved to an NCBI Taxonomy ID.
+\code{"devel"} still includes them: retracted studies are marked
+"Retracted paper" in the \code{Quality control tag} column, and
+incorrect studies have \code{Review state} "Incorrect".
+\item Releases include experiments without signatures from reviewed
+studies, which record a negative taxonomic result and alpha diversity.
+Their rows have \code{NA} signature columns, such as
+\code{Signature page name}, and \code{\link{getSignatures}} skips them.
+\item DOIs are normalized to the 10.xxxx/... form.
+}
+
+Study columns added in v1.4.0 and in \code{"devel"} exports since
+November 2026:
+\describe{
+\item{Curation method}{"Manual" or "Machine"; empty for most studies
+curated before it was introduced.}
+\item{Curation protocol}{the methods page for machine-curated studies.}
+\item{submittedBy, submissionDate}{the user and date of the first
+revision of the Study page.}
+\item{Review state}{the state of the study's review on bugsigdb.org,
+e.g. "Reviewed" or "Incorrect".}
+\item{Quality control tag}{quality control flags set by curators, e.g.
+"Retracted paper".}
+}
 }
 \examples{
 
@@ -61,12 +90,15 @@ if available.
 \references{
 BugSigDB: \url{https://bugsigdb.org}
 
-Stable release: \url{https://doi.org/10.5281/zenodo.19740674}
+Stable release: \url{https://doi.org/10.5281/zenodo.24379934}
 
 Latest version (incl. not reviewed content): 
      \url{https://github.com/waldronlab/BugSigDBExports}
 
-All releases: \url{https://doi.org/10.5281/zenodo.5606165}
+All releases: \url{https://doi.org/10.5281/zenodo.19740649} (from v1.4.0)
+and \url{https://doi.org/10.5281/zenodo.5606165} (up to v1.3.1)
+
+Release v1.4.0: \url{https://doi.org/10.5281/zenodo.24379934}
 
 Release v1.3.1: \url{https://doi.org/10.5281/zenodo.19740674}
 

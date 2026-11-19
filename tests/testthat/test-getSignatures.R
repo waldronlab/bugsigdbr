@@ -60,3 +60,13 @@ test_that("min.size", {
 })    
 
 
+
+test_that("experiments without signatures are skipped", {
+    # releases from v1.4.0 include experiments without signatures, with NA
+    # signature columns
+    no.sig <- is.na(bsdb[["Signature page name"]])
+    expect_true(any(no.sig))
+    sigs <- getSignatures(bsdb, tax.id.type = "ncbi", min.size = 0)
+    expect_length(sigs, sum(!no.sig))
+    expect_false(any(grepl("^bsdb:[^_]*/NA_", names(sigs))))
+})
