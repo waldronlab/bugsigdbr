@@ -5,7 +5,8 @@
 #' @description Functionality for obtaining microbe signatures from BugSigDB
 #'
 #' @param df \code{data.frame} storing BugSigDB data. Typically obtained via
-#' \code{\link{importBugSigDB}}.
+#' \code{\link{importBugSigDB}}. Rows of experiments without signatures,
+#' which have \code{NA} signature columns, are skipped.
 #' @param tax.id.type Character. Taxonomic ID type of the returned microbe sets.
 #' Either \code{"ncbi"} (default), \code{"metaphlan"}, or \code{"taxname"}.
 #' @param tax.level character. Either \code{"mixed"} or any subset of
