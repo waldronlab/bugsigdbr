@@ -4,9 +4,9 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check-bioc](https://github.com/waldronlab/bugsigdbr/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/waldronlab/bugsigdbr/actions)
+[![Bioconductor CI](https://github.com/waldronlab/bugsigdbr/actions/workflows/ci.yml/badge.svg)](https://github.com/waldronlab/bugsigdbr/actions/workflows/ci.yml)
 [![Codecov test
-coverage](https://codecov.io/gh/waldronlab/bugsigdbr/branch/main/graph/badge.svg)](https://codecov.io/gh/waldronlab/bugsigdbr?branch=main)
+coverage](https://codecov.io/gh/waldronlab/bugsigdbr/branch/devel/graph/badge.svg)](https://codecov.io/gh/waldronlab/bugsigdbr?branch=devel)
 <!-- badges: end -->
 
 Utilities for accessing data from [BugSigDB.org](https://bugsigdb.org) and creating plain text
