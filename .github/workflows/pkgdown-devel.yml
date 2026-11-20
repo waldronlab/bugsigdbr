@@ -1,0 +1,52 @@
+# Temporary: deploys the pkgdown site (waldronlab.io/bugsigdbr) from devel
+# until RELEASE_3_24 is on GitHub. Bioconductor's workflow in ci.yml deploys
+# pkgdown from RELEASE_* branches only; then turn on enable_pkgdown in
+# ci.yml on RELEASE_3_24 and delete this file (waldronlab/bugsigdbr#82).
+name: pkgdown (devel)
+
+on:
+  push:
+    branches: [ devel ]
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: bioconductor/bioconductor_docker:devel
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install the package and pkgdown
+        shell: Rscript {0}
+        run: |
+          BiocManager::install(c("pkgdown", "remotes"), ask = FALSE, update = FALSE)
+          remotes::install_local(".", dependencies = TRUE, upgrade = "never",
+                                 repos = BiocManager::repositories())
+
+      - name: Build pkgdown site
+        shell: Rscript {0}
+        run: pkgdown::build_site(new_process = FALSE, install = FALSE)
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
